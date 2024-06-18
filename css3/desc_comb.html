@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>descendant combinator</title>
+    <style>
+        ul li {
+            /* descendant combinator */
+            color: red;
+        }
+
+        ul a {
+            color: green;
+        }
+
+        .pink li.background {
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>sing</li>
+        <li>dance</li>
+        <li>
+            <a href="https://ys.mihoyo.com/main">ys.mihoyo.com</a>
+        </li>
+    </ul>
+    <ol class="pink">
+        <li>rap</li>
+        <li class="background">basketball</li>
+        <li>
+            <a href="https://sr.mihoyo.com/?nav=home">sr.mihoyo.com</a>
+        </li>
+    </ol>
+</body>
+
+</html>
