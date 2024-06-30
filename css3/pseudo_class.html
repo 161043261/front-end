@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pseudo class</title>
+    <style>
+        p:first-child {
+            font-style: italic;
+        }
+
+        .div1 p:first-child {
+            color: red;
+        }
+
+        .div1>p:last-child {
+            color: green;
+        }
+
+        .div2 p:first-child {
+            color: pink;
+        }
+
+        .div2>p:nth-child(3) {
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="div1">
+        <p>Honkai Impact</p>
+        <p>Genshin Impact</p>
+        <p>Honkai: Star Rail</p>
+    </div>
+    <hr>
+    <div class="div2">
+        <div>
+            <p>Honkai Impact</p>
+        </div>
+        <p>Genshin Impact</p>
+        <p>Honkai: Star Rail</p>
+    </div>
+</body>
+
+</html>
