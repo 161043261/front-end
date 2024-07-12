@@ -1,0 +1,14 @@
+.DS_Store
+*/.DS_Store
+
+**/.idea/
+**/.vscode/
+
+**/node_modules/
+**/package-lock.json
+
+./ts/build/
+
+*.txt
+
+**/dist/

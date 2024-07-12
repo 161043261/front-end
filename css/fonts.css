@@ -1,0 +1,22 @@
+/* priority */
+/* inline stylesheet > internal stylesheet > external stylesheet */
+
+h1 {
+    /* type (label) selector */
+    font-family: 'Iosevka SS04', 'Sarasa Mono SC';
+}
+
+#id {
+    /* id selector */
+    font-family: 'Iosevka SS04', 'Sarasa Mono SC';
+}
+
+.class {
+    /* class selector */
+    font-family: 'Iosevka SS04', 'Sarasa Mono SC';
+}
+
+* {
+    /* universal selector */
+    font-family: 'Iosevka SS04', 'Sarasa Mono SC';
+}

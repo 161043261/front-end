@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>attribute selector</title>
+    <style>
+        [title] {
+            /* attribute selector */
+            color: red;
+        }
+
+        [title="genshin"] {
+            background-color: lightblue;
+        }
+
+        [title^="e"] {
+            /* title begins with e */
+            color: green;
+        }
+
+        [title$="s"] {
+            /* title ends with s */
+            background-color: pink;
+        }
+
+        [class*="i"] {
+            /* class contains of i */
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <div title="genshin" class="genshin">Genshin Impact</div>
+    <div title="elements" class="elements">Pyro, Hydro, Dendro, Electro, Cryo, Anemo, Geo</div>
+    <div title="enemies" class="enemies">Hilichurl, Berserker, Shooter, Fighter, Grenadier</div>
+</body>
+
+</html>

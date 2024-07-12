@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sibling combinator</title>
+    <style>
+        h1+p {
+            /* next-sibling combinator */
+            color: red;
+        }
+
+        h1~p {
+            /* subsequent-sibling combinator */
+            background-color: pink;
+        }
+
+        li+li {
+            /* equals to li~li */
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <p>ys.mihoyo.com</p>
+    <h1>Genshin Impact</h1>
+    <p>Pyro, Hydro, Dendro, Electro, Cryo, Anemo, Geo</p>
+    <p>mondstadt, liyue, inazuma, sumeru, fontaine, natlan, snezhnaya</p>
+    <ul>
+        <li>mondstadt</li>
+        <li>liyue</li>
+        <li>inazuma</li>
+        <li>sumeru</li>
+        <li>fontaine</li>
+        <li>natlan</li>
+        <li>snezhnaya</li>
+    </ul>
+</body>
+
+</html>

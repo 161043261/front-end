@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise Start</title>
+    <style>
+        * {
+            font-family: 'Iosevka SS04', monospace;
+        }
+
+        div {
+            width: 200px;
+            height: 100px;
+        }
+    </style>
+    <script src="../../assets/axios.min.js"></script>
+</head>
+
+<body>
+    <button id="btn0">click</button>
+    <div id="div0" style="border: solid red;"></div>
+    <script>
+        function rand(n) {
+            return Math.floor(Math.random() * n); // Math.random() => [0, 1)
+        }
+
+        const btn0 = document.querySelector('#btn0');
+        btn0.addEventListener('click', function () {
+            const p = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    const n = rand(10)
+                    if (n < 5) resolve(n); // pending => fulfilled, call p.then onFulfilled
+                    else reject(n); // pending => rejected, call p.then onRejected
+                    // else throw Error("pending => rejected"); // call p.then onRejected
+                }, 1000);
+            });
+
+            // Promise.then(onFulfilled, onRejected);
+            p.then((value) => { // value = n; onFulfilled(n);
+                document.querySelector('#div0').innerHTML = value;
+            }, (reason) => { // reason = n; onRejected(n);
+                document.querySelector('#div0').innerHTML = reason;
+            });
+
+            p.then((value) => {
+                document.querySelector('#div0').innerHTML += " √";
+            }, (reason) => {
+                document.querySelector('#div0').innerHTML += " ×";
+            })
+        });
+    </script>
+
+    <button id="btn1">AJAX (promise)</button>
+    <div id="div1" style="border: solid green;"></div>
+
+    <script>
+        const btn1 = document.querySelector('#btn1');
+
+        btn1.addEventListener('click', function () {
+            const p = new Promise((resolve, reject) => { // resolve, reject: predefined functions
+                // ***** synchronous execution *****
+                const xhr = new XMLHttpRequest();
+                xhr.open('get', 'http://localhost:8000/main');
+                xhr.send();
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4) {
+                        if (xhr.status >= 200 && xhr.status < 300) {
+                            resolve(xhr.response);
+                        } else {
+                            reject(xhr.status);
+                        }
+                    }
+                }
+            });
+
+            // ***** ONLY onRejected *****
+            // p.catch((reason /* reason = xhr.status */) => { // onRejected
+            //     document.querySelector("#div1").innerHTML = "catch" + reason; // catch0
+            // })
+
+            // ***** BOTH onFulfilled AND onRejected *****
+            const q = p.then((value /* value = xhr.response */) => { // onResolved | onFulfilled
+                // ***** then *****
+                // 0. return;
+                //    => p.PromiseState = "fulfilled";
+                //    => p.PromiseResult = undefined | pending;
+                //
+                // 1. return + a non-Promise object
+                //    => p.PromiseState = "fulfilled";
+                //    => p.PromiseResult = the non-Promise object;
+                //
+                // 2. return + a Promise object
+                //    => p.PromiseState = retVal.PromiseState;
+                //    => p.PromiseResult = retVal.PromiseResult;
+                //
+                // 3. throw new Error(message);
+                //    => p.PromiseState = "rejected";
+                //    => p.PromiseResult = message;
+                document.querySelector("#div1").innerHTML = value.toString();
+                return;
+            }, (reason /* reason = xhr.status */) => { // onRejected
+                document.querySelector("#div1").innerHTML = reason;
+                // return;
+            });
+        });
+    </script>
+
+    <button id="btn2">AJAX (promise + async + await)</button>
+    <div id="div2" style="border: solid blue;"></div>
+    <script>
+        const btn2 = document.querySelector('#btn2');
+
+        async function sendAJAX() {
+            return new Promise((resolve, reject) => { // resolve, reject: predefined functions
+                // ***** synchronous execution *****
+                const xhr = new XMLHttpRequest();
+                xhr.open('get', 'http://localhost:8000/fetch');
+                xhr.send();
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4) {
+                        if (xhr.status >= 200 && xhr.status < 300) {
+                            resolve(xhr.response);
+                        } else {
+                            reject(xhr.status);
+                        }
+                    }
+                }
+            });
+        }
+
+        btn2.addEventListener('click', async function () {
+            let resp = await sendAJAX();
+            document.querySelector("#div2").innerHTML = resp.toString();
+        });
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dynaimic pseudo classes</title>
+    <style>
+        /* dynaimic pseudo classes: lvha */
+        a:link {
+            color: red;
+        }
+
+        a:visited {
+            color: green;
+        }
+
+        a:hover,
+        span:hover {
+            color: blue;
+        }
+
+        a:active,
+        span:active {
+            color: orange;
+        }
+
+        input:focus,
+        select:focus {
+            color: green;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="https://ys.mihoyo.com">Genshin Impact</a><br>
+    <span>https://sr.mihoyo.com</span><br>
+    <input type="text"><br>
+    <select>
+        <option value="Osaka">Osaka</option>
+        <option value="Tokyo">Tokyo</option>
+        <option value="Yokohama">Yokohama</option>
+    </select>
+</body>
+
+</html>

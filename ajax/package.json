@@ -1,0 +1,16 @@
+{
+  "name": "express",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "express": "^4.19.2"
+  },
+  "scripts": {
+    "dev": "nodemon ./app.js",
+    "index": "nodemon ./index.js"
+  },
+  "dependencies": {
+    "nodemon": "^3.1.4"
+  }
+}

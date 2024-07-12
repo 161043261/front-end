@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>position</title>
+    <style>
+        /* postion: static (default), absolute, fixed, relative */
+        /* left, right, top, bottom */
+        .div1 {
+            background-color: lightpink;
+            position: absolute;
+            /* absolute: Offset based on parent element */
+            top: 100px;
+            right: 100px;
+        }
+
+        .div2 {
+            background-color: lightgreen;
+            position: fixed;
+            /* fixed: Offset based on browser window */
+            top: 50px;
+            left: 50px;
+        }
+
+        .div3 {
+            background-color: lightblue;
+            position: relative;
+            /* relative: Offset based on static position */
+            top: 100px;
+            left: 100px;
+        }
+
+        /* .div1, .div2, .div3 {
+            width: 100px;
+            height: 100px;
+        } */
+        div {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="div div1">div1 absolute</div>
+    <div class="div div2">div2 fixed</div>
+    <div class="div" style="border: 1px solid red;">div</div>
+    <div class="div div3">div3 relative</div>
+</body>
+
+</html>

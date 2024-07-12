@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="keywords">
+    <meta name="description" content="description">
+    <meta name="author" content="https://github.com/161043261">
+    <meta http-equiv="refresh" content="86400"> <!-- refresh page per 24h -->
+    <link rel="stylesheet" type="text/css" href="../css/fonts.css">
+    <title>title</title>
+    <!-- internal stylesheet -->
+    <style>
+        table {
+            border-right: 1px dotted;
+            border-bottom: 1px dotted;
+            text-align: center;
+        }
+
+        table th,
+        td {
+            border-left: 1px dotted;
+            border-top: 1px dotted;
+        }
+    </style>
+    <!-- external stylesheet -->
+    <link rel="stylesheet" type="text/css" href="../css3/fonts.css">
+</head>
+
+<body>
+    <!-- inline stylesheet -->
+    <h1 id="head" style="background-color: pink;
+        text-align: center">head</h1>
+    <p>paragraph</p>
+    <a href="https://bh3.mihoyo.com">Visit Honkai Impact (hypertext reference)</a><br>
+    <img src="../assets/white.png" alt="Honkai Impact 3rd" width="250">
+    <hr> <!-- horizontal rule -->
+    <br>
+    <b>bold</b><br>
+    <i>italic</i><br>
+    <em>emphasis, equals to italic</em><br>
+    <small>small font size</small><br>
+    <strong>strong importance, equals to bold</strong><br>
+    LaTeX_<sub>subscript</sub><br>
+    LaTeX^<sup>superscript</sup><br>
+    <ins>inserted (underline)</ins>
+    <br>
+    <del>deleted</del>
+    <br>
+    <a href="https://ys.mihoyo.com">
+        <img src="../assets/genshin.png" alt="Visit Genshin Impact" width="250" />
+    </a><br>
+    <a href="https://download.oracle.com/graalvm/21/latest/graalvm-jdk-21_linux-x64_bin.tar.gz" download>
+        Download GraalVM
+    </a><br>
+    <a href="https://sr.mihoyo.com" target="_blank">
+        Visit Honkai: Star Rail in a new tab
+    </a><br>
+
+    <table>
+        <thead> <!-- table head -->
+            <th>colName0</th>
+            <th>colName1</th>
+            <th>colName2</th>
+        </thead>
+        <tbody> <!-- table body -->
+            <tr> <!-- table row -->
+                <td>row0, col0</td> <!-- table data -->
+                <td>row0, col1</td>
+                <td>row0, col2</td>
+            </tr>
+            <tr>
+                <td>row1, col0</td>
+                <td>row1, col1</td>
+                <td>row1, col2</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul> <!-- unordered list -->
+        <li>Latte</li> <!-- list item -->
+        <li>Frappe</li>
+    </ul>
+
+    <ol> <!-- ordered list -->
+        <li>Macchiato</li> <!-- list item -->
+        <li>Mocha</li>
+    </ol>
+
+    <dl> <!-- description list (name=value list) -->
+        <dt>key</dt> <!-- term (name) -->
+        <dd>value</dd> <!-- description (value) -->
+    </dl>
+    <div>block element</div>
+    <span>inline element</span><br>
+
+    <form action="https://ys.mihoyo.com/main/character/inazuma" method="get">
+        <!-- text input box -->
+        <label for="username">username:</label> <!-- &username=root -->
+        <input type="text" id="username" name="username" required><br>
+
+        <!-- password input box -->
+        <label for="password">password:</label> <!-- &password=0228 -->
+        <input type="password" id="password" name="password" required><br>
+
+        <!-- radio button -->
+        <input type="radio" id="KamisatoAyaka" name="char" value="0" checked>
+        <label for="KamisatoAyaka">Kamisato Ayaka</label><br> <!-- &char=0 -->
+        <input type="radio" id="RaidenShogun" name="char" value="4">
+        <label for="RaidenShogun">Raiden Shogun</label><br>
+        <input type="radio" id="SangonomiyaKokomi" name="char" value="6">
+        <label for="SangonomiyaKokomi">Sangonomiya Kokomi</label><br>
+
+        <!-- checkbox -->
+        <input type="checkbox" id="sing" name="sing">
+        <label for="sing">sing</label><br>
+        <input type="checkbox" id="dance" name="dance">
+        <label for="dance">dance</label><br>
+        <input type="checkbox" id="rap" name="rap"> <!-- &rap=on -->
+        <label for="rap">rap</label><br>
+        <input type="checkbox" id="basketball" name="basketball">
+        <label for="basketball">basketball</label><br>
+
+        <!-- drop-down list -->
+        <label for="character"></label>
+        <select id="character" name="char">
+            <option value="0">Kamisato Ayaka</option>
+            <option value="4">Raiden Shogun</option>
+            <option value="6">Sangonomiya Kokomi</option>
+        </select>
+
+        <!-- submit button https://ys.mihoyo.com/main/character/inazuma?username=root&password=0228&char=0&rap=on -->
+        <input type="submit" value="submit">
+    </form>
+
+    <!-- inline frame -->
+    <iframe src="https://ys.mihoyo.com" width="50%" height="500" style="border-width: 0" name="mihoyo"></iframe><br>
+    <a href="https://sr.mihoyo.com/?nav=home" target="mihoyo">Visit sr.mihoyo.com</a><br>
+    <!-- a.target == iframe.name -->
+    <a href="#head">Return head</a><br>
+</body>
+
+<script>
+    document.write("document.write")
+    document.getElementById("head").style.color = "green";
+</script>
+
+</html>

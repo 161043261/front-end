@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>browser object model</title>
+    <style>
+        button,
+        input {
+            display: block;
+        }
+    </style>
+    <script>
+        function alertTest() { // alert box
+            window.alert("WARNING");
+        }
+
+        function confirmTest() { // confirm box
+            window.confirm("Delete? [Y/n]");
+        }
+
+        function promptTest() { // prompt box
+            window.prompt("Input a number", "666");
+        }
+
+        function redirect(domain) {
+            window.location.href = `https://${domain}.mihoyo.com`
+        }
+
+        // localStorage & sessionStorage
+        function setPair() {
+            window.sessionStorage.setItem("sessionMsg", "sessionValue")
+            window.localStorage.setItem("localMsg", "localValue")
+        }
+
+        function removePair() {
+            sessionStorage.removeItem("sessionMsg")
+            localStorage.removeItem("localMsg")
+        }
+
+        function getPair() {
+            console.log("session:" + sessionStorage.getItem("sessionMsg"))
+            console.log("local:" + localStorage.getItem("localMsg"))
+        }
+    </script>
+</head>
+
+<body>
+    <input type="button" value="alert box" onclick="alertTest()" />
+    <input type="button" value="confirm box" onclick="confirmTest()" />
+    <input type="button" value="prompt box" onclick="promptTest()" />
+
+    <input type="button" value="https://ys.mihoyo.com" onclick="redirect('ys')" />
+    <button onclick="redirect('sr')">https://sr.mihoyo.com</button>
+
+    <button onclick="setPair()">set a pair (localStorage & sessionStorage)</button>
+    <button onclick="removePair()">remove a pair by key</button>
+    <button onclick="getPair()">get value by key</button>
+</body>
+
+</html>

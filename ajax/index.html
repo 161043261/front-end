@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CORS</title>
+    <style>
+        * {
+            font-family: "Fira Code", monospace;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Cross-Origin Resource Sharing</h1>
+    <button>fetch data</button>
+    <div style="border: solid purple;">Data Placeholder</div>
+    <script>
+        const btn = document.querySelector('button');
+        btn.onclick = function () {
+            fetch('/data', { // Same-Origin, the "http://localhost:7000" can be omitted.
+                method: 'get',
+            }).then((resp) => { return resp.json(); }).then((respJson) => {
+                document.querySelector('div').innerHTML = JSON.stringify(respJson);
+            })
+        }
+    </script>
+</body>
+
+</html>
