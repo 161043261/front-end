@@ -10,4 +10,6 @@ npm install eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin --
 touch ./.eslintrc.js # touch ./.eslintrc.json
 
 #./node_modules/.bin/eslint
+
+npm install prettier --save-dev
 ```

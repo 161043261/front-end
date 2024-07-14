@@ -1,7 +1,7 @@
 type Echo = (left?: string, right?: string) => void
 
-// l: optional parameters with default value
-// r: optional parameters must be placed after required parameters
+// left: optional parameters with default value
+// optional parameters must be placed after required parameters
 let echo: Echo = function (left = "Yae", right?: string): void {
     if (right == undefined) console.log(left);
     else console.log(left, right);
@@ -23,11 +23,11 @@ cout("Honkai", "Star", "Rail"); // Honkai Star-Rail
 // Overload Signature
 function getDate(timestamp: number): Date;
 function getDate(m: number, d: number, y: number): Date;
-function getDate(m_timestamp: number, d?: number, y?: number): Date {
+function getDate(mTimestamp: number, d?: number, y?: number): Date {
     if (d !== undefined && y !== undefined) {
-        return new Date(y, m_timestamp, d); // is m
+        return new Date(y, mTimestamp, d); // is m
     } else {
-        return new Date(m_timestamp); // is timestamp
+        return new Date(mTimestamp); // is timestamp
     }
 }
 

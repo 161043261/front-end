@@ -23,7 +23,7 @@ function getSquare(config: IConfig): { color: string; width: number } {
     return square;
 }
 
-let square = getSquare({c: "black"})
+let square: { color: string; width: number } = getSquare({c: "black"})
 console.log(square); // { color: 'black', width: 0 }
 
 interface IPoint {

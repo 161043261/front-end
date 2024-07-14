@@ -1,16 +1,16 @@
 // abstract class cannot be instantiated
 abstract class Animal {
-    // | attribute | Access      |
-    // |-----------|-------------|
-    // | public    | all         |
-    // | protected | self, child |
-    // | private   | self        |
+    // | attribute | access control |
+    // |-----------|----------------|
+    // | public    | all            |
+    // | protected | self, child    |
+    // | private   | self           |
     public readonly name: string;
-    // | constructor | extend | instantiation|
-    // |-------------|--------|--------------|
-    // | public      | √      | √            |
-    // | protected   | √      | ×            |
-    // | private     | ×      | ×            |
+    // | constructor | extend | instantiate |
+    // |-------------|--------|-------------|
+    // | public      | √      | √           |
+    // | protected   | √      | ×           |
+    // | private     | ×      | ×           |
     public constructor(name: string) {
         console.log("constructing animal");
         this.name = name;
