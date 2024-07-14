@@ -3,27 +3,23 @@ interface IPeople {
     name: string;
 }
 
-function printPeople(people: IPeople) {
+function fp(people: IPeople) {
     console.log(people.name);
 }
 
 let tomcat = {age: 22, name: "Tomcat"};
-printPeople(tomcat); // Tomcat
+fp(tomcat); // Tomcat
 
 interface IConfig {
     c?: string; // optional attribute
     w?: number; // optional attribute
+    [propName: string]: any; // any attribute
 }
 
 function getSquare(config: IConfig): { color: string; width: number } {
-    let square = {color: "white", width: 0};
-    if (config.c != null) {
-        square.color = config.c;
-    }
-
-    if (config.w != null) {
-        square.width = config.w;
-    }
+    let square: { color: string; width: number } = {color: "white", width: 0};
+    if (config.c != null) square.color = config.c;
+    if (config.w != null) square.width = config.w;
     return square;
 }
 
@@ -53,6 +49,7 @@ interface ISearch {
 
 let search: ISearch;
 search = function (src: string, sub: string): boolean {
+    // src: source; sub: substring;
     let res = src.search(sub);
     return res > -1;
 }
@@ -64,24 +61,23 @@ interface IStrArr {
 
 let strArr: IStrArr;
 strArr = ["Tom", "Jerry"];
-// strArr[0] = "Tomcat" // error
 
-// Class Interface
-interface IClock {
-    currTime: Date;
+// strArr[0] = "Tomcat" // error, strArr[number] is readonly
 
-    setTime(d: Date); // method signature
+interface IDict {
+    [index: string]: any;
+
+    size?: number;
 }
 
-class Clock implements IClock {
-    currTime: Date;
+let dict: IDict = {};
+dict['parser'] = "@typescript-eslint/parser";
+dict['plugins'] = ['@typescript-eslint'];
+dict['rules'] = {'no-var': "error"}
+dict.size = 3;
+console.log(dict);
 
-    setTime(d: Date) { // method implementation
-        this.currTime = d
-    }
-}
-
-// Interface Inheritance
+// An interface can extend another interface
 interface IColor {
     color: string;
 }
@@ -90,7 +86,7 @@ interface ICircle extends IColor {
     radius: number;
 }
 
-let circle = <ICircle>{};
+let circle: ICircle = <ICircle>{};
 circle.color = "blue";
 circle.radius = 10;
 console.log(circle); // { color: 'blue', radius: 10 }

@@ -1,7 +1,7 @@
-type Echo = (l?: string, r?: string) => void
+type Echo = (left?: string, right?: string) => void
 
 // l: optional parameters with default value
-// r: optional parameters (must be placed after required parameters)
+// r: optional parameters must be placed after required parameters
 let echo: Echo = function (left = "Yae", right?: string): void {
     if (right == undefined) console.log(left);
     else console.log(left, right);
@@ -31,5 +31,5 @@ function getDate(m_timestamp: number, d?: number, y?: number): Date {
     }
 }
 
-console.log(getDate(1610432610000));
+console.log(getDate(Date.parse(new Date().toString())));
 console.log(getDate(2, 28, 2002));

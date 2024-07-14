@@ -17,23 +17,28 @@ let ls: number[] = [1, 2, 3];
 let arr: Array<number> = [1, 2, 3];
 
 // tuple
-let tp: readonly [string, number] = ["Tomcat", 2024];
-console.log(tp[0].substring(3)); // cat
-console.log(tp[1].toString());   // 2024
+let tuple: [string, number] = ["Tomcat", 2024];
+console.log(tuple[0].substring(3)); // cat
+console.log(tuple[1].toString());   // 2024
 
 // enum
-enum Color { RED, GREEN, BLUE }; // 0 1 2
-console.log(Color.RED);          // 0
+enum Color { RED = 1, GREEN, BLUE } // 1 2 3
+console.log(Color.RED); // 1
 
 // Type Assertion
 let tex: any = "tex";
 let len: number;
-len = (<string>tex).length;   // assert tex is a string
-len = (tex as string).length; // assert tex is a string
+len = (<string>tex).length;   // assert tex as a string
+len = (tex as string).length; // assert tex as a string
+
+
+let u: undefined = undefined;
+let v: void = undefined;
+let n: null = null;
 
 // never: variable never exists
 function err(msg: string): never {
-    throw new Error(msg); // return value never exists
+    throw new Error(msg); // function never returns
 }
 
 // never: function never returns

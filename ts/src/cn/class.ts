@@ -10,17 +10,18 @@ class Greeter {
     }
 }
 
-let greeter = new Greeter("world")
+let greeter: Greeter = new Greeter("world")
 
 abstract class Animal { // abstract class
+    // keyword 'public' automatically add attribute 'name'
     constructor(public name: string) {
     }
 
-    echo() {
+    echo(): void {
         console.log(this.name);
     }
 
-    abstract print(): void; // abstract method
+    abstract print(): void; // abstract method (no implementation)
 }
 
 class Cat extends Animal {
@@ -28,45 +29,42 @@ class Cat extends Animal {
         super(name);
     }
 
-    print() {
+    print(): void {
         console.log(this.name);
     }
 }
 
-let tom = new Cat("Tom");
+let tom: Cat = new Cat("Tom");
 tom.echo();  // Tom
 tom.print(); // Tom
 
 class Person {
-    readonly name: string; // unmutable
-
-    // constructor
-    constructor(name = "kun") {
-        this.name = name;
+    // keyword 'readonly' automatically add attribute 'gender'
+    constructor(readonly gender: number = 1) {
     }
 
-    private _age: number;
+    private _name: string = "";
 
-    get age(): number {
+    get name(): string {
         console.log("getter")
-        return this._age
+        return this._name
     }
 
-    set age(_age: number) {
+    set name(_name: string) {
         console.log("setter")
-        this._age = _age;
+        this._name = _name;
     }
 }
 
-let p = new Person();
-p.age = 22;        // setter
-console.log(p.age) // getter 22
+let p: Person = new Person();
+p.name = 'kun';     // setter
+console.log(p.name) // getter kun
 
 class Grid {
     static origin = {x: 0, y: 0};
 
-    constructor(public scale: number) {
-    }
+    // keyword 'public' automatically add attribute 'scale'
+    constructor(public scale: number) {}
 
     calculate(point: { x: number; y: number; }) {
         let dx = (point.x - Grid.origin.x);
