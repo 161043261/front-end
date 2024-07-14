@@ -15,7 +15,7 @@
     style.rel = "stylesheet";
     // style.type = "text/css";
     style.innerHTML = "code, pre, .blob-code, .blob-code-content, .blob-code-marker, .blob-num"
-        + " * " // this line can be commented
+        + ", *" // this line can be commented
         + `{ font-family: ${fontFamily}, monospace !important; }`;
     // document.getElementsByTagName('head')[0].appendChild(style);
     document.querySelector('head').appendChild(style);
