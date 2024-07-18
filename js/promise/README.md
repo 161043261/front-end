@@ -42,10 +42,14 @@ const q = p.then((value /* value = xhr.response */) => { // onResolved | onFulfi
 });
 ```
 
-[promise.0](../../assets/promise.0.png)  
-[promise.1](../../assets/promise.1.png)  
-[promise.2](../../assets/promise.2.png)  
-[promise.3](../../assets/promise.3.png)  
+[promise.0](../../assets/promise.0.png)
+
+[promise.1](../../assets/promise.1.png)
+
+[promise.2](../../assets/promise.2.png)
+
+[promise.3](../../assets/promise.3.png)
+
 [promise.4](../../assets/promise.4.png)
 
 ### Promise Error Handling
