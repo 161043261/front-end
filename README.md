@@ -1,4 +1,4 @@
-# front-end
+# frontend
 
 ### Minimal Roadmap
 1. HTML
