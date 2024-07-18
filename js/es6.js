@@ -2,7 +2,7 @@
 let [x, y, z = 3] = [1, 2, 4]
 console.log(x, y, z) // 1 2 4
 
-let { _name, age = 0, gender = 0 } = { _name: "Tomcat", gender: 1, age: 22 }
+let {_name, age = 0, gender = 0} = {_name: "Tomcat", gender: 1, age: 22}
 console.log(_name, age, gender) // Tomcat 22 1
 
 function add([x, y]) {
@@ -39,15 +39,21 @@ let arr2 = [4, 5, 6]
 let arr0 = [...arr1, ...arr2]
 console.log(arr0)
 
-let fd1 = { name: "Tomcat" }
-let fd2 = { age: 22 }
-let fd3 = { gender: "male" }
-let obj = { ...fd1, ...fd2, ...fd3 }
+let fd1 = {name: "Tomcat"}
+let fd2 = {age: 22}
+let fd3 = {gender: "male"}
+let obj = {...fd1, ...fd2, ...fd3}
 console.log(obj)
 
 class Person {
     n // attribute
     age // attribute
+
+    constructor(name, age) {
+        this.n = name
+        this.age = age
+    }
+
     get name() {
         return "name: " + this.n
     }
@@ -62,11 +68,6 @@ class Person {
 
     sub(x, y) {
         console.log(x - y)
-    }
-
-    constructor(name, age) {
-        this.n = name
-        this.age = age
     }
 }
 

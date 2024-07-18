@@ -3,35 +3,35 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>child combinator</title>
     <style>
-        div>a {
+        div > a {
             /* child combinator */
             color: red;
         }
 
-        div>p>a {
+        div > p > a {
             color: green;
         }
 
-        div.skyblue>a {
+        div.skyblue > a {
             color: orange;
         }
     </style>
 </head>
 
 <body>
-    <div>
-        <a href="https://bh3.mihoyo.com/">Honkai Impact</a><br>
-        <a href="https://ys.mihoyo.com/">Genshin Impact</a><br>
-        <p>
-            <a href="https://sr.mihoyo.com/">Honkai: Star Rail</a>
-        <div class="skyblue">
-            <a href="https://zzz.mihoyo.com/">Zenless Zone Zero</a>
-        </div>
-        </p>
+<div>
+    <a href="https://bh3.mihoyo.com/">Honkai Impact</a><br>
+    <a href="https://ys.mihoyo.com/">Genshin Impact</a><br>
+    <p>
+        <a href="https://sr.mihoyo.com/">Honkai: Star Rail</a>
+    <div class="skyblue">
+        <a href="https://zzz.mihoyo.com/">Zenless Zone Zero</a>
     </div>
+    </p>
+</div>
 </body>
 
 </html>

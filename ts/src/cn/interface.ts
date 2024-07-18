@@ -65,9 +65,9 @@ strArr = ["Tom", "Jerry"];
 // strArr[0] = "Tomcat" // error, strArr[number] is readonly
 
 interface IDict {
-    [index: string]: any;
-
     size?: number;
+
+    [index: string]: any;
 }
 
 let dict: IDict = {};

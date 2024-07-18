@@ -67,6 +67,7 @@ p.then((reason) => {
 ```
 
 ### Break the Promise Chain
+
 ```js
 let p = new Promise((resolve, reject) => {
     setTimeout(() => { resolve("ok"); }, 1000);

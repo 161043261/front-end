@@ -3,9 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>ecma6</title>
-    <link rel="stylesheet" type="text/css" href="../css3/fonts.css">
+    <link href="../css3/fonts.css" rel="stylesheet" type="text/css">
     <script>
         function version() {
             return 6
@@ -45,20 +45,20 @@
 </head>
 
 <body>
-    <script>
-        document.write("<h1 id='head'>JavaScript</h1>")
-    </script>
+<script>
+    document.write("<h1 id='head'>JavaScript</h1>")
+</script>
 
-    <input id="inbox" type="text">
+<input id="inbox" type="text">
 
-    <p id="date">date</p>
-    <button type="button" onclick="date()">date</button>
-    <button type="button" onclick="echo('Tomcat', 22)">echo</button>
+<p id="date">date</p>
+<button onclick="date()" type="button">date</button>
+<button onclick="echo('Tomcat', 22)" type="button">echo</button>
 
-    <form name="ys" action="https://ys.mihoyo.com/main/character/inazuma" onsubmit="return validate()" method="get">
-        char <input type="text" name="char" required="required">
-        <input type="submit" value="submit">
-    </form>
+<form action="https://ys.mihoyo.com/main/character/inazuma" method="get" name="ys" onsubmit="return validate()">
+    char <input name="char" required="required" type="text">
+    <input type="submit" value="submit">
+</form>
 </body>
 
 </html>

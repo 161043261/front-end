@@ -3,9 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>document object model</title>
-    <link rel="stylesheet" type="text/css" href="../../css3/fonts.css">
+    <link href="../../css3/fonts.css" rel="stylesheet" type="text/css">
     <style>
         input {
             display: block;
@@ -19,24 +19,32 @@
 
         function func2() {
             let es = document.getElementsByTagName("input")
-            for (let i = 0; i < es.length; ++i) { console.log(es[i]) }
+            for (let i = 0; i < es.length; ++i) {
+                console.log(es[i])
+            }
         }
 
         function func3() {
             let es = document.getElementsByName("oauth")
             console.log(es)
-            for (let i = 0; i < es.length; ++i) { console.log(es[i]) }
+            for (let i = 0; i < es.length; ++i) {
+                console.log(es[i])
+            }
         }
 
         function func4() {
             let es = document.getElementsByClassName("a")
-            for (let i = 0; i < es.length; ++i) { console.log(es[i]) }
+            for (let i = 0; i < es.length; ++i) {
+                console.log(es[i])
+            }
         }
 
         function func5() {
             let div1 = document.getElementById("div1")
             let cs = div1.children
-            for (let i = 0; i < cs.length; ++i) { console.log(cs[i]) }
+            for (let i = 0; i < cs.length; ++i) {
+                console.log(cs[i])
+            }
             console.log(div1.firstElementChild) // get first child
             console.log(div1.lastElementChild)  // get last child
         }
@@ -55,20 +63,20 @@
 </head>
 
 <body>
-    <div id="div1">
-        <input type="text" class="a" id="username" name="oauth" value="usernmae" />
-        <input type="text" class="b" id="password" name="oauth" value="password" />
-        <input type="text" class="a" id="email" value="8888@gmail.com" />
-        <input type="text" class="b" id="ipv4" value="8.8.8.8" />
-    </div>
-    <input type="text" class="a" value="oauth" />
-    <input type="button" value="getElementById('username')" onclick="func1()" id="btn1" />
-    <input type="button" value="getElementsByTagName('input')" onclick="func2()" id="btn2" />
-    <input type="button" value="getElementsByName('oauth')" onclick="func3()" id="btn3" />
-    <input type="button" value="getElementsByClassName('a')" onclick="func4()" id="btn4" />
-    <input type="button" value="get child" onclick="func5()" id="btn5" />
-    <input type="button" value="get parent" onclick="func6()" id="btn6" />
-    <input type="button" value="get sibling" onclick="func7()" id="btn7" />
+<div id="div1">
+    <input class="a" id="username" name="oauth" type="text" value="usernmae"/>
+    <input class="b" id="password" name="oauth" type="text" value="password"/>
+    <input class="a" id="email" type="text" value="8888@gmail.com"/>
+    <input class="b" id="ipv4" type="text" value="8.8.8.8"/>
+</div>
+<input class="a" type="text" value="oauth"/>
+<input id="btn1" onclick="func1()" type="button" value="getElementById('username')"/>
+<input id="btn2" onclick="func2()" type="button" value="getElementsByTagName('input')"/>
+<input id="btn3" onclick="func3()" type="button" value="getElementsByName('oauth')"/>
+<input id="btn4" onclick="func4()" type="button" value="getElementsByClassName('a')"/>
+<input id="btn5" onclick="func5()" type="button" value="get child"/>
+<input id="btn6" onclick="func6()" type="button" value="get parent"/>
+<input id="btn7" onclick="func7()" type="button" value="get sibling"/>
 
 </body>
 

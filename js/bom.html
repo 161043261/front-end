@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>browser object model</title>
     <style>
         button,
@@ -47,16 +47,16 @@
 </head>
 
 <body>
-    <input type="button" value="alert box" onclick="alertTest()" />
-    <input type="button" value="confirm box" onclick="confirmTest()" />
-    <input type="button" value="prompt box" onclick="promptTest()" />
+<input onclick="alertTest()" type="button" value="alert box"/>
+<input onclick="confirmTest()" type="button" value="confirm box"/>
+<input onclick="promptTest()" type="button" value="prompt box"/>
 
-    <input type="button" value="https://ys.mihoyo.com" onclick="redirect('ys')" />
-    <button onclick="redirect('sr')">https://sr.mihoyo.com</button>
+<input onclick="redirect('ys')" type="button" value="https://ys.mihoyo.com"/>
+<button onclick="redirect('sr')">https://sr.mihoyo.com</button>
 
-    <button onclick="setPair()">set a pair (localStorage & sessionStorage)</button>
-    <button onclick="removePair()">remove a pair by key</button>
-    <button onclick="getPair()">get value by key</button>
+<button onclick="setPair()">set a pair (localStorage & sessionStorage)</button>
+<button onclick="removePair()">remove a pair by key</button>
+<button onclick="getPair()">get value by key</button>
 </body>
 
 </html>

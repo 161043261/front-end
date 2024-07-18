@@ -2,10 +2,10 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>AJAX by Native JS</title>
-    <link rel="shortcut icon" href="../favicon.ico">
+    <link href="../favicon.ico" rel="shortcut icon">
     <style>
         div {
             width: 200px;
@@ -19,124 +19,125 @@
 </head>
 
 <body>
-    <button id="get">get</button>
-    <div style="border: solid red;">Get Placeholder</div>
+<button id="get">get</button>
+<div style="border: solid red;">Get Placeholder</div>
 
-    <script>
-        const getBtn = document.getElementById("get");
-        const getResult = document.getElementsByTagName("div")[0];
+<script>
+    const getBtn = document.getElementById("get");
+    const getResult = document.getElementsByTagName("div")[0];
 
-        getBtn.onclick = function () {
-            const xhr = new XMLHttpRequest();
-            xhr.open('get', 'http://localhost:8000/main?u=root&p=1024');
-            xhr.send();
-            // when xhr.readyState changing...
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 &&
-                    xhr.status >= 200 && xhr.status < 300) {
-                    // Response Line
-                    console.log(xhr.status); // the response status code (200)
-                    console.log(xhr.statusText); // the response status text (OK)
-                    // Response Headers (Key: value)
-                    console.log(xhr.getAllResponseHeaders());
-                    // Response Body
-                    console.log(xhr.response);
-                    getResult.innerHTML = xhr.response;
+    getBtn.onclick = function () {
+        const xhr = new XMLHttpRequest();
+        xhr.open('get', 'http://localhost:8000/main?u=root&p=1024');
+        xhr.send();
+        // when xhr.readyState changing...
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 &&
+                xhr.status >= 200 && xhr.status < 300) {
+                // Response Line
+                console.log(xhr.status); // the response status code (200)
+                console.log(xhr.statusText); // the response status text (OK)
+                // Response Headers (Key: value)
+                console.log(xhr.getAllResponseHeaders());
+                // Response Body
+                console.log(xhr.response);
+                getResult.innerHTML = xhr.response;
+            }
+        }
+    }
+</script>
+
+<button id="post">post</button>
+<div style="border: solid green;">Post Placeholder</div>
+
+<script>
+    const postBtn = document.getElementById("post");
+    const postResult = document.getElementsByTagName("div")[1];
+
+    postBtn.addEventListener("click", function () {
+        const xhr = new XMLHttpRequest();
+        xhr.open('post', 'http://localhost:8000/main');
+        // Request Headers
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.setRequestHeader('Custom-Key', 'custom-value'); // custom header
+        // xhr.send("u=root&p=1024");
+        xhr.send(JSON.stringify({u: 'root', p: 1024}));
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 &&
+                xhr.status >= 200 && xhr.status < 300) {
+                postResult.innerHTML = xhr.response;
+            }
+        }
+    })
+</script>
+
+<button onclick="request()">JSON</button>
+<button id="abort">abort</button>
+<div style="border: solid blue;">JSON Placeholder</div>
+
+<script>
+    const jsonResult = document.getElementsByTagName("div")[2];
+    let xhr = null;
+    let sending = false;
+
+    function request() {
+        if (xhr != null && sending) xhr.abort();
+        xhr = new XMLHttpRequest();
+        sending = true;
+        xhr.timeout = 3000;
+        // Timeout callback function
+        xhr.ontimeout = function () {
+            window.alert("Timeout");
+        }
+        // Network error callback function
+        xhr.onerror = function () {
+            window.alert("Network error");
+        }
+
+        // Treat the response body as a json string,
+        // which will be automatically converted to a js object.
+        xhr.responseType = "json";
+        xhr.open('post', 'http://localhost:8000/data');
+        xhr.send();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) { // Receive response from server
+                sending = false;
+                if (xhr.status >= 200 && xhr.status < 300) {
+                    // let data = JSON.parse(xhr.response)
+                    let data = xhr.response;
+                    jsonResult.innerHTML = data.u + " " + data.p;
                 }
             }
         }
-    </script>
+    }
 
-    <button id="post">post</button>
-    <div style="border: solid green;">Post Placeholder</div>
+    const abortBtn = document.getElementById('abort');
+    abortBtn.onclick = () => {
+        if (xhr != null) xhr.abort();
+    } // abort AJAX request
+</script>
 
-    <script>
-        const postBtn = document.getElementById("post");
-        const postResult = document.getElementsByTagName("div")[1];
-
-        postBtn.addEventListener("click", function () {
-            const xhr = new XMLHttpRequest();
-            xhr.open('post', 'http://localhost:8000/main');
-            // Request Headers
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            xhr.setRequestHeader('Custom-Key', 'custom-value'); // custom header
-            // xhr.send("u=root&p=1024");
-            xhr.send(JSON.stringify({ u: 'root', p: 1024 }));
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 &&
-                    xhr.status >= 200 && xhr.status < 300) {
-                    postResult.innerHTML = xhr.response;
-                }
-            }
+<button>fetch</button>
+<div style="border: solid pink;">fetch Placeholder</div>
+<script>
+    const fetchBtn = document.querySelectorAll('button')[4];
+    fetchBtn.onclick = function () {
+        fetch('http://localhost:8000/fetch?u=reqLine&p=1024', {
+            method: 'post',
+            headers: {'Custom-Key': 'custom-value'},
+            body: 'u=reqBody&p=1024'
+        }).then((resp) => {
+            console.log(resp.headers);
+            console.log(resp.status);
+            console.log(resp.statusText);
+            // return resp.text();
+            return resp.json();
+        }).then((/* respText */ respJson) => {
+            // document.querySelectorAll('div')[3].innerHTML = respText; // respText: string
+            document.querySelectorAll('div')[3].innerHTML = JSON.stringify(respJson); // respJson: object
         })
-    </script>
-
-    <button onclick="request()">JSON</button>
-    <button id="abort">abort</button>
-    <div style="border: solid blue;">JSON Placeholder</div>
-
-    <script>
-        const jsonResult = document.getElementsByTagName("div")[2];
-        let xhr = null;
-        let sending = false;
-
-        function request() {
-            if (xhr != null && sending) xhr.abort();
-            xhr = new XMLHttpRequest();
-            sending = true;
-            xhr.timeout = 3000;
-            // Timeout callback function
-            xhr.ontimeout = function () {
-                window.alert("Timeout");
-            }
-            // Network error callback function
-            xhr.onerror = function () {
-                window.alert("Network error");
-            }
-
-            // Treat the response body as a json string,
-            // which will be automatically converted to a js object.
-            xhr.responseType = "json";
-            xhr.open('post', 'http://localhost:8000/data');
-            xhr.send();
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4) { // Receive response from server
-                    sending = false;
-                    if (xhr.status >= 200 && xhr.status < 300) {
-                        // let data = JSON.parse(xhr.response)
-                        let data = xhr.response;
-                        jsonResult.innerHTML = data.u + " " + data.p;
-                    }
-                }
-            }
-        }
-        const abortBtn = document.getElementById('abort');
-        abortBtn.onclick = () => {
-            if (xhr != null) xhr.abort();
-        } // abort AJAX request
-    </script>
-
-    <button>fetch</button>
-    <div style="border: solid pink;">fetch Placeholder</div>
-    <script>
-        const fetchBtn = document.querySelectorAll('button')[4];
-        fetchBtn.onclick = function () {
-            fetch('http://localhost:8000/fetch?u=reqLine&p=1024', {
-                method: 'post',
-                headers: { 'Custom-Key': 'custom-value' },
-                body: 'u=reqBody&p=1024'
-            }).then((resp) => {
-                console.log(resp.headers);
-                console.log(resp.status);
-                console.log(resp.statusText);
-                // return resp.text();
-                return resp.json();
-            }).then((/* respText */ respJson) => {
-                // document.querySelectorAll('div')[3].innerHTML = respText; // respText: string
-                document.querySelectorAll('div')[3].innerHTML = JSON.stringify(respJson); // respJson: object
-            })
-        }
-    </script>
+    }
+</script>
 </body>
 
 </html>

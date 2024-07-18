@@ -14,7 +14,7 @@ app.all("/axios", (req, resp) => {
 app.post("/data", (req, resp) => {
     resp.setHeader("Access-Control-Allow-Origin", "*");
     setTimeout(() => {
-        const data = { u: 'HoYoverse', p: 2024 };
+        const data = {u: 'HoYoverse', p: 2024};
         resp.send(JSON.stringify(data));
     }, 2000);
 });
@@ -22,7 +22,7 @@ app.post("/data", (req, resp) => {
 app.all("/fetch", (req, resp) => {
     resp.setHeader("Access-Control-Allow-Origin", "*");
     resp.setHeader("Access-Control-Allow-Headers", "*");
-    resp.send(JSON.stringify({ 'Genshin': 'Impact' }));
+    resp.send(JSON.stringify({'Genshin': 'Impact'}));
 });
 
 app.all("/main", (req, resp) => {

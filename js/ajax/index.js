@@ -8,7 +8,7 @@ app.get('/home', (req, resp) => {
 })
 
 app.get('/data', (req, resp) => {
-    resp.send(JSON.stringify({ username: "miHoYo", password: 1024 }));
+    resp.send(JSON.stringify({username: "miHoYo", password: 1024}));
 })
 
 app.listen(7000, async () => {

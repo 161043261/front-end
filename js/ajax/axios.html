@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>AJAX by Axios</title>
     <script src="../assets/axios.min.js"></script>
     <style>
@@ -14,57 +14,57 @@
 </head>
 
 <body>
-    <button>axios.get</button>
-    <button>axios.post</button>
-    <button>General</button>
-    <div style="border: solid black;">AJAX Response PlaceHolder</div>
+<button>axios.get</button>
+<button>axios.post</button>
+<button>General</button>
+<div style="border: solid black;">AJAX Response PlaceHolder</div>
 
-    <script>
-        const buttons = document.querySelectorAll('button');
-        axios.defaults.baseURL = 'http://localhost:8000'; // baseURL
+<script>
+    const buttons = document.querySelectorAll('button');
+    axios.defaults.baseURL = 'http://localhost:8000'; // baseURL
 
-        buttons[0].onclick = function () {
-            // axios.get(url, config);
-            axios.get('/axios', { // URL = axios.default.baseURL + './axios'
-                // Request Line (URL parameters)
-                params: { u: "root", p: 1024 },
-                // Request Headers
-                headers: { 'Custom-Key': 'custom-value' }
-            }).then((resp) => {
-                console.log(resp.data); // Honkai: Star Rail
-                document.getElementsByTagName("div")[0].innerHTML = resp.data;
-            })
-        }
+    buttons[0].onclick = function () {
+        // axios.get(url, config);
+        axios.get('/axios', { // URL = axios.default.baseURL + './axios'
+            // Request Line (URL parameters)
+            params: {u: "root", p: 1024},
+            // Request Headers
+            headers: {'Custom-Key': 'custom-value'}
+        }).then((resp) => {
+            console.log(resp.data); // Honkai: Star Rail
+            document.getElementsByTagName("div")[0].innerHTML = resp.data;
+        })
+    }
 
-        buttons[1].onclick = function () {
-            // axios.post(url, data, config); // data: Request Body (Request Payload)
-            axios.post('/axios', {
-                // Request Body (Request Payload)
-                data: { u: "reqBody", p: 1024 },
-            }, { // Request Line (URL parameters)
-                params: { u: "reqLine", p: 1024 },
-                // Request Headers (Key: value)
-                headers: { 'Custom-Key': 'custom-value' }
-            }).then((resp) => {
-                console.log(resp.status); // 200
-                document.querySelector("div").innerHTML = resp.status;
-            })
-        }
+    buttons[1].onclick = function () {
+        // axios.post(url, data, config); // data: Request Body (Request Payload)
+        axios.post('/axios', {
+            // Request Body (Request Payload)
+            data: {u: "reqBody", p: 1024},
+        }, { // Request Line (URL parameters)
+            params: {u: "reqLine", p: 1024},
+            // Request Headers (Key: value)
+            headers: {'Custom-Key': 'custom-value'}
+        }).then((resp) => {
+            console.log(resp.status); // 200
+            document.querySelector("div").innerHTML = resp.status;
+        })
+    }
 
-        buttons[2].onclick = function () {
-            axios({
-                method: 'post', // Request Method
-                // Request Line
-                url: '/axios', // URL
-                params: { u: 'reqLine', p: 1024 }, // URL parameters
-                headers: { 'Header-Key': 'header-value' }, // Request Headers (Key: value)
-                data: { u: 'reqBody', p: 1024 } // Request Body (Request Payload)
-            }).then((resp) => {
-                console.log(resp.statusText); // OK
-                document.querySelectorAll("div")[0].innerHTML = resp.statusText;
-            })
-        }
-    </script>
+    buttons[2].onclick = function () {
+        axios({
+            method: 'post', // Request Method
+            // Request Line
+            url: '/axios', // URL
+            params: {u: 'reqLine', p: 1024}, // URL parameters
+            headers: {'Header-Key': 'header-value'}, // Request Headers (Key: value)
+            data: {u: 'reqBody', p: 1024} // Request Body (Request Payload)
+        }).then((resp) => {
+            console.log(resp.statusText); // OK
+            document.querySelectorAll("div")[0].innerHTML = resp.statusText;
+        })
+    }
+</script>
 </body>
 
 </html>

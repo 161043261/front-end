@@ -64,7 +64,8 @@ class Grid {
     static origin = {x: 0, y: 0};
 
     // keyword 'public' automatically add attribute 'scale'
-    constructor(public scale: number) {}
+    constructor(public scale: number) {
+    }
 
     calculate(point: { x: number; y: number; }) {
         let dx = (point.x - Grid.origin.x);
