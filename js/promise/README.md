@@ -56,12 +56,15 @@ const q = p.then((value /* value = xhr.response */) => { // onResolved | onFulfi
 
 ```js
 let p = new Promise((resolve, reject) => {
-    setTimeout(() => { reject("err1"); }, 1000);
+    setTimeout(() => {
+        reject("err1");
+    }, 1000);
 });
 
 p.then((reason) => {
     throw new Error("err2");
-}).then((reason) => { /* do nothing */ }).catch((reason) => {
+}).then((reason) => { /* do nothing */
+}).catch((reason) => {
     console.warn(reason); // err1
 });
 ```
@@ -70,11 +73,18 @@ p.then((reason) => {
 
 ```js
 let p = new Promise((resolve, reject) => {
-    setTimeout(() => { resolve("ok"); }, 1000);
+    setTimeout(() => {
+        resolve("ok");
+    }, 1000);
 });
 
 p.then((reason) => {
     console.log(1); // 1
-    return new Promise((resolve, reject) => { }); // break the promise chain
-}).then((reason) => { console.log(2); }).catch((reason) => { console.log(3); }); // breaked
+    return new Promise((resolve, reject) => {
+    }); // break the promise chain
+}).then((reason) => {
+    console.log(2);
+}).catch((reason) => {
+    console.log(3);
+}); // breaked
 ```
