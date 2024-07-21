@@ -1,6 +1,6 @@
 <script lang="ts">
 export default {
-  name: 'Person',
+  name: 'Setup',
   beforeCreate() {
     console.log("before create");
   },
