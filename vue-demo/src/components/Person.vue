@@ -4,16 +4,15 @@ export default {
   beforeCreate() {
     console.log("before create");
   },
-  // setup() {
-  //     ...
-  //     return { username, age, altName, altAge, showTel };
+  // setup() { ...
+  //     return { username, age, changeName, changeAge, showTel };
   //     // return () => { "Hello World"; }
   // }
 }
 </script>
 
 <script lang="ts" setup>// setup sugar
-import { type Ref, ref, type UnwrapRef } from 'vue';
+import {type Ref, ref, type UnwrapRef} from 'vue';
 
 console.log("setup");
 // console.log(this); // undefined
@@ -26,13 +25,13 @@ let age: Ref<UnwrapRef<number>> = ref(0);
 let tel: string = '911';
 
 // functions
-function altName() {
+function changeName() {
   // username = new Date().toString();
   username.value = username.value == 'Tom' ? 'Jerry' : 'Tom';
   console.log("username =", username);
 }
 
-function altAge() {
+function changeAge() {
   // age++;
   (age.value)++;
   console.log("age =", age);
@@ -47,8 +46,8 @@ function showTel() {
   <div class="person">
     <h2>name: {{ username }}</h2>
     <h2>age: {{ age }}</h2>
-    <button @click="altName">alter name</button>
-    <button @click="altAge">alter age</button>
+    <button @click="changeName">change name</button>
+    <button @click="changeAge">change age</button>
     <button @click="showTel">alert tel</button>
   </div>
 </template>

@@ -5,16 +5,16 @@ import Game from './components/Game.vue';
 
 export default {
   name: 'App',
-  components: { Person, Car, Game } // register components
+  components: {Person, Car, Game} // register components
 }
 </script>
 
 <template>
   <div class="app">
     <h1>Hello World</h1>
-    <Person /> <!-- a div, class = "person" -->
-    <Car /> <!-- a div, class = "car" -->
-    <Game />
+    <Person/> <!-- a div, class = "person" -->
+    <Car/> <!-- a div, class = "car" -->
+    <Game/>
   </div>
 </template>
 
