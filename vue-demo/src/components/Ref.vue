@@ -20,7 +20,6 @@ function changeBrand() {
 
 function changePrice() {
   car.value.price = Math.floor(Math.random() * 10 + 1);
-  console.log(car);
 }
 
 function resetCar() {
@@ -42,7 +41,7 @@ function changeSum() {
 </script>
 
 <template>
-  <div class="game">
+  <div class="ref">
     <h1>ref bases on reactive</h1>
     <h2>brand={{ car.brand }} price={{ car.price }}w</h2>
     <button @click="changeBrand">change brand</button>
@@ -65,8 +64,8 @@ function changeSum() {
 </template>
 
 <style scoped>
-.game {
-  background-color: lightblue;
+.ref {
+  background-color: lightcyan;
   box-shadow: 0 0 10px;
   border-radius: 10px;
   padding: 20px;

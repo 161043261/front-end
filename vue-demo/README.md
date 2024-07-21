@@ -23,6 +23,7 @@ npm run build
 ### Vue2 Options API
 
 ```vue
+
 <script lang="ts">
   export default {
     name: 'Person',
@@ -88,5 +89,6 @@ export default function echo(msg: string) {
 
 ```ts
 import alias from './echo.ts';
+
 alias('Fuck Microsoft!');
 ```

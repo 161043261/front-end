@@ -14,7 +14,6 @@ export default {
 <script lang="ts" setup>// setup sugar
 import {type Ref, ref, type UnwrapRef} from 'vue';
 
-console.log("setup");
 // console.log(this); // undefined
 
 // data
@@ -28,13 +27,11 @@ let tel: string = '911';
 function changeName() {
   // username = new Date().toString();
   username.value = username.value == 'Tom' ? 'Jerry' : 'Tom';
-  console.log("username =", username);
 }
 
 function changeAge() {
   // age++;
   (age.value)++;
-  console.log("age =", age);
 }
 
 function showTel() {
@@ -43,7 +40,8 @@ function showTel() {
 </script>
 
 <template>
-  <div class="person">
+  <div class="setup">
+    <h1>setup</h1>
     <h2>name: {{ username }}</h2>
     <h2>age: {{ age }}</h2>
     <button @click="changeName">change name</button>
@@ -53,8 +51,8 @@ function showTel() {
 </template>
 
 <style scoped>
-.person {
-  background-color: lightpink;
+.setup {
+  background-color: lightcoral;
   box-shadow: 0 0 10px;
   border-radius: 10px;
   padding: 20px;

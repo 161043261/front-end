@@ -37,7 +37,7 @@ let games = reactive<{ id: number, name: string }[]>(
 </script>
 
 <template>
-  <div class="car">
+  <div class="reactive">
     <h1>ref and reactive</h1>
     <h2>brand={{ car.brand }} price={{ car.price }}w</h2>
     <button @click="changeBrand">change brand</button>
@@ -55,8 +55,8 @@ let games = reactive<{ id: number, name: string }[]>(
 </template>
 
 <style scoped>
-.car {
-  background-color: lightgreen;
+.reactive {
+  background-color: lightblue;
   box-shadow: 0 0 10px;
   border-radius: 10px;
   padding: 20px;

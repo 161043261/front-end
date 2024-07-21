@@ -1,28 +1,30 @@
 <script lang="ts">
-import AsSetup from './components/Setup.vue';
+import AsSetup from './components/Setup.vue'; // alias
 import AsReactive from './components/Reactive.vue';
 import AsRef from './components/Ref.vue';
-import AsToRefs from "@/components/ToRefs.vue";
+import AsToRefs from "./components/ToRefs.vue";
+import AsComputed from './components/Computed.vue';
 
 export default {
   name: 'App',
-  components: {AsToRefs, AsSetup, AsReactive, AsRef} // register components
+  components: {AsToRefs, AsSetup, AsReactive, AsRef, AsComputed} // register components
 }
 </script>
 
 <template>
   <div class="app">
-    <h1>Hello World</h1>
-    <AsSetup/> <!--  div class="person" -->
-    <AsReactive/> <!-- div class="car"-->
-    <AsRef/> <!-- div class="game"-->
-    <AsToRefs/> <!-- div class="people" -->
+    <h1>Hello Vue3 (One Piece)</h1>
+    <AsSetup/>
+    <AsReactive/>
+    <AsRef/>
+    <AsToRefs/>
+    <AsComputed/>
   </div>
 </template>
 
 <style>
 * {
-  font-family: Iosevka SS04, monospace;
+  font-family: 'Iosevka SS04', monospace;
 }
 
 .app {
