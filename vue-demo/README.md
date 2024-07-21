@@ -1,6 +1,6 @@
 # vue-demo
 
-## Vue is 100% better than React
+## Vue3 is much better than React
 
 ### Project Setup
 
@@ -23,23 +23,21 @@ npm run build
 ### Vue2 Options API
 
 ```vue
-
 <script lang="ts">
-  console.log(this); // undefined
   export default {
     name: 'Person',
     // data
     data() {
       return {
-        username: "Tom",
-        age: 22,
-        tel: '161043261',
+        username: "James Gosling",
+        age: 69,
+        tel: 'unknown',
       }
     },
     // methods
     methods: {
       changeName() {
-        this.username = "Jerry";
+        this.username = "Brendan Eich";
       },
       changeAge() {
         this.age++;
