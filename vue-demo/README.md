@@ -1,5 +1,7 @@
 # vue-demo
 
+## Vue is 100% better than React
+
 ### Project Setup
 
 ```sh
@@ -21,31 +23,32 @@ npm run build
 ### Vue2 Options API
 
 ```vue
+
 <script lang="ts">
-console.log(this); // undefined
-export default {    
+  console.log(this); // undefined
+  export default {
     name: 'Person',
     // data
     data() {
-        return {
-            username: "Tom",
-            age: 22,
-            tel: '161043261',
-        }
+      return {
+        username: "Tom",
+        age: 22,
+        tel: '161043261',
+      }
     },
     // methods
     methods: {
-        changeName() {
-            this.username = "Jerry";
-        },
-        changeAge() {
-            this.age++;
-        },
-        showTel() {
-            window.alert(this.tel)
-        }
+      changeName() {
+        this.username = "Jerry";
+      },
+      changeAge() {
+        this.age++;
+      },
+      showTel() {
+        window.alert(this.tel)
+      }
     }
-}
+  }
 </script>
 ```
 
@@ -54,32 +57,39 @@ export default {
 ./math.ts
 
 ```ts
-export function add(x: number, y: number) { return x + y; }
+export function add(x: number, y: number) {
+    return x + y;
+}
 ```
 
 ./main.ts
 
 ```ts
 import {add/* as alias */} from './math';
+
 console.log(add(1, 2));
 ```
 
 ./main.ts
 
 ```ts
-import */* as alias */from './math'
+import * as math from './math'
+
 console.log(math.add(1, 2));
 ```
 
 ./echo.ts
 
 ```ts
-export default function echo(msg: string) { console.log(msg); }
+export default function echo(msg: string) {
+    console.log(msg);
+}
 ```
 
 ./main.ts
 
 ```ts
 import alias from './echo.ts';
+
 alias('Fuck Microsoft!');
 ```

@@ -13,9 +13,18 @@ let car = ref<{ brand: string, price: number }>({brand: "Honda", price: 10});
 // PrimaryType -> ref() -> RefImpl {}
 // Object -> reactive() -> Proxy(...) {}
 
+function changeBrand() {
+  const brands = ["Honda", "Mazda", "Toyota"];
+  car.value.brand = brands[Math.floor(Math.random() * 3)];
+}
+
 function changePrice() {
   car.value.price = Math.floor(Math.random() * 10 + 1);
   console.log(car);
+}
+
+function resetCar() {
+  car.value = {brand: "Honda", price: 10}; // true, car is still reactive.
 }
 
 function changeFirstGame() {
@@ -36,7 +45,9 @@ function changeSum() {
   <div class="game">
     <h1>ref bases on reactive</h1>
     <h2>brand={{ car.brand }} price={{ car.price }}w</h2>
+    <button @click="changeBrand">change brand</button>
     <button @click="changePrice">change price</button>
+    <button @click="resetCar">reset car</button>
     <hr> <!-- horizontal row -->
     <h2>Game List</h2>
     <ul> <!-- unordered list -->

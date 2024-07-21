@@ -2,10 +2,11 @@
 import Person from './components/Person.vue';
 import Car from './components/Car.vue';
 import Game from './components/Game.vue';
+import People from "@/components/People.vue";
 
 export default {
   name: 'App',
-  components: {Person, Car, Game} // register components
+  components: {People, Person, Car, Game} // register components
 }
 </script>
 
@@ -13,8 +14,9 @@ export default {
   <div class="app">
     <h1>Hello World</h1>
     <Person/> <!-- a div, class = "person" -->
-    <Car/> <!-- a div, class = "car" -->
+    <Car/>
     <Game/>
+    <People/>
   </div>
 </template>
 

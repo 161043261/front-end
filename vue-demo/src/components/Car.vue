@@ -24,8 +24,8 @@ function changePrice() {
 }
 
 function resetCar() {
-  // car = { brand: "Honda", price: 10 }; // false, car is NOT reactive now.
-  Object.assign(car, {brand: "Honda", price: 10}); // true, car is reactive.
+  // car = { brand: "Honda", price: 10 }; // false, car is NO LONGER reactive.
+  Object.assign(car, {brand: "Honda", price: 10}); // true, car is still reactive.
 }
 
 function changeFirstGame() {
