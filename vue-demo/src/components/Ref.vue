@@ -43,12 +43,12 @@ function changeSum() {
 <template>
   <div class="ref">
     <h1>ref bases on reactive</h1>
-    <h2>brand={{ car.brand }} price={{ car.price }}w</h2>
+    <p>brand={{ car.brand }} price={{ car.price }}w</p>
     <button @click="changeBrand">change brand</button>
     <button @click="changePrice">change price</button>
     <button @click="resetCar">reset car</button>
     <hr> <!-- horizontal row -->
-    <h2>Game List</h2>
+    <p>Game List</p>
     <ul> <!-- unordered list -->
 
       <!-- go
@@ -57,7 +57,7 @@ function changeSum() {
     </ul>
     <button @click="changeFirstGame">change 1st game</button>
     <hr>
-    <h2>sum = {{ sum }}</h2>
+    <p>sum = {{ sum }}</p>
     <button @click="++sum">++sum</button>
     <button @click="changeSum">sum++</button>
   </div>
@@ -65,7 +65,7 @@ function changeSum() {
 
 <style scoped>
 .ref {
-  background-color: lightcyan;
+  background-color: lightskyblue;
   box-shadow: 0 0 10px;
   border-radius: 10px;
   padding: 20px;

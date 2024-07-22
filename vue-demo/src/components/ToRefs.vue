@@ -11,6 +11,7 @@ let {username, age}: ToRefs<{ username: string; age: number; }> = toRefs(people)
 // console.log(toRefs(people));
 
 let refAge: ToRef<number> = toRef(people, 'age');
+
 // console.log(refAge);
 
 function changeName() {
@@ -33,8 +34,8 @@ export default {
 <template>
   <div class="toRefs">
     <h1>toRef and toRefs</h1>
-    <h2>username: people.username={{ people.username }}, username={{ username }}</h2>
-    <h2>age: people.age={{ people.age }}, age={{ age }}, refAge={{ refAge }}</h2>
+    <p>username: people.username={{ people.username }}, username={{ username }}</p>
+    <p>age: people.age={{ people.age }}, age={{ age }}, refAge={{ refAge }}</p>
     <button @click="changeName">change name</button>
     <button @click="changeAge">change age</button>
   </div>

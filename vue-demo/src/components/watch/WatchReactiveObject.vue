@@ -4,8 +4,9 @@ export default {
 }
 </script>
 
-<script setup lang="ts">
-import { reactive, watch } from 'vue';
+<script lang="ts" setup>
+import {reactive, watch} from 'vue';
+
 let person = reactive({
   name: 'steve jobs', // tim cook
   age: 0
@@ -31,15 +32,15 @@ watch(person, (newValue, oldValue) => {
   console.log(oldValue === newValue); // are oldValue and newValue the same object?
 }, {
   deep: true, // default true
-  immediate: true, // default false
+  immediate: false, // default false
 })
 </script>
 
 <template>
   <div class="watchReactiveObject">
     <h1>watch reactive(object)</h1>
-    <h2>name = {{ person.name }}</h2>
-    <h2>age = {{ person.age }}</h2>
+    <p>name = {{ person.name }}</p>
+    <p>age = {{ person.age }}</p>
     <button @click="changeName">change name</button>
     <button @click="changeAge">change age</button>
     <button @click="changePerson">change person</button>
@@ -48,7 +49,7 @@ watch(person, (newValue, oldValue) => {
 
 <style scoped>
 .watchReactiveObject {
-  background-color: lightskyblue;
+  background-color: lightgreen;
   box-shadow: 0 0 10px;
   border-radius: 10px;
   padding: 20px;

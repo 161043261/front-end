@@ -39,12 +39,12 @@ let games = reactive<{ id: number, name: string }[]>(
 <template>
   <div class="reactive">
     <h1>ref and reactive</h1>
-    <h2>brand={{ car.brand }} price={{ car.price }}w</h2>
+    <p>brand={{ car.brand }} price={{ car.price }}w</p>
     <button @click="changeBrand">change brand</button>
     <button @click="changePrice">change price</button>
     <button @click="resetCar">reset car</button>
     <hr> <!-- horizontal row -->
-    <h2>Game List</h2>
+    <p>Game List</p>
     <ul> <!-- unordered list -->
       <!-- go
            for key, game := range games { ... } -->
@@ -56,7 +56,7 @@ let games = reactive<{ id: number, name: string }[]>(
 
 <style scoped>
 .reactive {
-  background-color: lightblue;
+  background-color: lightgreen;
   box-shadow: 0 0 10px;
   border-radius: 10px;
   padding: 20px;

@@ -4,7 +4,7 @@ export default {
 }
 </script>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import {ref, watch} from 'vue';
 
 let sum = ref(0);
@@ -24,14 +24,14 @@ const stopWatching = watch(sum, (newValue, oldValue) => {
 <template>
   <div class="watchRefPrimaryValue">
     <h1>watch ref(primaryValue)</h1>
-    <h2>sum = {{ sum }}</h2>
+    <p>sum = {{ sum }}</p>
     <button @click="changeSum">sum++</button>
   </div>
 </template>
 
 <style scoped>
 .watchRefPrimaryValue {
-  background-color: lightsalmon;
+  background-color: lightskyblue;
   box-shadow: 0 0 10px;
   border-radius: 10px;
   padding: 20px;

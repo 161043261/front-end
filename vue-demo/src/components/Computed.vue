@@ -43,8 +43,8 @@ function changeFullName() {
 <template>
   <div class="computed">
     <h1>computed</h1>
-    firstName: <input type="text" v-model="firstName"/><br>
-    lastName: <input type="text" v-model="lastName"/><br>
+    firstName: <input v-model="firstName" type="text"/><br>
+    lastName: <input v-model="lastName" type="text"/><br>
     readonlyFullName: <span>{{ readonlyFullName }}</span><br>
     getReadonlyFullName() = <span>{{ getReadonlyFullName() }}</span><br>
     fullName: <span>{{ fullName }}</span><br>

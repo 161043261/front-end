@@ -42,8 +42,8 @@ function showTel() {
 <template>
   <div class="setup">
     <h1>setup</h1>
-    <h2>name: {{ username }}</h2>
-    <h2>age: {{ age }}</h2>
+    <p>name: {{ username }}</p>
+    <p>age: {{ age }}</p>
     <button @click="changeName">change name</button>
     <button @click="changeAge">change age</button>
     <button @click="showTel">alert tel</button>
@@ -52,7 +52,7 @@ function showTel() {
 
 <style scoped>
 .setup {
-  background-color: lightcoral;
+  background-color: lightpink;
   box-shadow: 0 0 10px;
   border-radius: 10px;
   padding: 20px;
