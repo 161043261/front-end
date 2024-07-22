@@ -56,7 +56,7 @@ watch(person.autos, (newValue, oldValue) => {
 
 watch(() => person.autos, (newValue, oldValue) => { // monitor object address
   console.log(newValue == oldValue);
-}, {deep: true}); // default false, watch object attributes meanwhile
+}, {deep: true}); // default false, watch object property meanwhile
 
 watch([() => person.name, person.autos], (newValue, oldValue) => {
   console.log(oldValue, '=>', newValue);
@@ -65,7 +65,7 @@ watch([() => person.name, person.autos], (newValue, oldValue) => {
 
 <template>
   <div class="watchAttribute">
-    <h1>watch attribute</h1>
+    <h1>watch property</h1>
     <p>name: {{ person.name }}</p>
     <p>age: {{ person.age }}</p>
     <p>autos: {{ person.autos.auto1 }}, {{ person.autos.auto2 }}</p>

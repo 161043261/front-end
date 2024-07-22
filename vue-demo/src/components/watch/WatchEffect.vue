@@ -5,7 +5,7 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import { ref, watch, watchEffect } from "vue";
+import {ref, watch, watchEffect} from "vue";
 
 let temperature = ref(0);
 let depth = ref(0);
@@ -13,6 +13,7 @@ let depth = ref(0);
 function changeTemperature() {
   temperature.value += 10;
 }
+
 function changeDepth() {
   depth.value += 10;
 }

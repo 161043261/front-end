@@ -5,12 +5,12 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import {ref, type Ref, computed} from 'vue';
+import {computed, ref, type Ref} from 'vue';
 
 let firstName: Ref<string> = ref<string>("ayaka");
 let lastName: Ref<string> = ref<string>("kamisato");
 
-// READONLY computed attribute
+// READONLY computed property
 let readonlyFullName = computed(() => {
   return lastName.value.slice(0, 1).toUpperCase() + lastName.value.slice(1) + ' ' +
       firstName.value.slice(0, 1).toUpperCase() + firstName.value.slice(1);
@@ -24,7 +24,7 @@ function getReadonlyFullName() {
       firstName.value.slice(0, 1).toUpperCase() + firstName.value.slice(1);
 }
 
-// MUTABLE computed attribute
+// MUTABLE computed property
 let fullName = computed({
   get() {
     return lastName.value.slice(0, 1).toUpperCase() + lastName.value.slice(1) + ' ' +

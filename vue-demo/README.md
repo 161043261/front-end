@@ -6,6 +6,8 @@
 
 ```sh
 npm install
+npm install tslib @types/node
+npm install eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin --save-dev
 ```
 
 ### Compile and Hot-Reload for Development
@@ -23,30 +25,15 @@ npm run build
 ### Vue2 Options API
 
 ```vue
-
 <script lang="ts">
   export default {
     name: 'Person',
     // data
     data() {
-      return {
-        username: "James Gosling",
-        age: 69,
-        tel: 'unknown',
-      }
+      return {}
     },
     // methods
-    methods: {
-      changeName() {
-        this.username = "Brendan Eich";
-      },
-      changeAge() {
-        this.age++;
-      },
-      showTel() {
-        window.alert(this.tel)
-      }
-    }
+    methods: {}
   }
 </script>
 ```
