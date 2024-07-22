@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import Cat from './components/Cat.vue';
+import DefineProp from './components/DefineProp.vue';
 import AsComputed from './components/Computed.vue'; // alias
 import AsReactive from './components/Reactive.vue';
 import AsRef from './components/Ref.vue';
@@ -43,8 +43,8 @@ console.log(catList);
     <TagRef ref="componentTagRef"/>
     <button @click="componentTagRefLog">componentTagRefLog</button>
     <!-- Component Cat -->
-    <!-- <Cat :args="['data', 'passed from', 'parent', 'App']" v-bind:cats="catList"/> -->
-    <Cat v-bind:cats="catList"/>
+    <!-- <Cat :args="['data', 'passed', 'from', 'parent']" v-bind:cats="catList"/> -->
+    <DefineProp v-bind:cats="catList"/>
   </div>
 </template>
 

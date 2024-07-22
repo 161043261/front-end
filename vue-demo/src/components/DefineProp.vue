@@ -1,6 +1,6 @@
 <script lang="ts">
 export default {
-  name: 'Cat'
+  name: 'DefineProp'
 }
 </script>
 
@@ -15,7 +15,7 @@ import {type CatList} from "@/types";
 withDefaults(defineProps<{
   args?: string[], // optional
   cats: CatList // necessary
-}>(), {args: () => ["Data", "Passed from", "Parent", "App"]}); // defaults (value is primaryType or getter)
+}>(), {args: () => ["defineProps: ", "data", "passed", "from", "parent"]}); // defaults (value is primaryType or getter)
 </script>
 
 <template>
