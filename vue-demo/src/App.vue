@@ -4,21 +4,30 @@ import AsReactive from './components/Reactive.vue';
 import AsRef from './components/Ref.vue';
 import AsToRefs from "./components/ToRefs.vue";
 import AsComputed from './components/Computed.vue';
+import WatchRefPrimaryValue from './components/watch/WatchRefPrimaryValue.vue';
+import WatchRefObject from './components/watch/WatchRefObject.vue';
+import WatchReactiveObject from './components/watch/WatchReactiveObject.vue'
 
 export default {
   name: 'App',
-  components: {AsToRefs, AsSetup, AsReactive, AsRef, AsComputed} // register components
+  components: {
+    AsToRefs, AsSetup, AsReactive, AsRef, AsComputed,
+    WatchRefPrimaryValue, WatchRefObject, WatchReactiveObject
+  } // register components
 }
 </script>
 
 <template>
   <div class="app">
-    <h1>Hello Vue3 (One Piece)</h1>
-    <AsSetup/>
-    <AsReactive/>
-    <AsRef/>
-    <AsToRefs/>
-    <AsComputed/>
+    <h1>Hello Vue3</h1>
+    <AsSetup />
+    <AsReactive />
+    <AsRef />
+    <AsToRefs />
+    <AsComputed />
+    <WatchRefPrimaryValue />
+    <WatchRefObject />
+    <WatchReactiveObject />
   </div>
 </template>
 

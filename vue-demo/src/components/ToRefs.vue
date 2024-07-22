@@ -43,7 +43,7 @@ export default {
 
 <style scoped>
 .toRefs {
-  background-color: lightgray;
+  background-color: lightpink;
   box-shadow: 0 0 10px;
   border-radius: 10px;
   padding: 20px;
