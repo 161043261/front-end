@@ -2,7 +2,7 @@
 export default {
   name: 'Setup',
   beforeCreate() {
-    console.log("before create");
+    console.log("beforeCreate"); // vue2
   },
   // setup() { ...
   //     return { username, age, changeName, changeAge, showTel };
