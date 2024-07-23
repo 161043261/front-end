@@ -7,6 +7,7 @@ import LifeCycle from './components/LifeCycle.vue';
 import AsReactive from './components/Reactive.vue';
 import AsRef from './components/Ref.vue';
 import AsSetup from './components/Setup.vue';
+import SumDog from '@/components/SumDog.vue'; // @ = src
 import TagRef from './components/TagRef.vue';
 import AsToRefs from "./components/ToRefs.vue";
 import WatchEffect from './components/watch/WatchEffect.vue';
@@ -53,6 +54,7 @@ onMounted(() => {
     <!-- <Cat :args="['data', 'passed', 'from', 'parent']" v-bind:cats="catList"/> -->
     <DefineProp v-bind:cats="catList" />
     <LifeCycle v-if="display" />
+    <SumDog />
   </div>
 </template>
 

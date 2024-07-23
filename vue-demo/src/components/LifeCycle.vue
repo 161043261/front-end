@@ -23,8 +23,8 @@ onUnmounted(() => { console.log("onUnmounted") });
 
 <template>
     <div class="lifeCycle">
-        <h1>sum = {{ sum }}</h1>
-        <button @click="add">addSum</button>
+        <h1>LifeCycle: sum = {{ sum }}</h1>
+        <button @click="add">add</button>
     </div>
 </template>
 
