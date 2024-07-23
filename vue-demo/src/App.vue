@@ -9,13 +9,11 @@ import AsReactive from "./components/Reactive.vue";
 import AsRef from "./components/Ref.vue";
 import AsSetup from "./components/Setup.vue";
 import TagRef from "./components/TagRef.vue";
-import AsToRefs from "./pages/ToRefs.vue";
 import WatchEffect from "./components/watch/WatchEffect.vue";
 import WatchGetter from "./components/watch/WatchGetter.vue";
 import WatchReactiveObject from "./components/watch/WatchReactiveObject.vue";
 import WatchRefObject from "./components/watch/WatchRefObject.vue";
 import WatchRefPrimaryValue from "./components/watch/WatchRefPrimaryValue.vue";
-import Computed from "@/pages/Computed.vue";
 
 let componentTagRef = ref();
 
@@ -62,7 +60,7 @@ onMounted(() => {
   <div class="navigate">
     <RouterLink active-class="highlight" to="/computed">Computed</RouterLink>
     <RouterLink active-class="highlight" v-bind:to="{path: '/torefs'}">ToRefs</RouterLink>
-    <RouterLink active-class="highlight" :to="{name: 'sumDogComponent'}">SumDog</RouterLink>
+    <RouterLink :to="{name: 'sumDogComponent'}" active-class="highlight">SumDog</RouterLink>
   </div>
 
   <div class="main-content">
