@@ -61,8 +61,8 @@ onMounted(() => {
   <h1 class="title">Route Test</h1>
   <div class="navigate">
     <RouterLink active-class="highlight" to="/computed">Computed</RouterLink>
-    <RouterLink active-class="highlight" to="/torefs">ToRefs</RouterLink>
-    <RouterLink active-class="highlight" to="/sumdog">SumDog</RouterLink>
+    <RouterLink active-class="highlight" v-bind:to="{path: '/torefs'}">ToRefs</RouterLink>
+    <RouterLink active-class="highlight" :to="{name: 'sumDogComponent'}">SumDog</RouterLink>
   </div>
 
   <div class="main-content">

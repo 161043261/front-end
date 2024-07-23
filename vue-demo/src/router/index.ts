@@ -9,7 +9,7 @@ const router = createRouter({
     routes: [
         {path: "/computed", component: Computed},
         {path: "/torefs", component: ToRefs},
-        {path: "/sumdog", component: SumDog},
+        {name: "sumDogComponent", path: "/sumdog", component: SumDog},
     ],
 });
 

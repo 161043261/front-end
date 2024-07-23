@@ -1,6 +1,14 @@
 <script lang="ts" name="SumDog" setup>
 import useDog from "@/hooks/useDog";
 import useSum from "@/hooks/useSum";
+import {onMounted, onUnmounted} from "vue";
+
+onMounted(() => {
+  console.log('@/pages/SumDog.vue is mounted')
+});
+onUnmounted(() => {
+  console.log('@/pages/SumDogs.vue is unmounted')
+});
 
 const {sum, addSum, bigSum} = useSum();
 const {dogList, addDog} = useDog();
@@ -11,11 +19,7 @@ const {dogList, addDog} = useDog();
     <h1>Hook: sum = {{ sum }}, 10*sum = {{ bigSum }}</h1>
     <button @click="addSum">add sum</button>
     <hr/>
-    <img
-        v-for="(dog, index) in dogList"
-        v-bind:key="index"
-        v-bind:src="dog"
-    /><br/>
+    <img v-for="(dog, index) in dogList" v-bind:key="index" v-bind:src="dog"/><br/>
     <button @click="addDog">add dog</button>
   </div>
 </template>
