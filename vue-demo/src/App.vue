@@ -1,20 +1,21 @@
 <script lang="ts" setup>
-import { type CatList } from '@/types';
-import { onMounted, reactive, ref } from 'vue';
-import AsComputed from './components/Computed.vue'; // alias
-import DefineProp from './components/DefineProp.vue';
-import LifeCycle from './components/LifeCycle.vue';
-import AsReactive from './components/Reactive.vue';
-import AsRef from './components/Ref.vue';
-import AsSetup from './components/Setup.vue';
-import SumDog from '@/components/SumDog.vue'; // @ = src
-import TagRef from './components/TagRef.vue';
-import AsToRefs from "./components/ToRefs.vue";
-import WatchEffect from './components/watch/WatchEffect.vue';
-import WatchGetter from './components/watch/WatchGetter.vue';
-import WatchReactiveObject from './components/watch/WatchReactiveObject.vue';
-import WatchRefObject from './components/watch/WatchRefObject.vue';
-import WatchRefPrimaryValue from './components/watch/WatchRefPrimaryValue.vue';
+import SumDog from "@/pages/SumDog.vue"; // @ = src
+import {type CatList} from "@/types";
+import {onMounted, reactive, ref} from "vue";
+import AsComputed from "./pages/Computed.vue"; // alias
+import DefineProp from "./components/DefineProp.vue";
+import LifeCycle from "./components/LifeCycle.vue";
+import AsReactive from "./components/Reactive.vue";
+import AsRef from "./components/Ref.vue";
+import AsSetup from "./components/Setup.vue";
+import TagRef from "./components/TagRef.vue";
+import AsToRefs from "./pages/ToRefs.vue";
+import WatchEffect from "./components/watch/WatchEffect.vue";
+import WatchGetter from "./components/watch/WatchGetter.vue";
+import WatchReactiveObject from "./components/watch/WatchReactiveObject.vue";
+import WatchRefObject from "./components/watch/WatchRefObject.vue";
+import WatchRefPrimaryValue from "./components/watch/WatchRefPrimaryValue.vue";
+import Computed from "@/pages/Computed.vue";
 
 let componentTagRef = ref();
 
@@ -22,51 +23,114 @@ function componentTagRefLog() {
   console.log(componentTagRef);
 }
 
-let catList: CatList = reactive<CatList>(
-  [{ id: 0, name: 'Susan', age: 1 },
-  { id: 1, name: 'Sam', age: 2 },
-  { id: 2, name: 'Tomcat', age: 3, optional: 250 }]);
+let catList: CatList = reactive<CatList>([
+  {id: 0, name: "Susan", age: 1},
+  {id: 1, name: "Sam", age: 2},
+  {id: 2, name: "Tomcat", age: 3, optional: 250},
+]);
 // console.log(catList);
 
 let display = ref(true);
 
 onMounted(() => {
   console.log("parent mounted");
-})
+});
 </script>
 
 <template>
   <div class="app">
-    <h1>Hello Vue3</h1>
-    <AsSetup />
-    <AsReactive />
-    <AsRef />
-    <AsToRefs />
-    <AsComputed />
-    <WatchRefPrimaryValue />
-    <WatchRefObject />
-    <WatchReactiveObject />
-    <WatchGetter />
-    <WatchEffect />
-    <TagRef ref="componentTagRef" /> <!-- See ./components/TagRef.vue:18 -->
+    <AsSetup/>
+    <AsReactive/>
+    <AsRef/>
+    <AsComputed/>
+    <WatchRefPrimaryValue/>
+    <WatchRefObject/>
+    <WatchReactiveObject/>
+    <WatchGetter/>
+    <WatchEffect/>
+    <TagRef ref="componentTagRef"/>
+    <!-- See ./components/TagRef.vue:18 -->
     <button @click="componentTagRefLog">componentTagRefLog</button>
     <!-- Component Cat -->
     <!-- <Cat :args="['data', 'passed', 'from', 'parent']" v-bind:cats="catList"/> -->
-    <DefineProp v-bind:cats="catList" />
-    <LifeCycle v-if="display" />
-    <SumDog />
+    <DefineProp v-bind:cats="catList"/>
+    <LifeCycle v-if="display"/>
+    <!-- <SumDog /> -->
+  </div>
+
+  <h1 class="title">Route Test</h1>
+  <div class="navigate">
+    <RouterLink active-class="highlight" to="/computed">Computed</RouterLink>
+    <RouterLink active-class="highlight" to="/torefs">ToRefs</RouterLink>
+    <RouterLink active-class="highlight" to="/sumdog">SumDog</RouterLink>
+  </div>
+
+  <div class="main-content">
+    <RouterView></RouterView>
   </div>
 </template>
 
+<script lang="ts">
+import {RouterView, RouterLink} from "vue-router";
+</script>
+
 <style>
 * {
-  font-family: 'Iosevka SS12', monospace;
+  font-family: "Iosevka SS12", monospace;
 }
+</style>
 
+<style scoped>
 .app {
   background-color: lightyellow;
   box-shadow: 0 0 10px;
   border-radius: 10px;
   padding: 20px;
+}
+
+.title {
+  text-align: center;
+  word-spacing: 5px;
+  margin: 30px 0;
+  height: 70px;
+  line-height: 70px;
+  background-image: linear-gradient(45deg, lightyellow, lightpink);
+  border-radius: 10px;
+  box-shadow: 0 0 2px;
+  font-size: 30px;
+}
+
+.navigate {
+  display: flex;
+  justify-content: space-around;
+  margin: 0 100px;
+}
+
+.navigate a {
+  display: block;
+  text-align: center;
+  width: 90px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 10px;
+  background-color: lightyellow;
+  text-decoration: none;
+  font-size: 18px;
+  /* letter-spacing: 5px; */
+}
+
+.navigate a.highlight {
+  background-color: lightyellow;
+  font-weight: 800;
+  text-shadow: 0 0 1px;
+  font-family: "Iosevka SS12", "monosapce", monospace;
+}
+
+.main-content {
+  margin: 30px auto 0;
+  border-radius: 10px;
+  width: 90%;
+  height: 400px;
+  border: 1px solid;
 }
 </style>

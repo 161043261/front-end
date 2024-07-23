@@ -22,9 +22,15 @@ npm run dev
 npm run build
 ```
 
+```sh
+npm install axios
+npm install vue-router
+```
+
 ### Vue2 Options API
 
 ```vue
+
 <script lang="ts">
   export default {
     name: 'Person',

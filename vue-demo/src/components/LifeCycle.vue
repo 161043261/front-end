@@ -1,14 +1,16 @@
 <script lang="ts">
 export default {
-    name: 'LifeCycle'
+  name: 'LifeCycle'
 }
 </script>
 
-<script setup lang="ts">
-import { ref, onBeforeMount, onMounted, onBeforeUpdate, onUpdated, onBeforeUnmount, onUnmounted } from 'vue';
+<script lang="ts" setup>
+import {ref, onBeforeMount, onMounted, onBeforeUpdate, onUpdated, onBeforeUnmount, onUnmounted} from 'vue';
+
 let sum = ref(0);
+
 function add() {
-    (sum.value)++;
+  (sum.value)++;
 }
 
 // LifeCycle: beforeCreate & created => setup
@@ -16,23 +18,27 @@ onBeforeMount(() => console.log("onBeforeMount"));
 onMounted(() => console.log("child mounted"));
 onBeforeUpdate(() => console.log("onBeforeUpdate"));
 onUpdated(() => console.log("onUpdated"));
-onBeforeUnmount(() => { console.log("onBeforeUnmount") });
-onUnmounted(() => { console.log("onUnmounted") });
- 
+onBeforeUnmount(() => {
+  console.log("onBeforeUnmount")
+});
+onUnmounted(() => {
+  console.log("onUnmounted")
+});
+
 </script>
 
 <template>
-    <div class="lifeCycle">
-        <h1>LifeCycle: sum = {{ sum }}</h1>
-        <button @click="add">add</button>
-    </div>
+  <div class="lifeCycle">
+    <h1>LifeCycle: sum = {{ sum }}</h1>
+    <button @click="add">add</button>
+  </div>
 </template>
 
 <style scoped>
 .lifeCycle {
-    background-color: lightpink;
-    box-shadow: 0 0 10px;
-    border-radius: 10px;
-    padding: 20px;
+  background-color: lightpink;
+  box-shadow: 0 0 10px;
+  border-radius: 10px;
+  padding: 20px;
 }
 </style>
