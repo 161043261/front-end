@@ -8,7 +8,7 @@ import AddSum from "@/components/AddSum.vue";
 export default {
   name: 'App',
   components: {AddSum},
-  comments: { AddSum },
+  comments: {AddSum},
   data() {
     return {
       show: true
