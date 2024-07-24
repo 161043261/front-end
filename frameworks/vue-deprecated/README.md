@@ -1,4 +1,4 @@
-# vue2-demo
+# vue-deprecated
 
 ## Project setup
 
