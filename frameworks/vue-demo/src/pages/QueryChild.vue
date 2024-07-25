@@ -8,6 +8,8 @@ export default {
 import {toRefs} from 'vue';
 import {useRoute} from "vue-router";
 
+defineProps(['id', 'title', 'content']);
+
 const route = useRoute();
 // destruct assignment
 let {query} = toRefs(route); //query is NO LONGER reactive!!! (refer to ./ToRefs.vue)
@@ -18,6 +20,10 @@ let {query} = toRefs(route); //query is NO LONGER reactive!!! (refer to ./ToRefs
     <li>id: {{ query.id }}</li>
     <li>title: {{ query.title }}</li>
     <li>content: {{ query.content }}</li>
+
+    <li>defineProps id: {{ id }}</li>
+    <li>defineProps title: {{ title }}</li>
+    <li>defineProps content: {{ content }}</li>
   </ul>
 </template>
 

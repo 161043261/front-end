@@ -1,6 +1,6 @@
 // route table
 import {createRouter, createWebHistory} from "vue-router";
-import SumDog from "@/pages/SumDog.vue";
+import Hook from "@/pages/Hook.vue";
 import Computed from "@/pages/Computed.vue";
 import ToRefs from "@/pages/ToRefs.vue";
 import Query from "@/pages/Query.vue";
@@ -14,20 +14,19 @@ const router = createRouter({
     routes: [
         {path: "/computed", component: Computed},
         {path: "/torefs", component: ToRefs},
-        {name: "sumDogComponent", path: "/sumdog", component: SumDog},
+        {name: "hookComponent", path: "/hook", component: Hook},
         {
             path: "/query",
             component: Query,
             children: [{
                 name: 'queryChild',
                 path: 'child',
-                component: QueryChild,
+                component: QueryChild, // <QueryChild/>
+                props(route) {
+                    return route.query;
+                } // <QueryChild :id=? :title=? :content=?/>
+                // props: {a: 1, b: 2, c: 3}
             }],
-            props() {
-                return {
-
-                }
-            }
         }, // "/detail" ×
         {
             path: "/param",
@@ -36,8 +35,16 @@ const router = createRouter({
                 name: 'paramChild',
                 path: 'child/:id/:title/:content?', // ? optional path variable
                 component: ParamChild, // <ParamChild />
-                props: true // params => props <ParamChild :id=? :title=? :content=? />
+                props: true, // <ParamChild :id=? :title=? :content=? />
+
+                // props(route) {
+                //     return route.params;
+                // }
             }]
+        },
+        {
+            path: '/',
+            redirect: '/computed'
         }
     ],
 });

@@ -6,13 +6,32 @@ export default {
 
 <script lang="ts" setup>
 import {reactive} from 'vue';
-import {RouterView, RouterLink} from "vue-router";
+import {RouterView, RouterLink, useRouter} from "vue-router";
 
 const newsList = reactive([
   {id: 1, title: 'Express', content: 'expressjs.com'},
   {id: 2, title: 'React', content: 'react.dev'},
   {id: 3, title: 'Vue', content: 'vuejs.org'}
 ]);
+
+const router = useRouter();
+
+interface INews {
+  id: number,
+  title: string,
+  content: string,
+}
+
+function show(news: INews) {
+  router.push({ // route.replace();
+    name: 'queryChild',
+    query: { // spring @RequestParam
+      id: news.id,
+      title: news.title,
+      content: news.content
+    }
+  });
+}
 </script>
 
 <template>
@@ -20,6 +39,7 @@ const newsList = reactive([
     <ul>
       <li v-for="news in newsList" v-bind:key="news.id">
         <!-- <RouterLink v-bind:to="`/query/child?id=${news.id}&title=${news.title}&content=${news.content}`">{{ news.title }}</RouterLink> -->
+        <button @click="show(news)">show</button>
         <RouterLink v-bind:to="{
           // name: 'queryChild',
           path: '/query/child',

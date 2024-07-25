@@ -1,12 +1,12 @@
 <script lang="ts" setup>
 import {type CatList} from "@/types";
-import {onMounted, reactive, ref} from "vue";
-import DefineProp from "./components/DefineProp.vue";
-import LifeCycle from "./components/LifeCycle.vue";
+import {reactive, ref} from "vue";
+import AsDefineProp from "./components/DefineProp.vue";
+import AsLifeCycle from "./components/LifeCycle.vue";
 import AsReactive from "./components/Reactive.vue";
 import AsRef from "./components/Ref.vue";
 import AsSetup from "./components/Setup.vue";
-import TagRef from "./components/TagRef.vue";
+import AsTagRef from "./components/TagRef.vue";
 import WatchEffect from "./components/watch/WatchEffect.vue";
 import WatchGetter from "./components/watch/WatchGetter.vue";
 import WatchReactiveObject from "./components/watch/WatchReactiveObject.vue";
@@ -27,15 +27,25 @@ let catList: CatList = reactive<CatList>([
 // console.log(catList);
 
 let display = ref(true);
-
-onMounted(() => {
-  console.log("parent mounted");
-});
 </script>
 
 <template>
   <div class="app">
-    <AsSetup/>
+    <h1 class="title">Route Test</h1>
+    <div class="navigate">
+      <RouterLink active-class="highlight" to="/computed">Computed</RouterLink>
+      <RouterLink active-class="highlight" v-bind:to="{ path: '/torefs' }">ToRefs</RouterLink>
+      <RouterLink active-class="highlight" v-bind:to="{ name: 'hookComponent' }">Hook</RouterLink>
+      <RouterLink active-class="highlight" to="/query">Query</RouterLink>
+
+      <!-- default push -->
+      <RouterLink active-class="highlight" replace to="/param">Param</RouterLink>
+    </div>
+
+    <div class="main-content">
+      <RouterView></RouterView>
+    </div>
+    <AsSetup/> <!-- <TagName props/> -->
     <AsReactive/>
     <AsRef/>
     <WatchRefPrimaryValue/>
@@ -43,27 +53,14 @@ onMounted(() => {
     <WatchReactiveObject/>
     <WatchGetter/>
     <WatchEffect/>
-    <TagRef ref="componentTagRef"/>
+    <AsTagRef ref="componentTagRef"/>
     <!-- See ./components/TagRef.vue:18 -->
     <button @click="componentTagRefLog">componentTagRefLog</button>
     <!-- Component Cat -->
     <!-- <DefineProp :args="['data', 'passed', 'from', 'parent']" v-bind:cats="catList"/> -->
-    <DefineProp v-bind:cats="catList"/>
-    <LifeCycle v-if="display"/>
-    <!-- <SumDog /> -->
-  </div>
-
-  <h1 class="title">Route Test</h1>
-  <div class="navigate">
-    <RouterLink active-class="highlight" to="/computed">Computed</RouterLink>
-    <RouterLink active-class="highlight" v-bind:to="{ path: '/torefs' }">ToRefs</RouterLink>
-    <RouterLink active-class="highlight" v-bind:to="{ name: 'sumDogComponent' }">SumDog</RouterLink>
-    <RouterLink active-class="highlight" to="/query">Query</RouterLink>
-    <RouterLink active-class="highlight" to="/param">Param</RouterLink>
-  </div>
-
-  <div class="main-content">
-    <RouterView></RouterView>
+    <AsDefineProp v-bind:cats="catList"/>
+    <AsLifeCycle v-if="display"/>
+    <!-- <Hook /> -->
   </div>
 </template>
 
@@ -73,7 +70,7 @@ import {RouterView, RouterLink} from "vue-router";
 
 <style>
 * {
-  font-family: "Iosevka SS04", monospace;
+  font-family: "Iosevka SS12", monospace;
 }
 </style>
 

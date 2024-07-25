@@ -5,20 +5,23 @@ export default {
 </script>
 
 <script lang="ts" setup>
-// const route = useRoute();
-// let {params} = toRefs(route);
+import {useRoute} from "vue-router";
+import {toRefs} from "vue";
+
+const route = useRoute();
+let {params} = toRefs(route);
 defineProps(['id', 'title', 'content'])
 </script>
 
 <template>
   <ul class="news-list">
-    <!-- <li>id: {{ params.id }}</li> -->
-    <!-- <li>title: {{ params.title }}</li> -->
-    <!-- <li>content: {{ params.content }}</li> -->
+    <li>id: {{ params.id }}</li>
+    <li>title: {{ params.title }}</li>
+    <li>content: {{ params.content }}</li>
 
-    <li>id: {{ id }}</li>
-    <li>title: {{ title }}</li>
-    <li>content: {{ content }}</li>
+    <li>defineProps id: {{ id }}</li>
+    <li>defineProps title: {{ title }}</li>
+    <li>defineProps content: {{ content }}</li>
   </ul>
 </template>
 

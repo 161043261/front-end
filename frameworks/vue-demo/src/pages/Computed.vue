@@ -5,7 +5,8 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import {computed, ref, type Ref} from 'vue';
+import {computed, onMounted, ref, type Ref} from 'vue';
+import {useRouter} from "vue-router";
 
 let firstName: Ref<string> = ref<string>("ayaka");
 let lastName: Ref<string> = ref<string>("kamisato");
@@ -25,7 +26,7 @@ function getReadonlyFullName() {
 }
 
 // MUTABLE computed property
-let fullName = computed({
+let mutableFullName = computed({
   get() {
     return lastName.value.slice(0, 1).toUpperCase() + lastName.value.slice(1) + ' ' +
         firstName.value.slice(0, 1).toUpperCase() + firstName.value.slice(1);
@@ -36,8 +37,16 @@ let fullName = computed({
 })
 
 function changeFullName() {
-  fullName.value = "Yae Miko";
+  mutableFullName.value = "Yae Miko";
 }
+
+const router = useRouter();
+onMounted(() => {
+  console.log("parent mounted");
+  setTimeout(() => {
+    router.push("/hook")
+  }, 5000);
+});
 </script>
 
 <template>
@@ -47,7 +56,7 @@ function changeFullName() {
     lastName: <input v-model="lastName" type="text"/><br>
     readonlyFullName: <span>{{ readonlyFullName }}</span><br>
     getReadonlyFullName() = <span>{{ getReadonlyFullName() }}</span><br>
-    fullName: <span>{{ fullName }}</span><br>
+    mutableFullName: <span>{{ mutableFullName }}</span><br>
     <button @click="changeFullName">reset fullName</button>
   </div>
 </template>
