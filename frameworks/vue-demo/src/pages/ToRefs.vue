@@ -7,7 +7,7 @@ let people = reactive<{ username: string; age: number }>({
 });
 
 // destruct assignment
-// let {username, age} = people; // username and age are NOT reactive
+// let {username, age} = people; // username and age are NO LONGER reactive!!!
 let {username, age}: ToRefs<{ username: string; age: number }> =
     toRefs(people); // username and age are reactive
 // console.log(toRefs(people));

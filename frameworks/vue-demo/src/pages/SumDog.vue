@@ -1,4 +1,10 @@
-<script lang="ts" name="SumDog" setup>
+<script lang="ts">
+export default {
+  name: "SumDog"
+}
+</script>
+
+<script lang="ts" setup>
 import useDog from "@/hooks/useDog";
 import useSum from "@/hooks/useSum";
 import {onMounted, onUnmounted} from "vue";

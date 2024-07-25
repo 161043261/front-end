@@ -65,7 +65,7 @@ function changeSum() {
 
 <style scoped>
 .ref {
-  background-color: lightskyblue;
+  background-color: lightblue;
   box-shadow: 0 0 10px;
   border-radius: 10px;
   padding: 20px;

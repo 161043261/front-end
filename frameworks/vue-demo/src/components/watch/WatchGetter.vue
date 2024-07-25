@@ -80,7 +80,7 @@ watch([() => person.name, person.autos], (newValue, oldValue) => {
 
 <style scoped>
 .watchAttribute {
-  background-color: lightskyblue;
+  background-color: lightpink;
   box-shadow: 0 0 10px;
   border-radius: 10px;
   padding: 20px;

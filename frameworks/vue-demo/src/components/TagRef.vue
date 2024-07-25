@@ -28,7 +28,7 @@ defineExpose({a: a.value, b: b.value, c: c.value}); // user-defined expose
 <style scoped>
 /* scoped stylesheet */
 .tagRef {
-  background-color: lightgreen;
+  background-color: lightblue;
   box-shadow: 0 0 10px;
   border-radius: 10px;
   padding: 20px;

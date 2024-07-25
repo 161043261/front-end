@@ -1,8 +1,6 @@
 <script lang="ts" setup>
-import SumDog from "@/pages/SumDog.vue"; // @ = src
 import {type CatList} from "@/types";
 import {onMounted, reactive, ref} from "vue";
-import AsComputed from "./pages/Computed.vue"; // alias
 import DefineProp from "./components/DefineProp.vue";
 import LifeCycle from "./components/LifeCycle.vue";
 import AsReactive from "./components/Reactive.vue";
@@ -40,7 +38,6 @@ onMounted(() => {
     <AsSetup/>
     <AsReactive/>
     <AsRef/>
-    <AsComputed/>
     <WatchRefPrimaryValue/>
     <WatchRefObject/>
     <WatchReactiveObject/>
@@ -50,7 +47,7 @@ onMounted(() => {
     <!-- See ./components/TagRef.vue:18 -->
     <button @click="componentTagRefLog">componentTagRefLog</button>
     <!-- Component Cat -->
-    <!-- <Cat :args="['data', 'passed', 'from', 'parent']" v-bind:cats="catList"/> -->
+    <!-- <DefineProp :args="['data', 'passed', 'from', 'parent']" v-bind:cats="catList"/> -->
     <DefineProp v-bind:cats="catList"/>
     <LifeCycle v-if="display"/>
     <!-- <SumDog /> -->
@@ -59,8 +56,10 @@ onMounted(() => {
   <h1 class="title">Route Test</h1>
   <div class="navigate">
     <RouterLink active-class="highlight" to="/computed">Computed</RouterLink>
-    <RouterLink active-class="highlight" v-bind:to="{path: '/torefs'}">ToRefs</RouterLink>
-    <RouterLink :to="{name: 'sumDogComponent'}" active-class="highlight">SumDog</RouterLink>
+    <RouterLink active-class="highlight" v-bind:to="{ path: '/torefs' }">ToRefs</RouterLink>
+    <RouterLink active-class="highlight" v-bind:to="{ name: 'sumDogComponent' }">SumDog</RouterLink>
+    <RouterLink active-class="highlight" to="/query">Query</RouterLink>
+    <RouterLink active-class="highlight" to="/param">Param</RouterLink>
   </div>
 
   <div class="main-content">
@@ -74,7 +73,7 @@ import {RouterView, RouterLink} from "vue-router";
 
 <style>
 * {
-  font-family: "Iosevka SS12", monospace;
+  font-family: "Iosevka SS04", monospace;
 }
 </style>
 
@@ -92,7 +91,7 @@ import {RouterView, RouterLink} from "vue-router";
   margin: 30px 0;
   height: 70px;
   line-height: 70px;
-  background-image: linear-gradient(45deg, lightyellow, lightpink);
+  background-image: linear-gradient(45deg, lightyellow, lightblue);
   border-radius: 10px;
   box-shadow: 0 0 2px;
   font-size: 30px;
@@ -113,15 +112,14 @@ import {RouterView, RouterLink} from "vue-router";
   border-radius: 10px;
   background-color: lightyellow;
   text-decoration: none;
-  font-size: 18px;
-  /* letter-spacing: 5px; */
+  font-size: 20px;
 }
 
 .navigate a.highlight {
   background-color: lightyellow;
   font-weight: 800;
   text-shadow: 0 0 1px;
-  font-family: "Iosevka SS12", "monosapce", monospace;
+  font-family: "Iosevka SS04", "monosapce", monospace;
 }
 
 .main-content {
