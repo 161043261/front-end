@@ -8,7 +8,7 @@
 npm install
 npm install tslib @types/node
 npm install eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin --save-dev
-npm install nanoid pinia
+npm install axios nanoid pinia vue-router
 ```
 
 ### Compile and Hot-Reload for Development
@@ -21,11 +21,6 @@ npm run dev
 
 ```sh
 npm run build
-```
-
-```sh
-npm install axios
-npm install vue-router
 ```
 
 ### Vue2 Options API
@@ -43,48 +38,6 @@ npm install vue-router
     methods: {}
   }
 </script>
-```
-
-### ts module
-
-./math.ts
-
-```ts
-export function add(x: number, y: number) {
-    return x + y;
-}
-```
-
-./main.ts
-
-```ts
-import {add/* as alias */} from './math';
-
-console.log(add(1, 2));
-```
-
-./main.ts
-
-```ts
-import * as math from './math'
-
-console.log(math.add(1, 2));
-```
-
-./echo.ts
-
-```ts
-export default function echo(msg: string) {
-    console.log(msg);
-}
-```
-
-./main.ts
-
-```ts
-import alias from './echo.ts';
-
-alias('Fuck Microsoft!');
 ```
 
 * Iosevka SS04 Menlo Style

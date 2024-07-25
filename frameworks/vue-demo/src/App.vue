@@ -12,8 +12,8 @@ import WatchGetter from "./components/watch/WatchGetter.vue";
 import WatchReactiveObject from "./components/watch/WatchReactiveObject.vue";
 import WatchRefObject from "./components/watch/WatchRefObject.vue";
 import WatchRefPrimaryValue from "./components/watch/WatchRefPrimaryValue.vue";
-import Count from "@/components/pinia-demo/Count.vue";
-import Cats from "@/components/pinia-demo/Cats.vue";
+import Count from "@/components/pinia/Count.vue";
+import Cat from "@/components/pinia/Cat.vue";
 
 let componentTagRef = ref();
 
@@ -56,13 +56,13 @@ let display = ref(true);
     <WatchGetter/>
     <WatchEffect/>
     <AsTagRef ref="componentTagRef"/>
-    <!-- See ./components/TagRef.vue:18 -->
+    <!-- ./components/TagRef.vue:18 -->
     <button @click="componentTagRefLog">componentTagRefLog</button>
     <!-- <AsDefineProp :args="['data', 'passed', 'from', 'parent']" v-bind:cats="catList"/> -->
     <AsDefineProp v-bind:cats="catList"/>
     <AsLifeCycle v-if="display"/>
     <Count/>
-    <Cats/>
+    <Cat/>
   </div>
 </template>
 

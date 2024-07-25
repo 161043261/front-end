@@ -5,24 +5,27 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import {ref} from "vue";
+import {useCountStore} from '@/store/count';
 
-let sum = ref<number>(0);
-let n = ref<number>(1);
+const countStore = useCountStore(); // countStore is a reactive object
+console.log(countStore.sum/* recommend */, countStore.$state.sum);
 
+// Method 2. update countStore (recommend)
+countStore.$patch({sum: 1, n: 1}); // countStore.sum = 100; countStore.n = 1
+countStore.increment(1); // Method 2. update countStore (deprecated)
 function add() {
-  sum.value += n.value;
+  countStore.sum += countStore.n; // Method 1. update countStore
 }
 
 function sub() {
-  sum.value -= n.value;
+  countStore.sum -= countStore.n;
 }
 </script>
 
 <template>
   <div class="count">
-    <h1>sum = {{ sum }}</h1>
-    <select v-model.number="n">
+    <h1>sum = {{ countStore.sum }}</h1>
+    <select v-model.number="countStore.n">
       <option v-bind:value="1">1</option>
       <option v-bind:value="2">2</option>
       <option v-bind:value="3">3</option>
