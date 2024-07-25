@@ -8,6 +8,7 @@
 npm install
 npm install tslib @types/node
 npm install eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin --save-dev
+npm install nanoid pinia
 ```
 
 ### Compile and Hot-Reload for Development
@@ -85,3 +86,10 @@ import alias from './echo.ts';
 
 alias('Fuck Microsoft!');
 ```
+
+* Iosevka SS04 Menlo Style
+* Iosevka SS06 Liberation Mono Style
+* Iosevka SS09 Source Code Pro Style
+* Iosevka SS12 Ubuntu Mono Style
+* Iosevka SS14 JetBrains Mono Style
+* Iosevka SS16 PT Mono Style
