@@ -36,7 +36,7 @@ watchEffect(() => {
 
 <template>
   <div class="watchEffect">
-    <h1>watch effect</h1>
+    <p>watch effect</p>
     <p>temperature = {{ temperature }}</p>
     <p>depth = {{ depth }}</p>
     <button @click="changeTemperature">temperature+=10</button>

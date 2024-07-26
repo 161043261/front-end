@@ -51,12 +51,13 @@ onMounted(() => {
 
 <template>
   <div class="computed">
-    <h1>computed</h1>
-    firstName: <input v-model="firstName" type="text"/><br>
-    lastName: <input v-model="lastName" type="text"/><br>
-    readonlyFullName: <span>{{ readonlyFullName }}</span><br>
-    getReadonlyFullName() = <span>{{ getReadonlyFullName() }}</span><br>
-    mutableFullName: <span>{{ mutableFullName }}</span><br>
+    <p>computed</p>
+    firstName: <input v-model="firstName" type="text"/>
+    lastName: <input v-model="lastName" type="text"/>
+    <hr>
+    <p>readonlyFullName: {{ readonlyFullName }}</p>
+    <p>getReadonlyFullName() = {{ getReadonlyFullName() }}</p>
+    <p>mutableFullName: {{ mutableFullName }}</p>
     <button @click="changeFullName">reset fullName</button>
   </div>
 </template>
@@ -67,6 +68,6 @@ onMounted(() => {
   box-shadow: 0 0 10px;
   border-radius: 10px;
   padding: 20px;
-  line-height: 40px;
+  line-height: 10px;
 }
 </style>

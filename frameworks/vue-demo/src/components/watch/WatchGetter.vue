@@ -65,7 +65,7 @@ watch([() => person.name, person.autos], (newValue, oldValue) => {
 
 <template>
   <div class="watchAttribute">
-    <h1>watch property</h1>
+    <p>watch property</p>
     <p>name: {{ person.name }}</p>
     <p>age: {{ person.age }}</p>
     <p>autos: {{ person.autos.auto1 }}, {{ person.autos.auto2 }}</p>

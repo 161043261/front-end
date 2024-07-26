@@ -34,7 +34,7 @@ export default {
 
 <template>
   <div class="toRefs">
-    <h1>toRef and toRefs</h1>
+    <p>toRef and toRefs</p>
     <p>
       username: people.username={{ people.username }}, username={{ username }}
     </p>

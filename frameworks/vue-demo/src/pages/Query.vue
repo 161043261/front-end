@@ -89,4 +89,8 @@ function show(news: INews) {
   margin-top: 20px;
   border-radius: 10px;
 }
+
+button {
+  margin: 0 5px;
+}
 </style>

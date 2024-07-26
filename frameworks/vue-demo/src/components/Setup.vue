@@ -41,7 +41,7 @@ function showTel() {
 
 <template>
   <div class="setup">
-    <h1>setup</h1>
+    <p>setup</p>
     <p>name: {{ username }}</p>
     <p>age: {{ age }}</p>
     <button @click="changeName">change name</button>

@@ -33,7 +33,7 @@ let display = ref(true);
 
 <template>
   <div class="app">
-    <h1 class="title">Route Test</h1>
+    <p class="title">Route Test</p>
     <div class="navigate">
       <RouterLink active-class="highlight" to="/computed">Computed</RouterLink>
       <RouterLink active-class="highlight" v-bind:to="{ path: '/torefs' }">ToRefs</RouterLink>

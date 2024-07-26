@@ -20,7 +20,7 @@ withDefaults(defineProps<{
 
 <template>
   <div class="cat">
-    <h1>{{ args }}</h1>
+    <p>{{ args }}</p>
     <ul>
       <!-- let names = ['bh3', 'ys', 'hsr'];  -->
       <!-- for (let index in names) console.log(index); // 0 1 2 -->

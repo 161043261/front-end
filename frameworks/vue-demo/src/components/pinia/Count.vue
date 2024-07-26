@@ -33,7 +33,7 @@ function sub() {
 // const {sum, n} = toRefs(countStore)
 
 // 2. use pinia.storeToRefs (recommend)
-const {sum, n} = storeToRefs(countStore);
+const {sum, n, big, bigger, biggest} = storeToRefs(countStore);
 
 // 3. use vue.toRef
 // const sum = toRef(countStore, 'sum');
@@ -42,7 +42,7 @@ const {sum, n} = storeToRefs(countStore);
 
 <template>
   <div class="count">
-    <h1>sum = {{ sum }}</h1>
+    <p>sum={{ sum }} big={{ big }} bigger={{ bigger }} biggest={{ biggest }}</p>
     <select v-model.number="n">
       <option v-bind:value="1">1</option>
       <option v-bind:value="2">2</option>

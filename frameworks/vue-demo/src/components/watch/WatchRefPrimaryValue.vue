@@ -23,7 +23,7 @@ const stopWatching = watch(sum, (newValue, oldValue) => {
 
 <template>
   <div class="watchRefPrimaryValue">
-    <h1>watch ref(primaryValue)</h1>
+    <p>watch ref(primaryValue)</p>
     <p>sum = {{ sum }}</p>
     <button @click="changeSum">sum++</button>
   </div>

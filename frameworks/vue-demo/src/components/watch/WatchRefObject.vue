@@ -37,7 +37,7 @@ watch(person, (newValue, oldValue) => {
 
 <template>
   <div class="watchRefObject">
-    <h1>watch ref(object)</h1>
+    <p>watch ref(object)</p>
     <p>name = {{ person.name }}</p>
     <p>age = {{ person.age }}</p>
     <button @click="changeName">change name</button>
@@ -52,5 +52,9 @@ watch(person, (newValue, oldValue) => {
   box-shadow: 0 0 10px;
   border-radius: 10px;
   padding: 20px;
+}
+
+button {
+  margin: 0 5px;
 }
 </style>

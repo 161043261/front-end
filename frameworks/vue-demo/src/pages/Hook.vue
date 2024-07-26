@@ -22,7 +22,7 @@ const {dogList, addDog} = useDog();
 
 <template>
   <div class="hook">
-    <h1>Hook</h1>
+    <p>Hook</p>
     <p>sum = {{ sum }}; 10 * sum = {{ bigSum }};</p>
     <button @click="addSum">add sum</button>
     <hr/>

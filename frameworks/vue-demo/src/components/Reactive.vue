@@ -38,7 +38,7 @@ let games = reactive<{ id: number, name: string }[]>(
 
 <template>
   <div class="reactive">
-    <h1>ref and reactive</h1>
+    <p>ref and reactive</p>
     <p>brand={{ car.brand }} price={{ car.price }}w</p>
     <button @click="changeBrand">change brand</button>
     <button @click="changePrice">change price</button>

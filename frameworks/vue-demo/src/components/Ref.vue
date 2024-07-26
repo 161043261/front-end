@@ -42,7 +42,7 @@ function changeSum() {
 
 <template>
   <div class="ref">
-    <h1>ref bases on reactive</h1>
+    <p>ref bases on reactive</p>
     <p>brand={{ car.brand }} price={{ car.price }}w</p>
     <button @click="changeBrand">change brand</button>
     <button @click="changePrice">change price</button>

@@ -13,5 +13,16 @@ export const useCountStore = defineStore('count', {
             sum: 0,
             n: 0
         }
+    },
+    getters: {
+        big(state) {
+            return 10 * state.sum;
+        },
+
+        bigger(): number {
+            return 100 * this.sum;
+        },
+
+        biggest: state => 1000 * state.sum
     }
 });

@@ -29,7 +29,7 @@ onUnmounted(() => {
 
 <template>
   <div class="lifeCycle">
-    <h1>LifeCycle: sum = {{ sum }}</h1>
+    <p>LifeCycle: sum = {{ sum }}</p>
     <button @click="add">add</button>
   </div>
 </template>

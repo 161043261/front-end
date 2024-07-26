@@ -10,8 +10,12 @@ import {storeToRefs} from "pinia";
 //
 // pinia
 //
-const catStore = useUrlStore();
-const {urlList} = storeToRefs(catStore);
+const urlStore = useUrlStore();
+const {urlList} = storeToRefs(urlStore);
+urlStore.$subscribe((mutation, state) => {
+  console.log(mutation, state);
+  localStorage.setItem('urlList', JSON.stringify(state.urlList));
+})
 </script>
 
 <template>
@@ -19,7 +23,7 @@ const {urlList} = storeToRefs(catStore);
     <ul>
       <li v-for="url in urlList" :key="url.id">{{ url }}</li>
     </ul>
-    <button @click="catStore.addUrl">add url</button>
+    <button @click="urlStore.addUrl">add url</button>
   </div>
 </template>
 

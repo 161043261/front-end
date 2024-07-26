@@ -7,7 +7,7 @@ export default {
 <script lang="ts" setup>
 import {ref} from 'vue';
 
-let htmlTagRef = ref(); // htmlTagRef -> <h1 ref="htmlTagRef">tag ref</h1>
+let htmlTagRef = ref(); // htmlTagRef -> <p ref="htmlTagRef">tag ref</p>
 function htmlTagRefLog() {
   console.log(htmlTagRef.value);
 }
@@ -20,7 +20,7 @@ defineExpose({a: a.value, b: b.value, c: c.value}); // user-defined expose
 
 <template>
   <div class="tagRef">
-    <h1 ref="htmlTagRef">tag ref</h1> <!-- htmlTagRef: scoped id -->
+    <p ref="htmlTagRef">tag ref</p> <!-- htmlTagRef: scoped id -->
     <button @click="htmlTagRefLog">htmlTagRefLog</button>
   </div>
 </template>
