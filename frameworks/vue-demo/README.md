@@ -6,9 +6,8 @@
 
 ```sh
 npm install
-npm install tslib @types/node
 npm install eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin --save-dev
-npm install axios nanoid pinia vue-router
+npm install tslib @types/node axios nanoid pinia vue-router mitt
 ```
 
 ### Compile and Hot-Reload for Development

@@ -9,7 +9,7 @@ import {useCountStore} from '@/store/count';
 import {storeToRefs} from "pinia";
 
 const countStore = useCountStore(); // countStore is a reactive object
-console.log(countStore.sum/* recommend */, countStore.$state.sum);
+// console.log(countStore.sum/* recommend */, countStore.$state.sum);
 
 // Method 2
 countStore.$patch({sum: 1, n: 1}); // countStore.sum = 100; countStore.n = 1

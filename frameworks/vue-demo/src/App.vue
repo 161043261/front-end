@@ -45,6 +45,7 @@ let display = ref(true);
       <!-- inter-component communication -->
       <RouterLink active-class="highlight" to="/props">Props</RouterLink>
       <RouterLink active-class="highlight" to="/event">Event</RouterLink>
+      <RouterLink active-class="highlight" to="/mitt">Mitt</RouterLink>
     </div>
 
     <div class="main-content">
@@ -108,9 +109,9 @@ import {RouterView, RouterLink} from "vue-router";
 .navigate a {
   display: block;
   text-align: center;
-  width: 90px;
-  height: 40px;
-  line-height: 40px;
+  width: 100px;
+  height: 10px;
+  line-height: 10px;
   border-radius: 10px;
   background-color: lightyellow;
   text-decoration: none;
@@ -128,7 +129,7 @@ import {RouterView, RouterLink} from "vue-router";
   margin: 30px auto 0;
   border-radius: 10px;
   width: 90%;
-  height: 400px;
+  height: 500px;
   border: 1px solid;
 }
 </style>

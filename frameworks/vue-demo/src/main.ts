@@ -5,6 +5,9 @@ import router from "./router/index";
 // 1. import pinia
 //
 import {createPinia} from "pinia";
+//
+// import mitt
+//
 
 const app = createApp(App);
 // use router

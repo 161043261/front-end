@@ -12,6 +12,7 @@ import ParamChild from "@/pages/ParamChild.vue";
 //
 import Props from "@/pages/communicate/props/Parent.vue";
 import Event from "@/pages/communicate/custom-event/Parent.vue"
+import Bus from "@/pages/communicate/mitt/Parent.vue";
 // create router
 const router = createRouter({
     history: createWebHistory(), // Router Mode
@@ -46,6 +47,7 @@ const router = createRouter({
         {path: '/', redirect: '/computed'},
         {path: '/props', component: Props},
         {path: "/event", component: Event},
+        {path: "/mitt", component: Bus},
     ],
 });
 
