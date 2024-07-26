@@ -1,30 +1,35 @@
-<script lang="ts">
-export default {
-  name: 'Child'
+<script lang="ts" setup>
+import Child from './Child.vue';
+import {ref} from 'vue';
+
+let car = ref('Mercedes Benz');
+let toy = ref('');
+
+function passToy(value: string) {
+  toy.value = value;
 }
 </script>
 
-<script setup lang="ts">
-import {ref} from 'vue';
-
-let toyCar = ref('toyCar');
-defineProps(['car', 'sendToy'])
+<script lang="ts">
+export default {
+  name: 'Parent'
+}
 </script>
 
 <template>
-<div class="child">
-    <p>child component</p>
-		<p>toy：{{ toyCar }}</p>
-		<p>car：{{ car }}</p>
-		<button @click="sendToy(toyCar)">send toy to parent</button>
+  <div class="parent">
+    <p>@/pages/communicate/props/Parent.vue</p>
+    <p>car: {{ car }}</p>
+    <p v-show="toy">toy passed from child: {{ toy }}</p>
+    <!-- communicate by props -->
+    <Child v-bind:car="car" v-bind:passToy="passToy"/>
   </div>
 </template>
 
 <style scoped>
-.child{
-		background-color: lightblue;
-		padding: 10px;
-		box-shadow: 0 0 10px black;
-		border-radius: 10px;
-	}
+.parent {
+  background-color: lightblue;
+  padding: 20px;
+  border-radius: 10px;
+}
 </style>

@@ -39,9 +39,12 @@ let display = ref(true);
       <RouterLink active-class="highlight" v-bind:to="{ path: '/torefs' }">ToRefs</RouterLink>
       <RouterLink active-class="highlight" v-bind:to="{ name: 'hookComponent' }">Hook</RouterLink>
       <RouterLink active-class="highlight" to="/query">Query</RouterLink>
-
       <!-- default push -->
       <RouterLink active-class="highlight" replace to="/param">Param</RouterLink>
+
+      <!-- inter-component communication -->
+      <RouterLink active-class="highlight" to="/props">Props</RouterLink>
+      <RouterLink active-class="highlight" to="/event">Event</RouterLink>
     </div>
 
     <div class="main-content">
@@ -72,7 +75,7 @@ import {RouterView, RouterLink} from "vue-router";
 
 <style>
 * {
-  font-family: "Iosevka SS12", monospace;
+  font-family: "Iosevka SS06", monospace;
 }
 </style>
 
