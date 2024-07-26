@@ -21,17 +21,31 @@ export default {
       <input v-model="username" type="text"></p>
     <p>v-bind: ts -> dom 1-way binding
       <!--
+TODO
+      v-bind:                         is equivalent to    :
+      v-bind:propName="expression"    is equivalent to    :propName="expression"
       v-on:                           is equivalent to    @
       v-on:event-name="expression"    is equivalent to    @event-name="expression"
       -->
+
+      <!--TODO 'v-bind:' or ':' implements 1-way binding -->
       <input v-bind:value="password" v-on:input="password = (<HTMLInputElement>$event.target).value"/></p>
     <hr>
 
-    <!-- implement 2-way binding on CustomInput -->
-    <CustomInput v-model="username"/> <!-- 2-way binding -->
+    <!--TODO "v-model:' or '@' implements 2-way binding -->
+
+    <!--
+    alias 'modelValue', 'update:modelValue' to 'aliasName', 'update:aliasName'
+    <CustomInput v-model:aliasName="username"/>
+    -->
+    <CustomInput v-model="username"/>
     <!-- defineProps(['modelValue']) -->
     <!-- defineEmits(['update:modelValue']) -->
-    <CustomInput v-bind:modelValue="password" v-on:update:modelValue="password = $event"/> <!-- 2-way binding -->
+
+    <!-- password: ./Demo.vue -> ./CustomInput.vue -->
+    <CustomInput v-bind:modelValue="password"
+                 v-on:update:modelValue="password = $event"/>
+    <!-- password: ./Demo.vue <- ./CustomInput.vue -->
   </div>
 </template>
 

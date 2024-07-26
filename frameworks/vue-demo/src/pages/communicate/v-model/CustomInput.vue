@@ -13,6 +13,9 @@ console.log(emits);
 <template>
   <p>
     <!--
+TODO
+    v-bind:                         is equivalent to    :
+    v-bind:propName="expression"    is equivalent to    :propName="expression"
     v-on:                           is equivalent to    @
     v-on:event-name="expression"    is equivalent to    @event-name="expression"
     -->
@@ -22,6 +25,8 @@ console.log(emits);
            v-bind:value="modelValue"
            @input="emits('update:modelValue', (<HTMLInputElement>$event.target).value)/* args */">
     <!-- trigger 'update:modelValue' event -->
+
+
   </p>
 </template>
 
