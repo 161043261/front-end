@@ -10,12 +10,12 @@ import emitter from "@/utils/emitter";
 
 let computer = ref("Lenovo");
 let toy = ref('');
-// bind 'pass-toy' event
-emitter.on('pass-toy', (value: any) => {
+
+emitter.on('pass-toy', (value: any) => { // bind 'pass-toy' event
   toy.value = value;
 });
-// unbind 'pass-toy' event
-onUnmounted(() => {
+
+onUnmounted(() => { // unbind 'pass-toy' event
   emitter.off('pass-toy');
 });
 </script>

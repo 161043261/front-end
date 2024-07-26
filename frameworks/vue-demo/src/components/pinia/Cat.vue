@@ -1,20 +1,20 @@
 <script lang="ts">
 export default {
-  name: 'Url'
+  name: 'Cat'
 }
 </script>
 
 <script lang="ts" setup>
-import {useUrlStore} from "@/store/url";
+import {useCatStore} from "@/store/cat";
 import {storeToRefs} from "pinia";
 //
 // pinia
 //
-const urlStore = useUrlStore();
-const {urlList} = storeToRefs(urlStore);
-urlStore.$subscribe((mutation, state) => {
+const catStore = useCatStore();
+const {catList} = storeToRefs(catStore);
+catStore.$subscribe((mutation, state) => {
   console.log(mutation, state);
-  localStorage.setItem('urlList', JSON.stringify(state.urlList));
+  localStorage.setItem('catList', JSON.stringify(state.catList));
 });
 
 function clear() {
@@ -23,17 +23,17 @@ function clear() {
 </script>
 
 <template>
-  <div class="url">
+  <div class="cat">
     <ul>
-      <li v-for="url in urlList" :key="url.id">{{ url }}</li>
+      <li v-for="cat in catList" :key="cat.id">{{ cat }}</li>
     </ul>
-    <button @click="urlStore.addUrl">add URL</button>
+    <button @click="catStore.addCat">add URL</button>
     <button @click="clear">localStorage.clear()</button>
   </div>
 </template>
 
 <style scoped>
-.url {
+.cat {
   background-color: lightpink;
   padding: 10px;
   border-radius: 10px;

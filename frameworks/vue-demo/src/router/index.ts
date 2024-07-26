@@ -10,6 +10,7 @@ import ParamChild from "@/pages/ParamChild.vue";
 //
 // inter-component communication
 //
+import Model from "@/pages/communicate/v-model/Demo.vue"
 import Props from "@/pages/communicate/props/Parent.vue";
 import Event from "@/pages/communicate/custom-event/Parent.vue"
 import Bus from "@/pages/communicate/mitt/Parent.vue";
@@ -48,6 +49,7 @@ const router = createRouter({
         {path: '/props', component: Props},
         {path: "/event", component: Event},
         {path: "/mitt", component: Bus},
+        {path: "/model", component: Model},
     ],
 });
 

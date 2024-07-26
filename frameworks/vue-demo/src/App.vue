@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import {type CatList} from "@/types";
 import {reactive, ref} from "vue";
-import AsDefineProp from "./components/DefineProp.vue";
+import AsProp from "./components/Prop.vue";
 import AsLifeCycle from "./components/LifeCycle.vue";
 import AsReactive from "./components/Reactive.vue";
 import AsRef from "./components/Ref.vue";
@@ -13,7 +13,7 @@ import WatchReactiveObject from "./components/watch/WatchReactiveObject.vue";
 import WatchRefObject from "./components/watch/WatchRefObject.vue";
 import WatchRefPrimaryValue from "./components/watch/WatchRefPrimaryValue.vue";
 import Count from "@/components/pinia/Count.vue";
-import Url from "@/components/pinia/Url.vue";
+import Cat from "@/components/pinia/Cat.vue";
 
 let componentTagRef = ref();
 
@@ -22,8 +22,8 @@ function componentTagRefLog() {
 }
 
 let catList: CatList = reactive<CatList>([
-  {id: 0, name: "Susan", age: 1},
-  {id: 1, name: "Sam", age: 2},
+  {id: 0, name: "Meow", age: 1},
+  {id: 1, name: "HappyCat", age: 2},
   {id: 2, name: "Tomcat", age: 3, optional: 250},
 ]);
 // console.log(catList);
@@ -46,6 +46,7 @@ let display = ref(true);
       <RouterLink active-class="highlight" to="/props">Props</RouterLink>
       <RouterLink active-class="highlight" to="/event">Event</RouterLink>
       <RouterLink active-class="highlight" to="/mitt">Mitt</RouterLink>
+      <RouterLink active-class="highlight" to="/model">Model</RouterLink>
     </div>
 
     <div class="main-content">
@@ -63,10 +64,10 @@ let display = ref(true);
     <!-- ./components/TagRef.vue:18 -->
     <button @click="componentTagRefLog">componentTagRefLog</button>
     <!-- <AsDefineProp :args="['data', 'passed', 'from', 'parent']" v-bind:cats="catList"/> -->
-    <AsDefineProp v-bind:cats="catList"/>
+    <AsProp v-bind:cats="catList"/>
     <AsLifeCycle v-if="display"/>
     <Count/>
-    <Url/>
+    <Cat/>
   </div>
 </template>
 

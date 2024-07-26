@@ -1,6 +1,6 @@
 <script lang="ts">
 export default {
-  name: 'DefineProp'
+  name: 'Prop'
 }
 </script>
 
@@ -15,11 +15,11 @@ import {type CatList} from "@/types";
 withDefaults(defineProps<{
   args?: string[], // optional
   cats: CatList // necessary
-}>(), {args: () => ["defineProps: ", "data", "passed", "from", "parent"]}); // defaults (value is primaryType or getter)
+}>(), {args: () => ["defineProps", "data", "passed", "from", "parent"]}); // defaults (value is primaryType or getter)
 </script>
 
 <template>
-  <div class="cat">
+  <div class="prop">
     <p>{{ args }}</p>
     <ul>
       <!-- let names = ['bh3', 'ys', 'hsr'];  -->
@@ -33,7 +33,7 @@ withDefaults(defineProps<{
 </template>
 
 <style scoped>
-.cat {
+.prop {
   background-color: lightpink;
   box-shadow: 0 0 10px;
   border-radius: 10px;

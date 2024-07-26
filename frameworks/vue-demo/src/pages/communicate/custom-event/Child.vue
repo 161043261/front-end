@@ -9,7 +9,7 @@ const emit = defineEmits(['pass-toy']);
 
 onMounted(() => {
   setTimeout(() => {
-    emit('pass-toy', onMountedToy.value); // trigger 'pass-toy' custom event
+    emit('pass-toy', onMountedToy.value/* args */); // trigger 'pass-toy' custom event
   }, 1000)
 })
 </script>
