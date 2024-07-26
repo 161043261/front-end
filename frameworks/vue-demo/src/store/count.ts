@@ -4,8 +4,8 @@ import {defineStore} from 'pinia';
 export const useCountStore = defineStore('count', {
     // action functions
     actions: {
-        increment(deltaSum: number) {
-            this.sum += deltaSum;
+        addSum(delta: number) {
+            this.sum += delta;
         }
     },
     state() {

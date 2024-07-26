@@ -6,26 +6,44 @@ export default {
 
 <script lang="ts" setup>
 import {useCountStore} from '@/store/count';
+import {storeToRefs} from "pinia";
 
 const countStore = useCountStore(); // countStore is a reactive object
 console.log(countStore.sum/* recommend */, countStore.$state.sum);
 
-// Method 2. update countStore (recommend)
+// Method 2
 countStore.$patch({sum: 1, n: 1}); // countStore.sum = 100; countStore.n = 1
-countStore.increment(1); // Method 2. update countStore (deprecated)
+// Method 3
+countStore.addSum(2);
+
 function add() {
-  countStore.sum += countStore.n; // Method 1. update countStore
+  // Method 1
+  countStore.sum += countStore.n;
 }
 
 function sub() {
+  // Method 1
   countStore.sum -= countStore.n;
 }
+
+// destruct assignment
+// const {sum, n} = countStore; // sum and n are NO LONGER reactive!!!
+
+// 1. use vue.toRefs
+// const {sum, n} = toRefs(countStore)
+
+// 2. use pinia.storeToRefs (recommend)
+const {sum, n} = storeToRefs(countStore);
+
+// 3. use vue.toRef
+// const sum = toRef(countStore, 'sum');
+// const n = toRef(countStore, 'n');
 </script>
 
 <template>
   <div class="count">
-    <h1>sum = {{ countStore.sum }}</h1>
-    <select v-model.number="countStore.n">
+    <h1>sum = {{ sum }}</h1>
+    <select v-model.number="n">
       <option v-bind:value="1">1</option>
       <option v-bind:value="2">2</option>
       <option v-bind:value="3">3</option>

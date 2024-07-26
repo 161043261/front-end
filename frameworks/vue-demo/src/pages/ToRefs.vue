@@ -15,7 +15,6 @@ let {username, age}: ToRefs<{ username: string; age: number }> =
 let refAge: ToRef<number> = toRef(people, "age");
 
 // console.log(refAge);
-
 function changeName() {
   // people.username += '~';
   username.value = username.value + "!";

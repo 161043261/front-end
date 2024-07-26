@@ -13,7 +13,7 @@ import WatchReactiveObject from "./components/watch/WatchReactiveObject.vue";
 import WatchRefObject from "./components/watch/WatchRefObject.vue";
 import WatchRefPrimaryValue from "./components/watch/WatchRefPrimaryValue.vue";
 import Count from "@/components/pinia/Count.vue";
-import Cat from "@/components/pinia/Cat.vue";
+import Url from "@/components/pinia/Url.vue";
 
 let componentTagRef = ref();
 
@@ -62,7 +62,7 @@ let display = ref(true);
     <AsDefineProp v-bind:cats="catList"/>
     <AsLifeCycle v-if="display"/>
     <Count/>
-    <Cat/>
+    <Url/>
   </div>
 </template>
 
