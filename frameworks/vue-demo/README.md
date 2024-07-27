@@ -1,7 +1,5 @@
 # vue-demo
 
-## Vue3 is much better than React
-
 ### Project Setup
 
 ```sh
@@ -41,7 +39,4 @@ npm run build
 
 * Iosevka SS04 Menlo Style
 * Iosevka SS06 Liberation Mono Style
-* Iosevka SS09 Source Code Pro Style
-* Iosevka SS12 Ubuntu Mono Style
-* Iosevka SS14 JetBrains Mono Style
-* Iosevka SS16 PT Mono Style
+* Sarasa Mono SC
