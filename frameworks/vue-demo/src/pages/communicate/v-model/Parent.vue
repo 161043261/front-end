@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import {ref} from 'vue';
-import CustomInput from './CustomInput.vue';
+import Child from './Child.vue';
 
 let username = ref('root');
 let password = ref('1024');
@@ -36,16 +36,16 @@ TODO
 
     <!--
     alias 'modelValue', 'update:modelValue' to 'aliasName', 'update:aliasName'
-    <CustomInput v-model:aliasName="username"/>
+    <Child v-model:aliasName="username"/>
     -->
-    <CustomInput v-model="username"/>
+    <Child v-model="username"/>
     <!-- defineProps(['modelValue']) -->
     <!-- defineEmits(['update:modelValue']) -->
 
-    <!-- password: ./Demo.vue -> ./CustomInput.vue -->
-    <CustomInput v-bind:modelValue="password"
-                 v-on:update:modelValue="password = $event"/>
-    <!-- password: ./Demo.vue <- ./CustomInput.vue -->
+    <!-- password: ./Parent.vue -> ./Child.vue -->
+    <Child v-bind:modelValue="password"
+           v-on:update:modelValue="password = $event"/>
+    <!-- password: ./Parent.vue <- ./Child.vue -->
   </div>
 </template>
 

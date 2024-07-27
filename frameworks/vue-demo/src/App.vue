@@ -33,20 +33,21 @@ let display = ref(true);
 
 <template>
   <div class="app">
-    <p class="title">Route Test</p>
+    <p class="title">vue-demo</p>
     <div class="navigate">
-      <RouterLink active-class="highlight" to="/computed">Computed</RouterLink>
-      <RouterLink active-class="highlight" v-bind:to="{ path: '/torefs' }">ToRefs</RouterLink>
-      <RouterLink active-class="highlight" v-bind:to="{ name: 'hookComponent' }">Hook</RouterLink>
-      <RouterLink active-class="highlight" to="/query">Query</RouterLink>
+      <RouterLink active-class="act" to="/computed">Computed</RouterLink>
+      <RouterLink active-class="act" v-bind:to="{ path: '/torefs' }">ToRefs</RouterLink>
+      <RouterLink active-class="act" v-bind:to="{ name: 'hookComponent' }">Hook</RouterLink>
+      <RouterLink active-class="act" to="/query">Query</RouterLink>
       <!-- default push -->
-      <RouterLink active-class="highlight" replace to="/param">Param</RouterLink>
+      <RouterLink active-class="act" replace to="/param">Param</RouterLink>
 
       <!-- inter-component communication -->
-      <RouterLink active-class="highlight" to="/props">Props</RouterLink>
-      <RouterLink active-class="highlight" to="/event">Event</RouterLink>
-      <RouterLink active-class="highlight" to="/mitt">Mitt</RouterLink>
-      <RouterLink active-class="highlight" to="/model">Model</RouterLink>
+      <RouterLink active-class="act" to="/props">Props</RouterLink>
+      <RouterLink active-class="act" to="/event">Event</RouterLink>
+      <RouterLink active-class="act" to="/mitt">Mitt</RouterLink>
+      <RouterLink active-class="act" to="/model">Model</RouterLink>
+      <RouterLink active-class="act" to="/attr">Attr</RouterLink>
     </div>
 
     <div class="main-content">
@@ -119,7 +120,7 @@ import {RouterView, RouterLink} from "vue-router";
   font-size: 20px;
 }
 
-.navigate a.highlight {
+.navigate a.act {
   background-color: lightyellow;
   font-weight: 800;
   text-shadow: 0 0 1px;
@@ -129,7 +130,7 @@ import {RouterView, RouterLink} from "vue-router";
 .main-content {
   margin: 30px auto 0;
   border-radius: 10px;
-  width: 90%;
+  width: 100%;
   height: 500px;
   border: 1px solid;
 }

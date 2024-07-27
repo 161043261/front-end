@@ -1,6 +1,6 @@
 <script lang="ts">
 export default {
-  name: 'CustomInput'
+  name: 'Child'
 }
 </script>
 
@@ -11,6 +11,7 @@ console.log(emits);
 </script>
 
 <template>
+  <p>@/pages/communicate/v-model/Child.vue</p>
   <p>
     <!--
 TODO
@@ -25,8 +26,6 @@ TODO
            v-bind:value="modelValue"
            @input="emits('update:modelValue', (<HTMLInputElement>$event.target).value)/* args */">
     <!-- trigger 'update:modelValue' event -->
-
-
   </p>
 </template>
 
