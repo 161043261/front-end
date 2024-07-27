@@ -3,7 +3,10 @@
 ### Project Setup
 
 ```sh
+npm create vue@latest
+cd vue-demo || exit
 npm install
+npm install vite-plugin-vue-setup-extend -D
 npm install eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin --save-dev
 npm install tslib @types/node axios nanoid pinia vue-router mitt
 ```

@@ -1,24 +1,24 @@
 // route table
 import {createRouter, createWebHistory} from "vue-router";
-import Hook from "@/pages/Hook.vue";
-import Computed from "@/pages/Computed.vue";
-import ToRefs from "@/pages/ToRefs.vue";
-import Query from "@/pages/Query.vue";
-import QueryChild from "@/pages/QueryChild.vue";
-import Param from "@/pages/Param.vue";
-import ParamChild from "@/pages/ParamChild.vue";
+import Hook from "@/views/Hook.vue";
+import Computed from "@/views/Computed.vue";
+import ToRefs from "@/views/ToRefs.vue";
+import Query from "@/views/Query.vue";
+import QueryChild from "@/views/QueryChild.vue";
+import Param from "@/views/Param.vue";
+import ParamChild from "@/views/ParamChild.vue";
 //
 // inter-component communication
 //
-import Model from "@/pages/communicate/v-model/Parent.vue"
-import Props from "@/pages/communicate/props/Parent.vue";
-import Event from "@/pages/communicate/custom-event/Parent.vue"
-import Bus from "@/pages/communicate/mitt/Parent.vue";
-import Attrs from "@/pages/communicate/$attrs/Grandparent.vue";
-import RefsParent from "@/pages/communicate/$refs-$parent/Parent.vue";
-import ProvideInject from "@/pages/communicate/provide-inject/Grandparent.vue"
-import Slot from "@/pages/communicate/slot/Parent.vue"
-import ScopedSlot from "@/pages/communicate/slot/scoped/Parent.vue"
+import Model from "@/views/communicate/v-model/Parent.vue"
+import Props from "@/views/communicate/props/Parent.vue";
+import Event from "@/views/communicate/custom-event/Parent.vue"
+import Bus from "@/views/communicate/mitt/Parent.vue";
+import Attrs from "@/views/communicate/$attrs/Grandparent.vue";
+import RefsParent from "@/views/communicate/$refs-$parent/Parent.vue";
+import ProvideInject from "@/views/communicate/provide-inject/Grandparent.vue"
+import Slot from "@/views/communicate/slot/Parent.vue"
+import ScopedSlot from "@/views/communicate/slot/scoped/Parent.vue"
 // create router
 const router = createRouter({
     history: createWebHistory(), // Router Mode

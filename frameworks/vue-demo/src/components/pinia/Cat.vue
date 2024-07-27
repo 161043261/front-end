@@ -5,7 +5,7 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import {useCatStore} from "@/store/cat";
+import {useCatStore} from "@/stores/cat";
 import {storeToRefs} from "pinia";
 //
 // pinia

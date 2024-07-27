@@ -5,7 +5,7 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import {useCountStore} from '@/store/count';
+import {useCountStore} from '@/stores/count';
 import {storeToRefs} from "pinia";
 
 const countStore = useCountStore(); // countStore is a reactive object
