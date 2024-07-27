@@ -16,14 +16,14 @@ let games = reactive([
 
 <template>
   <div class="child">
-    <slot :a="1"
-          :b="2" :c="3" v-bind:funs="games"></slot>
+    <slot v-bind:funs="games"></slot>
+    <slot :a="1" :b="2" name="s1" v-bind:funs="games"></slot>
   </div>
 </template>
 
 <style scoped>
 .child {
-  width: 200px;
+  width: 300px;
   height: 300px;
   background-color: lightcyan;
   border-radius: 10px;

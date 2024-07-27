@@ -13,28 +13,28 @@ export default {
     <p>@/pages/communicate/slot/scoped/Parent.vue</p>
     <div class="content">
       <Child>
-        <template v-slot="params">
+        <template v-slot="params"> <!-- slot 'default' -->
           <p>unordered list</p>
           <ul>
-            <!-- <span>{{ params }}</span> -->
             <li v-for="fun in params.funs" :key="fun.id"> {{ fun.name }}</li>
           </ul>
         </template>
       </Child>
 
       <Child>
-        <template v-slot="params">
+        <template #default="{funs}"> <!-- destruct -->
           <p>ordered list</p>
           <ol>
-            <li v-for="fun in params.funs" :key="fun.id"> {{ fun.name }}</li>
+            <li v-for="fun in funs" :key="fun.id"> {{ fun.name }}</li>
           </ol>
         </template>
       </Child>
 
       <Child>
-        <template v-slot="{funs}"> <!-- destruct -->
+        <template v-slot:s1="params"> <!-- slot 's1' -->
           <p>paragraphs</p>
-          <p v-for="fun in funs" :key="fun.id"> {{ fun.name }}</p>
+          <span>{{ params }}</span>
+          <p v-for="fun in params.funs" :key="fun.id"> {{ fun.name }}</p>
         </template>
       </Child>
     </div>
