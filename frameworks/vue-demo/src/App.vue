@@ -49,7 +49,9 @@ let display = ref(true);
       <RouterLink active-class="act" to="/model">v-model:</RouterLink>
       <RouterLink active-class="act" to="/attrs">$attrs</RouterLink>
       <RouterLink active-class="act" to="/refs-parent">$refs $parent</RouterLink>
-      <RouterLink active-class="act" to="/provide-inject">provide-inject</RouterLink>
+      <RouterLink active-class="act" to="/provide-inject">provide inject</RouterLink>
+      <RouterLink active-class="act" to="/slot">slot</RouterLink>
+      <RouterLink active-class="act" to="/slot/scoped">scoped slot</RouterLink>
     </div>
 
     <div class="main-content">
@@ -63,9 +65,10 @@ let display = ref(true);
     <WatchReactiveObject/>
     <WatchGetter/>
     <WatchEffect/>
-    <AsTagRef ref="componentTagRef"/>
-    <!-- ./components/TagRef.vue:18 -->
-    <button @click="componentTagRefLog">componentTagRefLog</button>
+    <AsTagRef ref="componentTagRef">
+      <!-- ./components/TagRef.vue:18 -->
+      <button @click="componentTagRefLog">componentTagRefLog</button>
+    </AsTagRef>
     <!-- <AsDefineProp :args="['data', 'passed', 'from', 'parent']" v-bind:cats="catList"/> -->
     <AsProp v-bind:cats="catList"/>
     <AsLifeCycle v-if="display"/>
@@ -114,16 +117,16 @@ import {RouterView, RouterLink} from "vue-router";
   display: block;
   text-align: center;
   width: 100px;
-  height: 20px;
+  height: 40px;
   line-height: 20px;
   border-radius: 10px;
-  background-color: lightyellow;
+  background-color: lightpink;
   text-decoration: none;
   font-size: 20px;
 }
 
 .navigate a.act {
-  background-color: lightyellow;
+  background-color: lightblue;
   font-weight: 800;
   text-shadow: 0 0 1px;
   font-family: "Iosevka SS04", "monosapce", monospace;
@@ -133,7 +136,7 @@ import {RouterView, RouterLink} from "vue-router";
   margin: 30px auto 0;
   border-radius: 10px;
   width: 100%;
-  height: 800px;
+  height: 700px;
   border: 1px solid;
 }
 </style>

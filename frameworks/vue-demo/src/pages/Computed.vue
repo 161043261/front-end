@@ -44,7 +44,7 @@ const router = useRouter();
 onMounted(() => {
   console.log("parent mounted");
   setTimeout(() => {
-    router.push("/hook")
+    // router.push("/hook")
   }, 5000);
 });
 </script>

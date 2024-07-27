@@ -12,7 +12,7 @@ export default function () {
         //     (err: any) => { console.log(err); });
         try {
             let resp = await axios.get(
-                "https://dog.ceo/api/breed/pembroke/images/random",
+                "https://dog.ceo/api/breeds/image/random",
             );
             dogList.push(resp.data.message as string);
         } catch (err) {

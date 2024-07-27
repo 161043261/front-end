@@ -40,7 +40,7 @@ const {dogList, addDog} = useDog();
 }
 
 img {
-  height: 100px;
+  height: 200px;
   margin-right: 10px;
 }
 </style>

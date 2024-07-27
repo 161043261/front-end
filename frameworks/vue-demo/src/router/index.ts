@@ -17,6 +17,8 @@ import Bus from "@/pages/communicate/mitt/Parent.vue";
 import Attrs from "@/pages/communicate/$attrs/Grandparent.vue";
 import RefsParent from "@/pages/communicate/$refs-$parent/Parent.vue";
 import ProvideInject from "@/pages/communicate/provide-inject/Grandparent.vue"
+import Slot from "@/pages/communicate/slot/Parent.vue"
+import ScopedSlot from "@/pages/communicate/slot/scoped/Parent.vue"
 // create router
 const router = createRouter({
     history: createWebHistory(), // Router Mode
@@ -56,6 +58,8 @@ const router = createRouter({
         {path: "/attrs", component: Attrs},
         {path: "/refs-parent", component: RefsParent},
         {path: "/provide-inject", component: ProvideInject},
+        {path: "/slot", component: Slot},
+        {path: "/slot/scoped", component: ScopedSlot},
     ],
 });
 
