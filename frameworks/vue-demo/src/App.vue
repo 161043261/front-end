@@ -35,19 +35,20 @@ let display = ref(true);
   <div class="app">
     <p class="title">vue-demo</p>
     <div class="navigate">
-      <RouterLink active-class="act" to="/computed">Computed</RouterLink>
+      <RouterLink active-class="act" to="/computed">computed</RouterLink>
       <RouterLink active-class="act" v-bind:to="{ path: '/torefs' }">ToRefs</RouterLink>
-      <RouterLink active-class="act" v-bind:to="{ name: 'hookComponent' }">Hook</RouterLink>
-      <RouterLink active-class="act" to="/query">Query</RouterLink>
-      <!-- default push -->
-      <RouterLink active-class="act" replace to="/param">Param</RouterLink>
+      <RouterLink active-class="act" v-bind:to="{ name: 'hookComponent' }">hook</RouterLink>
+      <RouterLink active-class="act" to="/query">query</RouterLink>
+      <!-- push, replace (default push) -->
+      <RouterLink active-class="act" replace to="/param">param</RouterLink>
 
       <!-- inter-component communication -->
-      <RouterLink active-class="act" to="/props">Props</RouterLink>
-      <RouterLink active-class="act" to="/event">Event</RouterLink>
-      <RouterLink active-class="act" to="/mitt">Mitt</RouterLink>
-      <RouterLink active-class="act" to="/model">Model</RouterLink>
-      <RouterLink active-class="act" to="/attr">Attr</RouterLink>
+      <RouterLink active-class="act" to="/props">props</RouterLink>
+      <RouterLink active-class="act" to="/event">$event</RouterLink>
+      <RouterLink active-class="act" to="/mitt">mitt</RouterLink>
+      <RouterLink active-class="act" to="/model">v-model:</RouterLink>
+      <RouterLink active-class="act" to="/attrs">$attrs</RouterLink>
+      <RouterLink active-class="act" to="/refsparent">$refs $parent</RouterLink>
     </div>
 
     <div class="main-content">

@@ -5,35 +5,30 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import {onUnmounted, ref} from "vue";
+
 import emitter from "@/utils/emitter";
 
-let computer = ref("Lenovo");
-let toy = ref('');
-
-emitter.on('pass-toy', (value: any) => { // bind 'pass-toy' event
-  toy.value = value;
-});
-
-onUnmounted(() => { // unbind 'pass-toy' event
-  emitter.off('pass-toy');
-});
+let toy: string = 'Optimus Prime'
 </script>
 
 <template>
   <div class="girl">
     <p>@/pages/communicate/mitt/Girl.vue</p>
-    <p>computer: {{ computer }}</p>
-    <p>toy passed from boy: {{ toy }}</p>
+    <p>toy: {{ toy }}</p>
+    <button @click="emitter.emit('pass-toy', toy)">pass toy to boy</button>
   </div>
 </template>
 
 <style scoped>
 .girl {
   margin-top: 50px;
-  background-color: lightgreen;
+  background-color: lightpink;
   padding: 10px;
   box-shadow: 0 0 10px black;
   border-radius: 10px;
+}
+
+.boy button {
+  margin-right: 5px;
 }
 </style>

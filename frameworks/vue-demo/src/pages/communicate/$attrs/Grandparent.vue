@@ -22,8 +22,8 @@ export default {
   <div class="grandparent">
     <p>@/pages/communicate/$attr/Grandparent.vue</p>
     <p>a={{ a }} b={{ b }} c={{ c }} d={{ d }}</p>
-    <!-- v-bind="{x:100,y:1-00}" is equivalent to :x=100 :y=100 -->
-    <Parent :a="a" :b="b" :c="c" :d="d" :addA="addA" v-bind="{x:100,y:200}"/>
+    <!-- v-bind="{x:5,y:6}" is equivalent to :x=5 :y=6 -->
+    <Parent :a="a" :addA="addA" :b="b" :c="c" :d="d" v-bind="{x:5,y:6}"/>
   </div>
 </template>
 

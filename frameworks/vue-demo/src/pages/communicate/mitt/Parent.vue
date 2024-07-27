@@ -5,15 +5,15 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import Boy from './Boy.vue';
 import Girl from './Girl.vue';
+import Boy from './Boy.vue';
 </script>
 
 <template>
   <div class="parent">
-    <p>Boy -- toy -> Girl</p>
-    <Boy/>
+    <p>Girl -- toy(Optimus Prime) -> Boy</p>
     <Girl/>
+    <Boy/>
   </div>
 </template>
 
