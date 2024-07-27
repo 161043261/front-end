@@ -12,7 +12,7 @@ import Boy from './Boy.vue';
 <template>
   <div class="parent">
     <p>@/pages/communicate/mitt/Parent.vue</p>
-    <p>Girl -- toy(Optimus Prime) -> Boy</p>
+    <p>Girl -- toy(OptimusPrime) -> Boy</p>
     <Girl/>
     <Boy/>
   </div>

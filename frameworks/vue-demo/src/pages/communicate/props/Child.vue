@@ -7,7 +7,7 @@ export default {
 <script lang="ts" setup>
 import {ref} from 'vue';
 
-let toy = ref('Optimus Prime');
+let toy = ref('OptimusPrime');
 defineProps(['car', 'passToy'])
 </script>
 

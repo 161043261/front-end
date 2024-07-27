@@ -48,7 +48,8 @@ let display = ref(true);
       <RouterLink active-class="act" to="/mitt">mitt</RouterLink>
       <RouterLink active-class="act" to="/model">v-model:</RouterLink>
       <RouterLink active-class="act" to="/attrs">$attrs</RouterLink>
-      <RouterLink active-class="act" to="/refsparent">$refs $parent</RouterLink>
+      <RouterLink active-class="act" to="/refs-parent">$refs $parent</RouterLink>
+      <RouterLink active-class="act" to="/provide-inject">provide-inject</RouterLink>
     </div>
 
     <div class="main-content">
@@ -113,8 +114,8 @@ import {RouterView, RouterLink} from "vue-router";
   display: block;
   text-align: center;
   width: 100px;
-  height: 10px;
-  line-height: 10px;
+  height: 20px;
+  line-height: 20px;
   border-radius: 10px;
   background-color: lightyellow;
   text-decoration: none;
@@ -132,7 +133,7 @@ import {RouterView, RouterLink} from "vue-router";
   margin: 30px auto 0;
   border-radius: 10px;
   width: 100%;
-  height: 600px;
+  height: 800px;
   border: 1px solid;
 }
 </style>

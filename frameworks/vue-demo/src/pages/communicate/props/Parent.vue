@@ -2,7 +2,7 @@
 import Child from './Child.vue';
 import {ref} from 'vue';
 
-let car = ref('Mercedes Benz');
+let car = ref('MercedesBenz');
 let toy = ref('');
 
 function passToy(value: string) {

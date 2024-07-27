@@ -2,6 +2,7 @@ import mitt from 'mitt';
 // emitter can bind event and trigger event
 const emitter = mitt();
 
+//TODO mitt test
 function test() {
     // bind event
     emitter.on('test1', () => {

@@ -1,11 +1,15 @@
 <script lang="ts" setup>
 import {ref} from "vue";
 
-let toy = ref('Optimus Prime');
+let toy = ref('OptimusPrime');
 let age = ref(3);
 
 // defineExpose({toy, age});
 defineExpose({"toy": toy, "age": age});
+
+function subAge(parent: any) {
+  parent.age--;
+}
 </script>
 
 <script lang="ts">
@@ -19,6 +23,8 @@ export default {
     <p>@/pages/communicate/$refs-$parent/Girl.vue</p>
     <p>toy: {{ toy }}</p>
     <p>age: {{ age }}</p>
+    <!-- $parent -->
+    <button @click="subAge($parent)">parent.age--</button>
   </div>
 </template>
 

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import {onMounted, ref} from 'vue';
 
-let onMountedToy = ref('Optimus Prime');
+let onMountedToy = ref('OptimusPrime');
 let clickToy = ref('Bumblebee')
 
 // declare 'pass-toy' custom event

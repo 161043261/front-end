@@ -16,6 +16,7 @@ import Event from "@/pages/communicate/custom-event/Parent.vue"
 import Bus from "@/pages/communicate/mitt/Parent.vue";
 import Attrs from "@/pages/communicate/$attrs/Grandparent.vue";
 import RefsParent from "@/pages/communicate/$refs-$parent/Parent.vue";
+import ProvideInject from "@/pages/communicate/provide-inject/Grandparent.vue"
 // create router
 const router = createRouter({
     history: createWebHistory(), // Router Mode
@@ -53,7 +54,8 @@ const router = createRouter({
         {path: "/mitt", component: Bus},
         {path: "/model", component: Model},
         {path: "/attrs", component: Attrs},
-        {path: "/refsparent", component: RefsParent},
+        {path: "/refs-parent", component: RefsParent},
+        {path: "/provide-inject", component: ProvideInject},
     ],
 });
 

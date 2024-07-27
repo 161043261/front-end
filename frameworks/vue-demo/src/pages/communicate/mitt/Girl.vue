@@ -8,7 +8,7 @@ export default {
 
 import emitter from "@/utils/emitter";
 
-let toy: string = 'Optimus Prime'
+let toy: string = 'OptimusPrime'
 </script>
 
 <template>

@@ -5,6 +5,10 @@ let computer = ref('Lenovo');
 let age = ref(5);
 
 defineExpose({computer, age});
+
+function addAge(parent: any) {
+  parent.age++;
+}
 </script>
 
 <script lang="ts">
@@ -18,6 +22,8 @@ export default {
     <p>@/pages/communicate/$refs-$parent/Boy.vue</p>
     <p>computer: {{ computer }}</p>
     <p>age: {{ age }}</p>
+    <!-- $parent -->
+    <button @click="addAge($parent)">parent.age++</button>
   </div>
 </template>
 
