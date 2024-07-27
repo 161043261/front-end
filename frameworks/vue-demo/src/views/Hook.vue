@@ -26,7 +26,7 @@ const {dogList, addDog} = useDog();
     <p>sum = {{ sum }}; 10 * sum = {{ bigSum }};</p>
     <button @click="addSum">add sum</button>
     <hr/>
-    <img alt="dog" v-for="(dog, index) in dogList" v-bind:key="index" v-bind:src="dog"/><br/>
+    <img v-for="(dog, index) in dogList" v-bind:key="index" alt="dog" v-bind:src="dog"/><br/>
     <button @click="addDog">add dog</button>
   </div>
 </template>
