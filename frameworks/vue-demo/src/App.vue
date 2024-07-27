@@ -132,7 +132,7 @@ import {RouterView, RouterLink} from "vue-router";
   margin: 30px auto 0;
   border-radius: 10px;
   width: 100%;
-  height: 500px;
+  height: 600px;
   border: 1px solid;
 }
 </style>

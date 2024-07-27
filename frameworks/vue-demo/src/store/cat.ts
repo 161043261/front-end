@@ -25,7 +25,7 @@ export const useCatStore = defineStore('cat', () => {
 
     async function addCat() {
         let {data} = await axios.get('https://api.thecatapi.com/v1/images/search')
-        let cat = {id: nanoid(), title: data[0].cat as string}
+        let cat = {id: nanoid(), title: data[0].url as string}
         catList.unshift(cat)
     }
 

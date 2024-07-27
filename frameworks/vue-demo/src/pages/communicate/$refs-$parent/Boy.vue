@@ -1,5 +1,10 @@
 <script lang="ts" setup>
+import {ref} from "vue";
 
+let computer = ref('Lenovo');
+let age = ref(5);
+
+defineExpose({computer, age});
 </script>
 
 <script lang="ts">
@@ -10,7 +15,9 @@ export default {
 
 <template>
   <div class="boy">
-
+    <p>@/pages/communicate/$refs-$parent/Boy.vue</p>
+    <p>computer: {{ computer }}</p>
+    <p>age: {{ age }}</p>
   </div>
 </template>
 
