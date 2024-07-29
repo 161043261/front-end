@@ -4,7 +4,7 @@ import { ref } from 'vue'
 import useCustomRefMsg from '@/hooks/useCustomRefMsg'
 
 let refMsg = ref('Hello World')
-let { customRefMsg } = useCustomRefMsg('Hello World', 3000);
+let { customRefMsg } = useCustomRefMsg('Hello World', 3000)
 </script>
 
 <script lang="ts">
