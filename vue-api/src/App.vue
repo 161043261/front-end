@@ -1,9 +1,11 @@
 <script lang="ts" setup>
-import Readonly from '@/components/shallow/Readonly.vue'
+import AsReadonly from '@/components/shallow/Readonly.vue'
 import RefReactive from '@/components/shallow/RefReactive.vue'
 import CustomRef from '@/components/CustomRef.vue'
 import ToRawMarkRaw from '@/components/ToRawMarkRaw.vue'
-import TeleportComponent from '@/components/teleport/Parent.vue'
+import AsTeleport from '@/components/teleport/Parent.vue'
+import AsSuspense from '@/components/suspense/Parent.vue'
+// import Demo from './Demo.vue' // unnecessary
 </script>
 
 <script lang="ts">
@@ -14,11 +16,17 @@ export default {
 
 <template>
   <div class="app">
-    <Readonly />
+    <Demo /> <!-- global component -->
+
+    <!-- beautify: global instruction -->
+    <!-- x: global property -->
+    <p v-beautify="' (beautified)'"> {{ x }} </p>
+    <AsReadonly />
     <RefReactive />
     <CustomRef />
     <ToRawMarkRaw />
-    <TeleportComponent />
+    <AsTeleport />
+    <AsSuspense />
   </div>
 </template>
 
