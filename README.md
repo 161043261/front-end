@@ -8,5 +8,4 @@
 4. ✅ JavaScript, TypeScript
 6. ✅ Promise (async, await), AJAX (axios)
 7. Vue
-8. NodeJS + MongoDB
-9. Webpack?
+8. Webpack...
