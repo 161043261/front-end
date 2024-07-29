@@ -5,11 +5,11 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import {useRoute} from "vue-router";
-import {toRefs} from "vue";
+import { useRoute } from 'vue-router'
+import { toRefs } from 'vue'
 
-const route = useRoute();
-let {params} = toRefs(route);
+const route = useRoute()
+let { params } = toRefs(route)
 defineProps(['id', 'title', 'content'])
 </script>
 

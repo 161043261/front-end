@@ -1,11 +1,11 @@
 <script lang="ts" setup>
-import {inject} from 'vue'
+import { inject } from 'vue'
 
-let {money, subMoney} = inject('moneyContext', {
+let { money, subMoney } = inject('moneyContext', {
   money: 0, subMoney: (arg: number) => {
   }
-});
-let car = inject('carContext', {brand: '', price: 0});
+})
+let car = inject('carContext', { brand: '', price: 0 })
 </script>
 
 <script lang="ts">

@@ -5,16 +5,16 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import Girl from './Girl.vue';
-import Boy from './Boy.vue';
+import Girl from './Girl.vue'
+import Boy from './Boy.vue'
 </script>
 
 <template>
   <div class="parent">
     <p>@/views/communicate/mitt/Parent.vue</p>
     <p>Girl -- toy(OptimusPrime) -> Boy</p>
-    <Girl/>
-    <Boy/>
+    <Girl />
+    <Boy />
   </div>
 </template>
 

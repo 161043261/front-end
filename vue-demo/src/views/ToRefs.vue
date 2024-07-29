@@ -1,35 +1,35 @@
 <script lang="ts" setup>
-import {reactive, toRef, type ToRef, type ToRefs, toRefs} from "vue";
+import { reactive, toRef, type ToRef, type ToRefs, toRefs } from 'vue'
 
 let people = reactive<{ username: string; age: number }>({
-  username: "Brendan Eich",
-  age: 0, // people.username and people.age are reactive
-});
+  username: 'Brendan Eich',
+  age: 0 // people.username and people.age are reactive
+})
 
 // destruct assignment
 // let {username, age} = people; // username and age are NO LONGER reactive!!!
-let {username, age}: ToRefs<{ username: string; age: number }> =
-    toRefs(people); // username and age are reactive
+let { username, age }: ToRefs<{ username: string; age: number }> =
+  toRefs(people) // username and age are reactive
 // console.log(toRefs(people));
 
-let refAge: ToRef<number> = toRef(people, "age");
+let refAge: ToRef<number> = toRef(people, 'age')
 
 // console.log(refAge);
 function changeName() {
   // people.username += '~';
-  username.value = username.value + "!";
+  username.value = username.value + '!'
 }
 
 function changeAge() {
   // people.age += 1;
-  age.value += 1;
+  age.value += 1
 }
 </script>
 
 <script lang="ts">
 export default {
-  name: "ToRefs",
-};
+  name: 'ToRefs'
+}
 </script>
 
 <template>

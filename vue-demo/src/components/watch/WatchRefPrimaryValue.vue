@@ -1,22 +1,22 @@
 <script lang="ts">
 export default {
-  name: "WatchRefPrimaryValue",
+  name: 'WatchRefPrimaryValue'
 }
 </script>
 
 <script lang="ts" setup>
-import {ref, watch} from 'vue';
+import { ref, watch } from 'vue'
 
-let sum = ref(0);
+let sum = ref(0)
 
 function changeSum() {
-  (sum.value)++;
+  (sum.value)++
 }
 
 const stopWatching = watch(sum, (newValue, oldValue) => {
-  console.log(oldValue, '->', newValue);
+  console.log(oldValue, '->', newValue)
   if (newValue > 10) {
-    stopWatching();
+    stopWatching()
   }
 })
 </script>

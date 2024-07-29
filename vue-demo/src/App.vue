@@ -1,34 +1,34 @@
 <script lang="ts" setup>
-import {type CatList} from "@/types";
-import {reactive, ref} from "vue";
-import AsProp from "./components/Prop.vue";
-import AsLifeCycle from "./components/LifeCycle.vue";
-import AsReactive from "./components/Reactive.vue";
-import AsRef from "./components/Ref.vue";
-import AsSetup from "./components/Setup.vue";
-import AsTagRef from "./components/TagRef.vue";
-import WatchEffect from "./components/watch/WatchEffect.vue";
-import WatchGetter from "./components/watch/WatchGetter.vue";
-import WatchReactiveObject from "./components/watch/WatchReactiveObject.vue";
-import WatchRefObject from "./components/watch/WatchRefObject.vue";
-import WatchRefPrimaryValue from "./components/watch/WatchRefPrimaryValue.vue";
-import Count from "@/components/pinia/Count.vue";
-import Cat from "@/components/pinia/Cat.vue";
+import { type CatList } from '@/types'
+import { reactive, ref } from 'vue'
+import AsProp from './components/Prop.vue'
+import AsLifeCycle from './components/LifeCycle.vue'
+import AsReactive from './components/Reactive.vue'
+import AsRef from './components/Ref.vue'
+import AsSetup from './components/Setup.vue'
+import AsTagRef from './components/TagRef.vue'
+import WatchEffect from './components/watch/WatchEffect.vue'
+import WatchGetter from './components/watch/WatchGetter.vue'
+import WatchReactiveObject from './components/watch/WatchReactiveObject.vue'
+import WatchRefObject from './components/watch/WatchRefObject.vue'
+import WatchRefPrimaryValue from './components/watch/WatchRefPrimaryValue.vue'
+import Count from '@/components/pinia/Count.vue'
+import Cat from '@/components/pinia/Cat.vue'
 
-let componentTagRef = ref();
+let componentTagRef = ref()
 
 function componentTagRefLog() {
-  console.log(componentTagRef);
+  console.log(componentTagRef)
 }
 
 let catList: CatList = reactive<CatList>([
-  {id: 0, name: "Meow", age: 1},
-  {id: 1, name: "HappyCat", age: 2},
-  {id: 2, name: "Tomcat", age: 3, optional: 250},
-]);
+  { id: 0, name: 'Meow', age: 1 },
+  { id: 1, name: 'HappyCat', age: 2 },
+  { id: 2, name: 'Tomcat', age: 3, optional: 250 }
+])
 // console.log(catList);
 
-let display = ref(true);
+let display = ref(true)
 </script>
 
 <template>
@@ -57,28 +57,28 @@ let display = ref(true);
     <div class="main-content">
       <RouterView></RouterView>
     </div>
-    <AsSetup/> <!-- <TagName props/> -->
-    <AsReactive/>
-    <AsRef/>
-    <WatchRefPrimaryValue/>
-    <WatchRefObject/>
-    <WatchReactiveObject/>
-    <WatchGetter/>
-    <WatchEffect/>
+    <AsSetup /> <!-- <TagName props/> -->
+    <AsReactive />
+    <AsRef />
+    <WatchRefPrimaryValue />
+    <WatchRefObject />
+    <WatchReactiveObject />
+    <WatchGetter />
+    <WatchEffect />
     <AsTagRef ref="componentTagRef">
       <!-- ./components/TagRef.vue:18 -->
       <button @click="componentTagRefLog">componentTagRefLog</button>
     </AsTagRef>
     <!-- <AsDefineProp :args="['data', 'passed', 'from', 'parent']" v-bind:cats="catList"/> -->
-    <AsProp v-bind:cats="catList"/>
-    <AsLifeCycle v-if="display"/>
-    <Count/>
-    <Cat/>
+    <AsProp v-bind:cats="catList" />
+    <AsLifeCycle v-if="display" />
+    <Count />
+    <Cat />
   </div>
 </template>
 
 <script lang="ts">
-import {RouterView, RouterLink} from "vue-router";
+import { RouterView, RouterLink } from 'vue-router'
 </script>
 
 <style>

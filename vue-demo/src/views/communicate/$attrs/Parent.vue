@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import Child from "./Child.vue";
+import Child from './Child.vue'
 </script>
 
 <script lang="ts">
 export default {
-  name: 'Parent',
+  name: 'Parent'
 }
 </script>
 
@@ -12,7 +12,7 @@ export default {
   <div class="parent">
     <p>@/views/communicate/$attr/Parent.vue</p>
     <p>$attrs: {{ $attrs }}</p>
-    <Child v-bind="$attrs"/>
+    <Child v-bind="$attrs" />
   </div>
 </template>
 

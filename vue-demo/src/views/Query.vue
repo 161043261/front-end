@@ -5,16 +5,16 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import {reactive} from 'vue';
-import {RouterView, RouterLink, useRouter} from "vue-router";
+import { reactive } from 'vue'
+import { RouterView, RouterLink, useRouter } from 'vue-router'
 
 const newsList = reactive([
-  {id: 1, title: 'Express', content: 'expressjs.com'},
-  {id: 2, title: 'React', content: 'react.dev'},
-  {id: 3, title: 'Vue', content: 'vuejs.org'}
-]);
+  { id: 1, title: 'Express', content: 'expressjs.com' },
+  { id: 2, title: 'React', content: 'react.dev' },
+  { id: 3, title: 'Vue', content: 'vuejs.org' }
+])
 
-const router = useRouter();
+const router = useRouter()
 
 interface INews {
   id: number,
@@ -30,7 +30,7 @@ function show(news: INews) {
       title: news.title,
       content: news.content
     }
-  });
+  })
 }
 </script>
 

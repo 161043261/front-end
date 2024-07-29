@@ -5,14 +5,14 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import {toRefs} from 'vue';
-import {useRoute} from "vue-router";
+import { toRefs } from 'vue'
+import { useRoute } from 'vue-router'
 
-defineProps(['id', 'title', 'content']);
+defineProps(['id', 'title', 'content'])
 
-const route = useRoute();
+const route = useRoute()
 // destruct assignment
-let {query} = toRefs(route); //query is NO LONGER reactive!!! (refer to ./ToRefs.vue)
+let { query } = toRefs(route) //query is NO LONGER reactive!!! (refer to ./ToRefs.vue)
 </script>
 
 <template>

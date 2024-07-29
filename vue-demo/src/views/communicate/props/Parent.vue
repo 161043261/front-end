@@ -1,12 +1,12 @@
 <script lang="ts" setup>
-import Child from './Child.vue';
-import {ref} from 'vue';
+import Child from './Child.vue'
+import { ref } from 'vue'
 
-let car = ref('MercedesBenz');
-let toy = ref('');
+let car = ref('MercedesBenz')
+let toy = ref('')
 
 function passToy(value: string) {
-  toy.value = value;
+  toy.value = value
 }
 </script>
 
@@ -22,7 +22,7 @@ export default {
     <p>car: {{ car }}</p>
     <p v-show="toy">toy passed from child: {{ toy }}</p>
     <!-- communicate by props -->
-    <Child v-bind:car="car" v-bind:passToy="passToy"/>
+    <Child v-bind:car="car" v-bind:passToy="passToy" />
   </div>
 </template>
 

@@ -1,14 +1,14 @@
 <script lang="ts" setup>
-import {ref} from "vue";
+import { ref } from 'vue'
 
-let toy = ref('OptimusPrime');
-let age = ref(3);
+let toy = ref('OptimusPrime')
+let age = ref(3)
 
 // defineExpose({toy, age});
-defineExpose({"toy": toy, "age": age});
+defineExpose({ 'toy': toy, 'age': age })
 
 function subAge(parent: any) {
-  parent.age--;
+  parent.age--
 }
 </script>
 

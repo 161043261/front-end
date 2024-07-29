@@ -1,12 +1,12 @@
 <script lang="ts" setup>
-import Child from './Child.vue';
-import {ref} from 'vue';
+import Child from './Child.vue'
+import { ref } from 'vue'
 
 let toy = ref('')
 
 function passToy(value: string) {
-  console.log('toy passed from child: ', value);
-  toy.value = value;
+  console.log('toy passed from child: ', value)
+  toy.value = value
 }
 </script>
 
@@ -21,7 +21,7 @@ export default {
     <p>@/views/communicate/custom-event/Parent.vue</p>
     <p v-show="toy">toy passed from child: {{ toy }}</p>
     <!-- bind 'pass-toy' custom event -->
-    <Child @pass-toy="passToy"/>
+    <Child @pass-toy="passToy" />
   </div>
 </template>
 

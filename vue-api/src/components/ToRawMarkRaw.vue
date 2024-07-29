@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import { markRaw, reactive, ref, toRaw } from 'vue'
 
 // ***** toRaw *****
@@ -45,6 +45,7 @@ export default {
 
 <template>
   <div class="toRawMarkRaw">
+    <p><em>***** toRaw, toMarkRaw *****</em></p>
     <p>name: {{ people.name }}</p>
     <p>age: {{ people.age }}</p>
     <button @click="changePeopleAge()">people.age += 1</button>
@@ -53,13 +54,19 @@ export default {
     <button @click="changeRawPeopleName()">rawPeople.name += '!!!!!!!!!!'</button>
     <hr>
     <p>refCar: {{ refCar }}</p>
-    <button @click="changeRefCarPrice()">refCarPrice += 1</button> <!-- invalid -->
+    <button @click="changeRefCarPrice()">refCarPrice += 1 (invalid)</button> <!-- invalid -->
   </div>
 </template>
 
 <style scoped>
 button {
-  display: block;
-  margin: 5px;
+  margin-right: 5px;
+}
+
+.toRawMarkRaw {
+  background-color: lightpink;
+  box-shadow: 0 0 10px;
+  border-radius: 10px;
+  padding: 20px;
 }
 </style>

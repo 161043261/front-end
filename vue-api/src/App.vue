@@ -1,33 +1,29 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-
-import useCustomRefMsg from '@/hooks/useCustomRefMsg'
-
-let refMsg = ref('Hello World')
-let { customRefMsg } = useCustomRefMsg('Hello World', 3000);
+<script lang="ts" setup>
+import Readonly from '@/components/shallow/Readonly.vue'
+import RefReactive from '@/components/shallow/RefReactive.vue'
+import CustomRef from '@/components/CustomRef.vue'
+import ToRawMarkRaw from '@/components/ToRawMarkRaw.vue'
+import TeleportComponent from '@/components/teleport/Parent.vue'
 </script>
 
 <script lang="ts">
 export default {
-  name: 'CustomRef'
+  name: 'App'
 }
 </script>
 
 <template>
-  <div class="customRef">
-    <p>Immediate Response : {{ refMsg }}</p>
-    <p>Delayed Response for 3s: {{ customRefMsg }}</p>
-    <input type="text" v-model="refMsg">
-    <input type="text" v-model="customRefMsg">
+  <div class="app">
+    <Readonly />
+    <RefReactive />
+    <CustomRef />
+    <ToRawMarkRaw />
+    <TeleportComponent />
   </div>
 </template>
 
-<style scoped>
-
-</style>
-
 <style>
 * {
-  font-family: Iosevka SS12, monospace;
+  font-family: Iosevka SS06, monospace;
 }
 </style>

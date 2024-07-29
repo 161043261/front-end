@@ -6,7 +6,7 @@ export default {
 
 <script lang="ts" setup>
 
-import emitter from "@/utils/emitter";
+import emitter from '@/utils/emitter'
 
 let toy: string = 'OptimusPrime'
 </script>

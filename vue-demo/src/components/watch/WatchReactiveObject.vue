@@ -1,11 +1,11 @@
 <script lang="ts">
 export default {
-  name: "WatchReactiveObject"
+  name: 'WatchReactiveObject'
 }
 </script>
 
 <script lang="ts" setup>
-import {reactive, watch} from 'vue';
+import { reactive, watch } from 'vue'
 
 let person = reactive({
   name: 'steve jobs', // tim cook
@@ -13,26 +13,26 @@ let person = reactive({
 })
 
 function changeName() {
-  person.name += '!';
+  person.name += '!'
 }
 
 function changeAge() {
-  person.age += 1;
+  person.age += 1
 }
 
 function changePerson() {
   Object.assign(person, {
-    name: person.name.startsWith("s") ? "tim cook" : "steve jobs", // new object
+    name: person.name.startsWith('s') ? 'tim cook' : 'steve jobs', // new object
     age: 0
-  });
+  })
 }
 
 // watch(source, callback, options);
 watch(person, (newValue, oldValue) => {
-  console.log(oldValue === newValue); // are oldValue and newValue the same object?
+  console.log(oldValue === newValue) // are oldValue and newValue the same object?
 }, {
   deep: true, // default true
-  immediate: false, // default false
+  immediate: false // default false
 })
 </script>
 

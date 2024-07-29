@@ -1,39 +1,39 @@
 <script lang="ts">
 export default {
-  name: 'Reactive',
+  name: 'Reactive'
 }
 </script>
 
 <script lang="ts" setup>
-import {reactive} from "vue";
+import { reactive } from 'vue'
 
 // let car = {brand: "Toyota", price: 10};
-let car = reactive<{ brand: string, price: number }>({brand: "Toyota", price: 10});
+let car = reactive<{ brand: string, price: number }>({ brand: 'Toyota', price: 10 })
 
 // primaryValue => ref(primaryValue) => RefImpl { value: primaryValue }
 // object       => ref(object)       => RefImpl { value: Proxy(Object) object }
 // object       => reactive(object)  => Proxy(Object) object
 
 function changeBrand() {
-  const brands = ["Honda", "Mazda", "Toyota"];
-  car.brand = brands[Math.floor(Math.random() * 3)];
+  const brands = ['Honda', 'Mazda', 'Toyota']
+  car.brand = brands[Math.floor(Math.random() * 3)]
 }
 
 function changePrice() {
-  car.price = Math.floor(Math.random() * 10 + 1);
+  car.price = Math.floor(Math.random() * 10 + 1)
 }
 
 function resetCar() {
   // car = { brand: "Honda", price: 10 }; // false, car is NO LONGER reactive.
-  Object.assign(car, {brand: "Honda", price: 10}); // true, car is still reactive.
+  Object.assign(car, { brand: 'Honda', price: 10 }) // true, car is still reactive.
 }
 
 function changeFirstGame() {
-  games[0].name = (games[0].name == "Honkai Impact") ? "Zenless Zone Zero" : "Honkai Impact";
+  games[0].name = (games[0].name == 'Honkai Impact') ? 'Zenless Zone Zero' : 'Honkai Impact'
 }
 
 let games = reactive<{ id: number, name: string }[]>(
-    [{id: 1, name: 'Honkai Impact'}, {id: 2, name: 'Genshin Impact'}, {id: 3, name: 'Honkai: Star Rail'}]);
+  [{ id: 1, name: 'Honkai Impact' }, { id: 2, name: 'Genshin Impact' }, { id: 3, name: 'Honkai: Star Rail' }])
 </script>
 
 <template>

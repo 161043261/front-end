@@ -5,9 +5,9 @@ export default {
 </script>
 
 <script lang="ts" setup>
-defineProps(['modelValue']);
-const emits = defineEmits(['update:modelValue']);
-console.log(emits);
+defineProps(['modelValue'])
+const emits = defineEmits(['update:modelValue'])
+console.log(emits)
 </script>
 
 <template>

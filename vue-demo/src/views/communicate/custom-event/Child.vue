@@ -1,15 +1,15 @@
 <script lang="ts" setup>
-import {onMounted, ref} from 'vue';
+import { onMounted, ref } from 'vue'
 
-let onMountedToy = ref('OptimusPrime');
+let onMountedToy = ref('OptimusPrime')
 let clickToy = ref('Bumblebee')
 
 // declare 'pass-toy' custom event
-const emit = defineEmits(['pass-toy']);
+const emit = defineEmits(['pass-toy'])
 
 onMounted(() => {
   setTimeout(() => {
-    emit('pass-toy', onMountedToy.value/* args */); // trigger 'pass-toy' custom event
+    emit('pass-toy', onMountedToy.value/* args */) // trigger 'pass-toy' custom event
   }, 1000)
 })
 </script>

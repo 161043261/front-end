@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import {ref} from 'vue';
-import Child from './Child.vue';
+import { ref } from 'vue'
+import Child from './Child.vue'
 
-let username = ref('root');
-let password = ref('1024');
+let username = ref('root')
+let password = ref('1024')
 </script>
 
 <script lang="ts">
@@ -29,7 +29,7 @@ TODO
       -->
 
       <!--TODO 'v-bind:' or ':' implements 1-way binding -->
-      <input v-bind:value="password" v-on:input="password = (<HTMLInputElement>$event.target).value"/></p>
+      <input v-bind:value="password" v-on:input="password = (<HTMLInputElement>$event.target).value" /></p>
     <hr>
 
     <!--TODO "v-model:' or '@' implements 2-way binding -->
@@ -38,13 +38,13 @@ TODO
     alias 'modelValue', 'update:modelValue' to 'aliasName', 'update:aliasName'
     <Child v-model:aliasName="username"/>
     -->
-    <Child v-model="username"/>
+    <Child v-model="username" />
     <!-- defineProps(['modelValue']) -->
     <!-- defineEmits(['update:modelValue']) -->
 
     <!-- password: ./Parent.vue -> ./Child.vue -->
     <Child v-bind:modelValue="password"
-           v-on:update:modelValue="password = $event"/>
+           v-on:update:modelValue="password = $event" />
     <!-- password: ./Parent.vue <- ./Child.vue -->
   </div>
 </template>

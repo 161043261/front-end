@@ -1,37 +1,37 @@
 <script lang="ts">
 export default {
-  name: "WatchEffect"
+  name: 'WatchEffect'
 }
 </script>
 
 <script lang="ts" setup>
-import {ref, watch, watchEffect} from "vue";
+import { ref, watch, watchEffect } from 'vue'
 
-let temperature = ref(0);
-let depth = ref(0);
+let temperature = ref(0)
+let depth = ref(0)
 
 function changeTemperature() {
-  temperature.value += 10;
+  temperature.value += 10
 }
 
 function changeDepth() {
-  depth.value += 10;
+  depth.value += 10
 }
 
 // watch implementation
 watch([temperature, depth], (value) => {
-  let [newTemperature, newDepth] = value; // destruct assignment
+  let [newTemperature, newDepth] = value // destruct assignment
   if (newTemperature >= 60 || newDepth >= 80) {
-    console.log("alert: watch implementation");
+    console.log('alert: watch implementation')
   }
-});
+})
 
 // watchEffect implementation: reactively watch
 watchEffect(() => {
   if (temperature.value >= 60 || depth.value >= 80) { // reactively watch temperature and depth
-    console.log("alert: watchEffect implementation");
+    console.log('alert: watchEffect implementation')
   }
-}); // immediate
+}) // immediate
 </script>
 
 <template>

@@ -1,59 +1,59 @@
 <script lang="ts">
 export default {
-  name: "Computed"
+  name: 'Computed'
 }
 </script>
 
 <script lang="ts" setup>
-import {computed, onMounted, ref, type Ref} from 'vue';
-import {useRouter} from "vue-router";
+import { computed, onMounted, ref, type Ref } from 'vue'
+import { useRouter } from 'vue-router'
 
-let firstName: Ref<string> = ref<string>("ayaka");
-let lastName: Ref<string> = ref<string>("kamisato");
+let firstName: Ref<string> = ref<string>('ayaka')
+let lastName: Ref<string> = ref<string>('kamisato')
 
 // READONLY computed property
 let readonlyFullName = computed(() => {
   return lastName.value.slice(0, 1).toUpperCase() + lastName.value.slice(1) + ' ' +
-      firstName.value.slice(0, 1).toUpperCase() + firstName.value.slice(1);
-});
+    firstName.value.slice(0, 1).toUpperCase() + firstName.value.slice(1)
+})
 
 // console.log(fullName); // ComputedRefImpl
 
 // @Deprecated
 function getReadonlyFullName() {
   return lastName.value.slice(0, 1).toUpperCase() + lastName.value.slice(1) + ' ' +
-      firstName.value.slice(0, 1).toUpperCase() + firstName.value.slice(1);
+    firstName.value.slice(0, 1).toUpperCase() + firstName.value.slice(1)
 }
 
 // MUTABLE computed property
 let mutableFullName = computed({
   get() {
     return lastName.value.slice(0, 1).toUpperCase() + lastName.value.slice(1) + ' ' +
-        firstName.value.slice(0, 1).toUpperCase() + firstName.value.slice(1);
+      firstName.value.slice(0, 1).toUpperCase() + firstName.value.slice(1)
   },
   set(arg) {
-    [lastName.value, firstName.value] = arg.split(' ');
+    [lastName.value, firstName.value] = arg.split(' ')
   }
 })
 
 function changeFullName() {
-  mutableFullName.value = "Yae Miko";
+  mutableFullName.value = 'Yae Miko'
 }
 
-const router = useRouter();
+const router = useRouter()
 onMounted(() => {
-  console.log("parent mounted");
+  console.log('parent mounted')
   setTimeout(() => {
     // router.push("/hook")
-  }, 5000);
-});
+  }, 5000)
+})
 </script>
 
 <template>
   <div class="computed">
     <p>computed</p>
-    firstName: <input v-model="firstName" type="text"/>
-    lastName: <input v-model="lastName" type="text"/>
+    firstName: <input v-model="firstName" type="text" />
+    lastName: <input v-model="lastName" type="text" />
     <hr>
     <p>readonlyFullName: {{ readonlyFullName }}</p>
     <p>getReadonlyFullName() = {{ getReadonlyFullName() }}</p>

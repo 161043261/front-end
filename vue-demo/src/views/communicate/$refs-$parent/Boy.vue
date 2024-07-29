@@ -1,13 +1,13 @@
 <script lang="ts" setup>
-import {ref} from "vue";
+import { ref } from 'vue'
 
-let computer = ref('Lenovo');
-let age = ref(5);
+let computer = ref('Lenovo')
+let age = ref(5)
 
-defineExpose({computer, age});
+defineExpose({ computer, age })
 
 function addAge(parent: any) {
-  parent.age++;
+  parent.age++
 }
 </script>
 

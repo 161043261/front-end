@@ -1,19 +1,19 @@
 <script lang="ts" setup>
 import Parent from './Parent.vue'
-import {provide, reactive, ref} from 'vue'
+import { provide, reactive, ref } from 'vue'
 
-let money = ref(100_000_000);
+let money = ref(100_000_000)
 let car = reactive({
   brand: 'MercedesBenz',
   price: 100
-});
+})
 
 // providing data and function to children
-provide('moneyContext', {"money": money, subMoney/* equivalent to `"subMoney": subMoney` */});
-provide('carContext', car);
+provide('moneyContext', { 'money': money, subMoney/* equivalent to `"subMoney": subMoney` */ })
+provide('carContext', car)
 
 function subMoney(delta: number) {
-  money.value -= delta;
+  money.value -= delta
 }
 </script>
 
@@ -28,7 +28,7 @@ export default {
     <p>@/views/communicate/provide-inject/Grandparent.vue</p>
     <p>money: {{ money }}</p>
     <p>car: {{ car }}</p>
-    <Parent/>
+    <Parent />
   </div>
 </template>
 

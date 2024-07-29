@@ -5,13 +5,13 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import {reactive} from "vue";
+import { reactive } from 'vue'
 
 let games = reactive([
-  {id: "1", name: 'Honkai Impact'},
-  {id: "2", name: 'Genshin Impact'},
-  {id: "3", name: 'Honkai: Star Rail'},
-]);
+  { id: '1', name: 'Honkai Impact' },
+  { id: '2', name: 'Genshin Impact' },
+  { id: '3', name: 'Honkai: Star Rail' }
+])
 </script>
 
 <template>

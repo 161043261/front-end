@@ -1,15 +1,15 @@
 <script lang="ts" setup>
 import Child from './Child.vue'
-import {reactive, ref} from "vue";
+import { reactive, ref } from 'vue'
 
 let games = reactive([
-  {id: "1", name: 'Honkai Impact'},
-  {id: "2", name: 'Genshin Impact'},
-  {id: "3", name: 'Honkai: Star Rail'},
-]);
+  { id: '1', name: 'Honkai Impact' },
+  { id: '2', name: 'Genshin Impact' },
+  { id: '3', name: 'Honkai: Star Rail' }
+])
 
-let imageUrl = ref("/image.png");
-let videoUrl = ref("/video.mp4");
+let imageUrl = ref('/image.png')
+let videoUrl = ref('/video.mp4')
 </script>
 
 <script lang="ts">

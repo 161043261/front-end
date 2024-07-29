@@ -1,10 +1,10 @@
 <script lang="ts">
 export default {
-  name: "WatchRefObject",
+  name: 'WatchRefObject'
 }
 </script>
 <script lang="ts" setup>
-import {ref, watch} from 'vue';
+import { ref, watch } from 'vue'
 
 let person = ref({
   name: 'steve jobs', // tim cook
@@ -12,26 +12,26 @@ let person = ref({
 })
 
 function changeName() {
-  person.value.name += '!';
+  person.value.name += '!'
 }
 
 function changeAge() {
-  person.value.age += 1;
+  person.value.age += 1
 }
 
 function changePerson() {
   person.value = {
-    name: person.value.name.startsWith("s") ? "tim cook" : "steve jobs",
+    name: person.value.name.startsWith('s') ? 'tim cook' : 'steve jobs',
     age: 0
   }
 }
 
 // watch(source, callback, options);
 watch(person, (newValue, oldValue) => {
-  console.log(oldValue === newValue); // are oldValue and newValue the same object?
+  console.log(oldValue === newValue) // are oldValue and newValue the same object?
 }, {
   deep: true, // default true
-  immediate: false, // default false
+  immediate: false // default false
 })
 </script>
 

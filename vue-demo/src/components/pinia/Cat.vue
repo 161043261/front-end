@@ -5,20 +5,20 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import {useCatStore} from "@/stores/cat";
-import {storeToRefs} from "pinia";
+import { useCatStore } from '@/stores/cat'
+import { storeToRefs } from 'pinia'
 //
 // pinia
 //
-const catStore = useCatStore();
-const {catList} = storeToRefs(catStore);
+const catStore = useCatStore()
+const { catList } = storeToRefs(catStore)
 catStore.$subscribe((mutation, state) => {
-  console.log(mutation, state);
-  localStorage.setItem('catList', JSON.stringify(state.catList));
-});
+  console.log(mutation, state)
+  localStorage.setItem('catList', JSON.stringify(state.catList))
+})
 
 function clear() {
-  localStorage.clear();
+  localStorage.clear()
 }
 </script>
 

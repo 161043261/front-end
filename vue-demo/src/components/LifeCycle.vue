@@ -5,25 +5,25 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import {ref, onBeforeMount, onMounted, onBeforeUpdate, onUpdated, onBeforeUnmount, onUnmounted} from 'vue';
+import { ref, onBeforeMount, onMounted, onBeforeUpdate, onUpdated, onBeforeUnmount, onUnmounted } from 'vue'
 
-let sum = ref(0);
+let sum = ref(0)
 
 function add() {
-  (sum.value)++;
+  (sum.value)++
 }
 
 // LifeCycle: beforeCreate & created => setup
-onBeforeMount(() => console.log("onBeforeMount"));
-onMounted(() => console.log("child mounted"));
-onBeforeUpdate(() => console.log("onBeforeUpdate"));
-onUpdated(() => console.log("onUpdated"));
+onBeforeMount(() => console.log('onBeforeMount'))
+onMounted(() => console.log('child mounted'))
+onBeforeUpdate(() => console.log('onBeforeUpdate'))
+onUpdated(() => console.log('onUpdated'))
 onBeforeUnmount(() => {
-  console.log("onBeforeUnmount")
-});
+  console.log('onBeforeUnmount')
+})
 onUnmounted(() => {
-  console.log("onUnmounted")
-});
+  console.log('onUnmounted')
+})
 
 </script>
 

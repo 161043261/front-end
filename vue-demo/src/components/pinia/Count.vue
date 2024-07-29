@@ -5,25 +5,25 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import {useCountStore} from '@/stores/count';
-import {storeToRefs} from "pinia";
+import { useCountStore } from '@/stores/count'
+import { storeToRefs } from 'pinia'
 
-const countStore = useCountStore(); // countStore is a reactive object
+const countStore = useCountStore() // countStore is a reactive object
 // console.log(countStore.sum/* recommend */, countStore.$state.sum);
 
 // Method 2
-countStore.$patch({sum: 1, n: 1}); // countStore.sum = 100; countStore.n = 1
+countStore.$patch({ sum: 1, n: 1 }) // countStore.sum = 100; countStore.n = 1
 // Method 3
-countStore.addSum(2);
+countStore.addSum(2)
 
 function add() {
   // Method 1
-  countStore.sum += countStore.n;
+  countStore.sum += countStore.n
 }
 
 function sub() {
   // Method 1
-  countStore.sum -= countStore.n;
+  countStore.sum -= countStore.n
 }
 
 // destruct assignment
@@ -33,7 +33,7 @@ function sub() {
 // const {sum, n} = toRefs(countStore)
 
 // 2. use pinia.storeToRefs (recommend)
-const {sum, n, big, bigger, biggest} = storeToRefs(countStore);
+const { sum, n, big, bigger, biggest } = storeToRefs(countStore)
 
 // 3. use vue.toRef
 // const sum = toRef(countStore, 'sum');

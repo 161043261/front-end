@@ -5,17 +5,17 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import {ref} from 'vue';
+import { ref } from 'vue'
 
-let htmlTagRef = ref(); // htmlTagRef -> <p ref="htmlTagRef">tag ref</p>
+let htmlTagRef = ref() // htmlTagRef -> <p ref="htmlTagRef">tag ref</p>
 function htmlTagRefLog() {
-  console.log(htmlTagRef.value);
+  console.log(htmlTagRef.value)
 }
 
-let a = ref(0);
-let b = ref(1);
-let c = ref(2);
-defineExpose({a: a.value, b: b.value, c: c.value}); // user-defined expose
+let a = ref(0)
+let b = ref(1)
+let c = ref(2)
+defineExpose({ a: a.value, b: b.value, c: c.value }) // user-defined expose
 </script>
 
 <template>

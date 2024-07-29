@@ -11,7 +11,7 @@ export default {
 <template>
   <div class="parent">
     <p>@/views/communicate/provide-inject/Parent.vue</p>
-    <Child/>
+    <Child />
   </div>
 </template>
 

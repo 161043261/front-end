@@ -1,11 +1,11 @@
 <script lang="ts">
 export default {
-  name: "WatchGetter"
+  name: 'WatchGetter'
 }
 </script>
 
 <script lang="ts" setup>
-import {reactive, watch} from 'vue';
+import { reactive, watch } from 'vue'
 
 let person = reactive({
   name: 'Kirara', // primaryValue
@@ -14,10 +14,10 @@ let person = reactive({
     auto1: 'Mazda',
     auto2: 'Tesla'
   }
-});
+})
 
 function changeName() {
-  person.name += '!';
+  person.name += '!'
 }
 
 function changeAge() {
@@ -25,18 +25,18 @@ function changeAge() {
 }
 
 function changeAuto1() {
-  const jpAutos = ['Mazda', 'Toyota', 'Honda', 'Nissan'];
-  person.autos.auto1 = jpAutos[Math.floor(Math.random() * 4)];
+  const jpAutos = ['Mazda', 'Toyota', 'Honda', 'Nissan']
+  person.autos.auto1 = jpAutos[Math.floor(Math.random() * 4)]
 }
 
 function changeAuto2() {
-  const usAutos = ['Ford', 'Jeep', 'Cadillac', 'Tesla'];
-  person.autos.auto2 = usAutos[Math.floor(Math.random() * 4)];
+  const usAutos = ['Ford', 'Jeep', 'Cadillac', 'Tesla']
+  person.autos.auto2 = usAutos[Math.floor(Math.random() * 4)]
 }
 
 function changeAutos() {
-  const jpAutos = ['Mazda', 'Toyota', 'Honda', 'Nissan'];
-  const usAutos = ['Ford', 'Jeep', 'Cadillac', 'Tesla'];
+  const jpAutos = ['Mazda', 'Toyota', 'Honda', 'Nissan']
+  const usAutos = ['Ford', 'Jeep', 'Cadillac', 'Tesla']
   person.autos = {
     auto1: jpAutos[Math.floor(Math.random() * 4)],
     auto2: usAutos[Math.floor(Math.random() * 4)]
@@ -47,19 +47,19 @@ function changeAutos() {
  * A watch source can only be a getter/effect function, a ref, a reactive, or an array of these types.
  */
 watch(() => person.name/* getter */, (newValue, oldValue) => {
-  console.log(newValue === oldValue);
-});
+  console.log(newValue === oldValue)
+})
 
 watch(person.autos, (newValue, oldValue) => {
-  console.log(newValue == oldValue); // monitor object property
-});
+  console.log(newValue == oldValue) // monitor object property
+})
 
 watch(() => person.autos, (newValue, oldValue) => { // monitor object address
-  console.log(newValue == oldValue);
-}, {deep: true}); // default false, watch object property meanwhile
+  console.log(newValue == oldValue)
+}, { deep: true }) // default false, watch object property meanwhile
 
 watch([() => person.name, person.autos], (newValue, oldValue) => {
-  console.log(oldValue, '=>', newValue);
+  console.log(oldValue, '=>', newValue)
 })
 </script>
 

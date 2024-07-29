@@ -2,8 +2,8 @@
 export default {
   name: 'Setup',
   beforeCreate() {
-    console.log("beforeCreate"); // vue2
-  },
+    console.log('beforeCreate') // vue2
+  }
   // setup() { ...
   //     return { username, age, changeName, changeAge, showTel };
   //     // return () => { "Hello World"; }
@@ -12,30 +12,30 @@ export default {
 </script>
 
 <script lang="ts" setup>// setup sugar
-import {type Ref, ref, type UnwrapRef} from 'vue';
+import { type Ref, ref, type UnwrapRef } from 'vue'
 
 // console.log(this); // undefined
 
 // data
 // let username = 'Default';
-let username: Ref<UnwrapRef<string>> = ref('Tom');
+let username: Ref<UnwrapRef<string>> = ref('Tom')
 // let age = 0;
-let age: Ref<UnwrapRef<number>> = ref(0);
-let tel: string = '911';
+let age: Ref<UnwrapRef<number>> = ref(0)
+let tel: string = '911'
 
 // functions
 function changeName() {
   // username = new Date().toString();
-  username.value = username.value == 'Tom' ? 'Jerry' : 'Tom';
+  username.value = username.value == 'Tom' ? 'Jerry' : 'Tom'
 }
 
 function changeAge() {
   // age++;
-  (age.value)++;
+  (age.value)++
 }
 
 function showTel() {
-  window.alert(tel);
+  window.alert(tel)
 }
 </script>
 

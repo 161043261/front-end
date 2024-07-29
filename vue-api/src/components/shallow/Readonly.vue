@@ -39,6 +39,7 @@ export default {
 
 <template>
   <div class="readonly">
+    <p><em>***** shallowReadonly *****</em></p>
     <p>sum = {{ sum }}</p>
     <p>readonlySum = {{ readonlySum }}</p>
     <p>car = {{ car }}</p>
@@ -55,5 +56,12 @@ export default {
 <style scoped>
 button {
   margin-right: 5px;
+}
+
+.readonly {
+  background-color: lightpink;
+  box-shadow: 0 0 10px;
+  border-radius: 10px;
+  padding: 20px;
 }
 </style>

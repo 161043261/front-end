@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-defineProps(['a', 'b', 'c', 'd', 'x', 'y', 'addA']);
+defineProps(['a', 'b', 'c', 'd', 'x', 'y', 'addA'])
 </script>
 
 <script lang="ts">
 export default {
-  name: 'Child',
+  name: 'Child'
 }
 </script>
 

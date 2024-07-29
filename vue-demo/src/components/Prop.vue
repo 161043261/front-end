@@ -5,8 +5,8 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import {defineProps, withDefaults} from 'vue'; // `defineProps` is a compiler macro and no longer needs to be imported.
-import {type CatList} from "@/types";
+import { defineProps, withDefaults } from 'vue' // `defineProps` is a compiler macro and no longer needs to be imported.
+import { type CatList } from '@/types'
 
 // // using Array syntax
 // const props = defineProps(['args', 'cats']); // data passed from the parent component '../App.vue'
@@ -15,7 +15,7 @@ import {type CatList} from "@/types";
 withDefaults(defineProps<{
   args?: string[], // optional
   cats: CatList // necessary
-}>(), {args: () => ["defineProps", "data", "passed", "from", "parent"]}); // defaults (value is primaryType or getter)
+}>(), { args: () => ['defineProps', 'data', 'passed', 'from', 'parent'] }) // defaults (value is primaryType or getter)
 </script>
 
 <template>
