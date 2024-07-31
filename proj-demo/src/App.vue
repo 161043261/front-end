@@ -1,30 +1,23 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import Article from './components/Article.vue'
+<script lang="ts" setup>
+import LoginView from './views/LoginView.vue'
 </script>
 
 <template>
   <header>
     <div class="wrapper">
-      <Article />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
+      <LoginView />
+      <!-- <Article /> -->
     </div>
   </header>
-
-  <RouterView />
 </template>
 
-<style scoped>
+<style>
 @font-face {
-  font-family: 'Iosevka SS06';
-  src: url('/IosevkaFixedSS06-Regular.woff2') format('woff2');
+  font-family: 'Iosevka Aile';
+  src: url('/IosevkaAile-Regular.woff2') format('woff2');
 }
 
 * {
-  font-family: 'Iosevka SS06', monospace;
+  font-family: 'Iosevka Aile', monospace;
 }
 </style>

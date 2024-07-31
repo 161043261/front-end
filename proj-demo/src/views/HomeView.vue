@@ -4,14 +4,14 @@
 
 <script lang="ts">
 export default {
-    name: "HomeView"
+  name: 'HomeView'
 }
 </script>
 
 <template>
-    <div class="homeView">
+  <div class="homeView">
 
-    </div>
+  </div>
 </template>
 
 <style scoped>
