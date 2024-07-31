@@ -1,12 +1,13 @@
 <script lang="ts" setup>
 import LoginView from './views/LoginView.vue'
+// import Article from '@/components/Article.vue'
 </script>
 
 <template>
   <header>
     <div class="wrapper">
-      <LoginView />
-      <!-- <Article /> -->
+       <LoginView />
+       <!-- <Article /> -->
     </div>
   </header>
 </template>
