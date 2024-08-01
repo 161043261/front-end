@@ -14,6 +14,15 @@ export default defineConfig({
     }
   },
   server: {
-    host: '0.0.0.0'
+    host: '0.0.0.0',
+    proxy: {
+      '/api': {
+        target: 'http://127.0.0.1:8080', // e.g. http://127.0.0.1:5173 -> http://127.0.0.1:8080
+        changeOrigin: true,
+        rewrite: (path: string) => {
+          return path.replace('/api', '')
+        }
+      }
+    }
   }
 })

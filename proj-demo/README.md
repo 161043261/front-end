@@ -27,10 +27,7 @@ npm run build
 npm run lint
 ```
 
+* v-bind: == :
+* v-on: == @
 * Iosevka SS04, Menlo Style
 * Iosevka SS06, Liberation Mono Style
-* Iosevka SS07, Monaco Style
-* Iosevka SS09, Source Code Pro Style
-* Iosevka SS12, Ubuntu Mono Style
-* Iosevka SS14, JetBrains Mono Style
-* Iosevka SS16, PT Mono Style

@@ -17,11 +17,11 @@ const disabled = ref(false)
 const total = ref(40)
 
 function handleSizeChange(val: number) {
-  console.log(`${val} items per page`)
+  // console.log(`${val} items per page`)
 }
 
 function handleCurrentChange(val: number) {
-  console.log(`current page: ${val}`)
+  // console.log(`current page: ${val}`)
 }
 
 const formInline = reactive({
@@ -32,11 +32,11 @@ const formInline = reactive({
 })
 
 function onSubmit() {
-  console.log('submit!')
+  // console.log('submit!')
 }
 
 function onReset() {
-  console.log('reset!')
+  // console.log('reset!')
 }
 </script>
 
@@ -83,17 +83,15 @@ function onReset() {
         <el-button :icon="Delete" circle type="danger" />
       </el-table-column>
     </el-table>
-    <!-- v-bind: == : -->
-    <!-- v-on: == @ -->
     <el-pagination v-model:current-page="currentPage"
                    v-model:page-size="pageSize"
                    :background="background"
                    :disabled="disabled"
+                   :page-sizes="[10, 20, 30, 40]"
                    :size="size"
                    :total="total"
                    class="el-page"
-                   layout="jumper, total, sizes, prev, pager, next"
-                   v-bind:page-sizes="[10, 20, 30, 40]" v-on:size-change="handleSizeChange"
+                   layout="jumper, total, sizes, prev, pager, next" @size-change="handleSizeChange"
                    @current-change="handleCurrentChange" />
 
   </el-card>

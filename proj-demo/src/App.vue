@@ -1,24 +1,23 @@
 <script lang="ts" setup>
-import LoginView from './views/LoginView.vue'
-// import Article from '@/components/Article.vue'
+import HomeView from '@/views/HomeView.vue'
+// import Article from '@/components/ArticleManage.vue'
 </script>
 
 <template>
   <header>
     <div class="wrapper">
-       <LoginView />
-       <!-- <Article /> -->
+      <router-view></router-view>
     </div>
   </header>
 </template>
 
 <style>
 @font-face {
-  font-family: 'Iosevka Aile';
-  src: url('/IosevkaAile-Regular.woff2') format('woff2');
+  font-family: 'Iosevka SS06 Web';
+  src: url('/IosevkaSS06-Regular.woff2') format('woff2');
 }
 
 * {
-  font-family: 'Iosevka Aile', monospace;
+  font-family: 'Iosevka SS06 Web', monospace;
 }
 </style>
