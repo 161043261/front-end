@@ -38,7 +38,7 @@ export default {
             </el-icon>
             <span>User Dashboard</span>
           </template>
-          <el-menu-item index="/user/info">
+          <el-menu-item index="/user/profile">
             <el-icon>
               <User />
             </el-icon>

@@ -3,7 +3,7 @@ import HomeView from '@/views/HomeView.vue'
 import ArticleCategory from '@/views/article/ArticleCategory.vue'
 import ArticleManage from '@/views/article/ArticleManage.vue'
 import UserAvatar from '@/views/user/UserAvatar.vue'
-import UserInfo from '@/views/user/UserInfo.vue'
+import UserProfile from '@/views/user/UserProfile.vue'
 import UserPassword from '@/views/user/UserPassword.vue'
 
 const router = createRouter({
@@ -13,21 +13,19 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomeView,
-      redirect: '/article/manage',
+      redirect: '/user',
       children: [
         { path: '/article/category', component: ArticleCategory },
         { path: '/article/manage', component: ArticleManage },
         { path: '/user/avatar', component: UserAvatar },
-        { path: '/user/info', component: UserInfo },
+        { path: '/user/profile', component: UserProfile },
         { path: '/user/password', component: UserPassword }
       ]
-    }, {
-      path: '/auth', name: 'auth',
-      // route level code-splitting
-      // this generates a separate chunk (Auth.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('@/views/AuthView.vue')
-    }
+    },
+    // route level code-splitting
+    // this generates a separate chunk (User.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    { path: '/user', component: () => import('@/views/UserView.vue') }
   ]
 })
 

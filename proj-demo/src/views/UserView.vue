@@ -2,8 +2,9 @@
 import { Lock, User } from '@element-plus/icons-vue'
 import { reactive, ref } from 'vue'
 import { userLoginService, userRegisterService } from '@/apis'
-import type { ResponseData } from '@/types'
 import { useRouter } from 'vue-router'
+import type { Result } from '@/types'
+import { useTokenStore } from '@/stores'
 
 const router = useRouter()
 const isLogin = ref(true)
@@ -25,36 +26,47 @@ function checkPwd(rules: string, value: string, callback: (error?: Error) => any
 
 const rules = reactive({
   username: [{ required: true, message: 'Username is required', trigger: 'blur' },
-    { min: 4, max: 16, message: 'Username MUST be 4 to 16 characters', trigger: 'blur' }],
+    { min: 4, max: 16, message: 'Username must be 4 to 16 characters', trigger: 'blur' }],
   password: [{ required: true, message: 'Password is required', trigger: 'blur' },
-    { min: 4, max: 16, message: 'Password MUST be 4 to 16 characters', trigger: 'blur' }],
+    { min: 4, max: 16, message: 'Password must be 4 to 16 characters', trigger: 'blur' }],
   confirmPwd: [{ validator: checkPwd, trigger: 'blur' }]
 })
 
 async function register() {
-  let data: ResponseData = await userRegisterService({
+  let response = await userRegisterService({
     username: formData.value.username,
     password: formData.value.password
   })
-  if (data.code != 0) {
-    console.log('registration failed')
+  let result = response.data as Result
+  if (result.code != 1) {
+    console.log('Register Error')
+    return
   }
-  return
 }
 
 async function login() {
-  let data: ResponseData = await userLoginService(formData.value)
-  if (data.code == 0) {
-    await router.replace('/')
-  } else {
-    console.log('login failed')
+  let response = await userLoginService(formData.value)
+  let result: Result = response.data as Result
+  if (result.code != 1) {
+    console.log('Login Error')
+    return
   }
+
+  // token
+  const tokenStore = useTokenStore()
+  tokenStore.setToken(result.data)
+
+  tokenStore.$subscribe((mutation, state) => {
+    console.log('Set sessionStorage')
+    sessionStorage.setItem('token', state.stateToken)
+  })
+  await router.push('/article/manage')
 }
 </script>
 
 <script lang="ts">
 export default {
-  name: 'AuthView'
+  name: 'UserView'
 }
 </script>
 

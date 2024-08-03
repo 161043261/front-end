@@ -1,5 +1,5 @@
-export interface ResponseData {
-  code: number; // 0 as success, 1 as failed
+export interface Result {
+  code: number;
   message: string;
-  data: { [prop: string]: any };
+  data: any;
 }
