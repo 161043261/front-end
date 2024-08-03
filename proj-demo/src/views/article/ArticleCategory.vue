@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import { Delete, Edit } from '@element-plus/icons-vue'
-import useArticle from '@/hooks/useArticle'
+import useCategory from '@/hooks/useCategory'
 import { ref } from 'vue'
 import { deleteCategoryService, insertCategoryService, updateCategoryService } from '@/apis'
 import { ElMessage, ElMessageBox } from 'element-plus'
 
-const { categoryList, selectCategoryList } = useArticle()
+const { categoryList, selectCategoryList } = useCategory()
 const category = ref({ id: 0, categoryName: '' })
 const rules = { categoryName: [{ required: true, message: 'Input category name', trigger: 'blur' }] }
 const title = ref('')
@@ -20,13 +20,12 @@ function show(t: string, row?: any) {
 }
 
 async function operate(t: string) { // Insert || Update
-  let response
   switch (t) {
     case 'Insert Category':
-      response = await insertCategoryService({ categoryName: category.value.categoryName })
+      await insertCategoryService({ categoryName: category.value.categoryName })
       break
     case 'Update Category':
-      response = await updateCategoryService(category.value)
+      await updateCategoryService(category.value)
       break
   }
   await selectCategoryList()
@@ -64,7 +63,8 @@ export default {
       </div>
     </template>
     <el-table :data="categoryList" style="width: 100%">
-      <el-table-column label="ID" type="index" width="100"></el-table-column>
+      <el-table-column label="Row Number" type="index" width="100"></el-table-column>
+      <el-table-column label="Category ID" prop="id"></el-table-column>
       <el-table-column label="Category Name" prop="categoryName"></el-table-column>
       <el-table-column label="Operation" width="100">
         <template #default="{ row }">

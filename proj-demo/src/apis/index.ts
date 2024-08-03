@@ -2,7 +2,7 @@ import axios, { type AxiosInstance, type AxiosResponse } from 'axios'
 import { ElMessage } from 'element-plus'
 import { useTokenStore } from '@/stores'
 import router from '@/router'
-import type { Category } from '@/types'
+import type { Category, SelectArticleListParams } from '@/types'
 
 // You can create a new instance of axios with a custom config.
 const instance: AxiosInstance = axios.create({
@@ -45,12 +45,12 @@ instance.interceptors.response.use(
     ElMessage.error(response.data.message)
     return Promise.reject(response)
   },
-  function(error) {
+  async function(error) {
     // Any status codes that falls outside the range of 2xx cause this function to trigger
     // Do something with response error
     if (error.response.status == 401) {
       ElMessage.error('Redirect to Login')
-      router.replace('/user')
+      await router.replace('/user')
     } else {
       ElMessage.error(error.message)
     }
@@ -87,4 +87,8 @@ export function updateCategoryService(category: Category) {
 
 export function deleteCategoryService(id: number) {
   return instance.delete(`/category?id=${id}`)
+}
+
+export function selectArticleListService(params: SelectArticleListParams) {
+  return instance.get('/article', { params: params })
 }

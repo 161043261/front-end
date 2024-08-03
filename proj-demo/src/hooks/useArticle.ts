@@ -1,26 +1,52 @@
-import { selectCategoryListService } from '@/apis'
-import type { Result } from '@/types'
-import { onMounted, ref } from 'vue'
+import { onMounted, type Ref, ref } from 'vue'
+import { selectArticleListService } from '@/apis'
+import type { Article, Result, SelectArticleListParams } from '@/types'
 
+import useCategory from './useCategory'
 
 export default function() {
-  const categoryList = ref([
-    {
-      'id': 1,
-      'categoryName': 'Go',
-      'createTime': '2006-01-02 15:04:05',
-      'updateTime': '2006-01-02 15:04:05'
-    }
-  ])
+  const { categoryList } = useCategory()
+  const params: Ref<SelectArticleListParams> = ref({
+    pageNum: 1,
+    pageSize: 5
+  })
 
-  async function selectCategoryList(): Promise<any> {
-    const response = await selectCategoryListService() // use axios request interceptor
+  const total = ref(0)
+
+  const articleList: Ref<Article[]> = ref([{
+    id: 1,
+    title: 'TitleA',
+    content: 'ContentA',
+    image: '@/assets/default.png',
+    state: 0,
+    categoryId: 1,
+    createTime: '2006-01-02T15:04:05',
+    updateTime: '2006-01-02T15:04:05',
+    stateName: '',
+    categoryName: ''
+  }])
+
+  async function selectArticleList(params: SelectArticleListParams): Promise<any> {
+    const response = await selectArticleListService(params)
     const result: Result = response.data as Result
-    categoryList.value = result.data
+    total.value = result.data.total
+    articleList.value = result.data.items
   }
 
-  onMounted(() => {
-    selectCategoryList()
+  onMounted(async () => {
+    await selectArticleList(params.value)
+    // state => stateName
+    for (const article of articleList.value) {
+      article.stateName = article.state == 0 ? 'BETA' : 'RELEASE'
+    }
+    for (const article of articleList.value) {
+      for (const category of categoryList.value) {
+        console.log(article, category)
+        if (article.categoryId === category.id) {
+          article.categoryName = category.categoryName
+        }
+      }
+    }
   })
-  return { categoryList, selectCategoryList }
+  return { categoryList, params, total, articleList, selectArticleList }
 }

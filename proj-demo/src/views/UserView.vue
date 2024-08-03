@@ -5,10 +5,11 @@ import { userLoginService, userRegisterService } from '@/apis'
 import { useRouter } from 'vue-router'
 import type { Result } from '@/types'
 import { useTokenStore } from '@/stores'
+import { ElMessage } from 'element-plus'
 
 const router = useRouter()
 const isLogin = ref(true)
-const formData = ref({
+const user = ref({
   username: '',
   password: '',
   confirmPwd: ''
@@ -17,7 +18,7 @@ const formData = ref({
 function checkPwd(rules: string, value: string, callback: (error?: Error) => any) {
   if (value == '') {
     callback(new Error('ConfirmPwd is required'))
-  } else if (value != formData.value.password) {
+  } else if (value != user.value.password) {
     callback(new Error('Password is NOT equivalent to confirmPwd'))
   } else {
     callback()
@@ -33,9 +34,15 @@ const rules = reactive({
 })
 
 async function register() {
+  if (user.value.password != user.value.confirmPwd) {
+    user.value.password = ''
+    user.value.confirmPwd = ''
+    ElMessage.error('Password is NOT equivalent to confirmPwd')
+    return
+  }
   await userRegisterService({
-    username: formData.value.username,
-    password: formData.value.password
+    username: user.value.username,
+    password: user.value.password
   })
   isLogin.value = true
 }
@@ -43,14 +50,14 @@ async function register() {
 const tokenStore = useTokenStore()
 
 async function login() {
-  let response = await userLoginService(formData.value)
+  let response = await userLoginService(user.value)
   let result: Result = response.data as Result
   tokenStore.$subscribe((mutation, state) => {
     console.log('set sessionStorage')
     sessionStorage.setItem('token', state.token)
   })
   tokenStore.setToken(result.data) // trigger tokenStore.$subscribe
-  await router.push('/article/manage')
+  await router.replace('/article/manage')
 }
 </script>
 
@@ -65,15 +72,15 @@ export default {
     <el-col :span="12" class="bg" />
     <el-col :offset="3" :span="6" class="form">
       <!-- Login Form -->
-      <el-form v-if="isLogin" ref="form" :model="formData" :rules="rules" autocomplete="off" size="large">
+      <el-form v-if="isLogin" ref="form" :model="user" :rules="rules" autocomplete="off" size="large">
         <el-form-item>
           <h1>Login</h1>
         </el-form-item>
         <el-form-item label="Username" prop="username"> <!-- prop="username" corresponds to rules.value.username -->
-          <el-input v-model="formData.username" :prefix-icon="User" placeholder="Input username" />
+          <el-input v-model="user.username" :prefix-icon="User" placeholder="Input username" />
         </el-form-item>
         <el-form-item label="Password" prop="password">
-          <el-input v-model="formData.password" :prefix-icon="Lock" name="password" placeholder="Input password"
+          <el-input v-model="user.password" :prefix-icon="Lock" name="password" placeholder="Input password"
                     type="password" />
         </el-form-item>
         <el-form-item class="flex">
@@ -91,18 +98,18 @@ export default {
       </el-form>
 
       <!-- Register Form -->
-      <el-form v-else ref="form" :model="formData" :rules="rules" autocomplete="off" size="large">
+      <el-form v-else ref="form" :model="user" :rules="rules" autocomplete="off" size="large">
         <el-form-item>
           <h1>Register</h1>
         </el-form-item>
         <el-form-item label="Username" prop="username">
-          <el-input v-model="formData.username" :prefix-icon="User" placeholder="Input username" />
+          <el-input v-model="user.username" :prefix-icon="User" placeholder="Input username" />
         </el-form-item>
         <el-form-item label="Password" prop="password">
-          <el-input v-model="formData.password" :prefix-icon="Lock" placeholder="Input password" type="password" />
+          <el-input v-model="user.password" :prefix-icon="Lock" placeholder="Input password" type="password" />
         </el-form-item>
         <el-form-item label="ConfirmPwd" prop="confirmPwd">
-          <el-input v-model="formData.confirmPwd" :prefix-icon="Lock" placeholder="Confirm password" type="password" />
+          <el-input v-model="user.confirmPwd" :prefix-icon="Lock" placeholder="Confirm password" type="password" />
         </el-form-item>
         <el-form-item>
           <el-button auto-insert-space class="button" type="primary" @click="register">Register</el-button>
