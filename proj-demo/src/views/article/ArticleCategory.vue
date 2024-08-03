@@ -57,7 +57,7 @@ export default {
       <div class="header">
         <span>Article Category</span>
         <div class="extra">
-          <el-button type="primary" @click="show('Insert Category')">Insert Category
+          <el-button round type="primary" @click="show('Insert Category')">Insert Category
           </el-button>
         </div>
       </div>
@@ -87,8 +87,8 @@ export default {
       </el-form>
       <template #footer>
         <span class="dialog-footer">
-            <el-button @click="visible = false">Cancel</el-button>
-            <el-button type="primary" @click="operate(title)">Confirm</el-button>
+            <el-button round @click="visible = false">Cancel</el-button>
+            <el-button round type="primary" @click="operate(title)">Confirm</el-button>
         </span>
       </template>
     </el-dialog>

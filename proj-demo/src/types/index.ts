@@ -32,11 +32,11 @@ export interface Article {
   title: string
   content: string
   image: string
-  state: number // state: 0 as BETA, 1 as RELEASE
-  categoryId: number
+  state: number | undefined // state: 0 as BETA, 1 as RELEASE
+  categoryId: number | undefined
   createUser?: number
-  createTime: string
-  updateTime: string
+  createTime?: string
+  updateTime?: string
   stateName?: string
   categoryName?: string
 }

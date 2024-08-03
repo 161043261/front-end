@@ -1,23 +1,35 @@
 <script lang="ts" setup>
-import { Delete, Edit } from '@element-plus/icons-vue'
+import { Delete, Edit, Plus } from '@element-plus/icons-vue'
 
-import { ref } from 'vue'
 import useArticle from '@/hooks/useArticle'
+import { type Ref, ref, watch } from 'vue'
+import type { Article } from '@/types'
 
-const { categoryList, total, articleList } = useArticle()
-const categoryId = ref('')
-const state = ref('')
-const pageNum = ref(1)
-const pageSize = ref(5)
+const { params, categoryList, total, articleList, selectArticleList } = useArticle()
 
 function onPageNumChange(num: number) {
-  pageNum.value = num
+  params.value.pageNum = num
 }
 
 function onPageSizeChange(size: number) {
-  pageSize.value = size
+  params.value.pageSize = size
 }
 
+watch(params, (newValue, oldValue) => {
+  selectArticleList(params.value)
+}, {
+  deep: true, // default true
+  immediate: true // default false
+})
+
+const visible = ref(false)
+const article: Ref<Article> = ref({
+  title: '',
+  content: '',
+  image: '',
+  state: undefined,
+  categoryId: undefined
+})
 </script>
 <template>
   <el-card class="page-container">
@@ -25,13 +37,13 @@ function onPageSizeChange(size: number) {
       <div class="header">
         <span>Article Management</span>
         <div class="extra">
-          <el-button type="primary">Insert Article</el-button>
+          <el-button round type="primary" @click="visible = true">Insert Article</el-button>
         </div>
       </div>
     </template>
     <el-form inline>
       <el-form-item label="Article Category">
-        <el-select v-model="categoryId" placeholder="Category List">
+        <el-select v-model="params.categoryId" placeholder="Category List">
           <el-option
             v-for="c in categoryList"
             :key="c.id"
@@ -42,14 +54,15 @@ function onPageSizeChange(size: number) {
       </el-form-item>
 
       <el-form-item label="Article State">
-        <el-select v-model="state" placeholder="0 as BETA, 1 as RELEASE">
+        <el-select v-model="params.state" placeholder="0 as BETA, 1 as RELEASE">
           <el-option label="BETA" value=0></el-option>
           <el-option label="RELEASE" value=1></el-option>
         </el-select>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary">Search</el-button>
-        <el-button>Reset</el-button>
+        <el-button round type="danger"
+                   @click="params.categoryId = undefined; params.state = undefined; selectArticleList(params)">Reset
+        </el-button>
       </el-form-item>
     </el-form>
     <el-table :data="articleList" style="width: 100%">
@@ -67,10 +80,38 @@ function onPageSizeChange(size: number) {
         <el-empty description="No data" />
       </template>
     </el-table>
-    <el-pagination v-model:current-page="pageNum" v-model:page-size="pageSize" :page-sizes="[5 ,10, 15]"
-                   :total="total" background layout="jumper, total, sizes, prev, pager, next"
-                   style="margin-top: 20px; justify-content: flex-end"
-                   @size-change="onPageSizeChange" @current-change="onPageNumChange" />
+    <el-pagination v-model:current-page="params.pageNum" v-model:page-size="params.pageSize" :page-sizes="[5 ,10, 15]"
+                   :total="total" layout="jumper, total, sizes, prev, pager, next"
+                   style="margin-top: 20px; justify-content: flex-end" @size-change="onPageSizeChange"
+                   @current-change="onPageNumChange" />
+    <el-drawer v-model="visible" direction="rtl" size="50%" title="Insert Article">
+      <el-form :model="article" label-width="100px">
+        <el-form-item label="Title">
+          <el-input v-model="article.title" placeholder="Input Title"></el-input>
+        </el-form-item>
+        <el-form-item label="Category">
+          <el-select v-model="article.categoryId" placeholder="Select Category">
+            <el-option v-for="c in categoryList" :key="c.id" :label="c.categoryName" :value="c.id">
+            </el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="Image">
+          <el-upload :auto-upload="false" :show-file-list="false" class="avatar-uploader">
+            <img v-if="article.image" :src="article.image" alt="article image" class="avatar" />
+            <el-icon v-else class="avatar-uploader-icon">
+              <Plus />
+            </el-icon>
+          </el-upload>
+        </el-form-item>
+        <el-form-item label="Content">
+          <div class="editor">Editor</div>
+        </el-form-item>
+        <el-form-item>
+          <el-button round>BETA</el-button>
+          <el-button round type="primary">RELEASE</el-button>
+        </el-form-item>
+      </el-form>
+    </el-drawer>
   </el-card>
 </template>
 
@@ -88,5 +129,40 @@ function onPageSizeChange(size: number) {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.avatar-uploader :deep .avatar {
+  width: 180px;
+  height: 180px;
+  display: block;
+}
+
+.avatar-uploader :deep .el-upload {
+  border: 1px dashed var(--el-border-color);
+  border-radius: 5px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: var(--el-transition-duration-fast);
+}
+
+.avatar-uploader :deep .el-upload:hover {
+  border-color: var(--el-color-primary);
+}
+
+.avatar-uploader :deep .el-icon.avatar-uploader-icon {
+  font-size: 28px;
+  color: black;
+  width: 180px;
+  height: 180px;
+  text-align: center;
+}
+
+.editor {
+  width: 100%;
+}
+
+.editor :deep(.ql-editor) {
+  min-height: 200px;
 }
 </style>

@@ -21,9 +21,7 @@ export default function() {
     state: 0,
     categoryId: 1,
     createTime: '2006-01-02T15:04:05',
-    updateTime: '2006-01-02T15:04:05',
-    stateName: '',
-    categoryName: ''
+    updateTime: '2006-01-02T15:04:05'
   }])
 
   async function selectArticleList(params: SelectArticleListParams): Promise<any> {
@@ -31,22 +29,22 @@ export default function() {
     const result: Result = response.data as Result
     total.value = result.data.total
     articleList.value = result.data.items
+    for (const article of articleList.value) { // state -> stateName
+      article.stateName = article.state == 0 ? 'BETA' : 'RELEASE'
+    }
+
+    for (const article of articleList.value) { // categoryId -> categoryName
+      for (const category of categoryList.value) {
+        if (article.categoryId === category.id) {
+          article.categoryName = category.categoryName
+          break
+        }
+      }
+    }
   }
 
   onMounted(async () => {
     await selectArticleList(params.value)
-    // state => stateName
-    for (const article of articleList.value) {
-      article.stateName = article.state == 0 ? 'BETA' : 'RELEASE'
-    }
-    for (const article of articleList.value) {
-      for (const category of categoryList.value) {
-        console.log(article, category)
-        if (article.categoryId === category.id) {
-          article.categoryName = category.categoryName
-        }
-      }
-    }
   })
   return { categoryList, params, total, articleList, selectArticleList }
 }
