@@ -1,47 +1,42 @@
 <script lang="ts" setup>
 import { Delete, Edit } from '@element-plus/icons-vue'
+import useArticle from '@/hooks/useArticle'
 import { ref } from 'vue'
-import { articleCategoryService } from '@/apis'
+import { insertCategoryService, updateCategoryService } from '@/apis'
 import type { Result } from '@/types'
-import { useTokenStore } from '@/stores'
 
-const categoryList = ref([
-  {
-    'id': 1,
-    'categoryName': 'C/C++',
-    'createTime': '2006-01-02 15:04:05',
-    'updateTime': '2006-01-02 15:04:05'
-  },
-  {
-    'id': 2,
-    'categoryName': 'Go',
-    'createTime': '2006-01-02 15:04:05',
-    'updateTime': '2006-01-02 15:04:05'
-  },
-  {
-    'id': 3,
-    'categoryName': 'Java',
-    'createTime': '2006-01-02 15:04:05',
-    'updateTime': '2006-01-02 15:04:05'
-  }
-])
+const { categoryList, selectCategoryList } = useArticle()
+const category = ref({ id: 0, categoryName: '' })
+const rules = { categoryName: [{ required: true, message: 'Input category name', trigger: 'blur' }] }
+const title = ref('')
+const visible = ref(false)
 
-async function selectCategoryList() {
-  const tokenStore = useTokenStore()
-  const token: string = tokenStore.token // compute stateToken
-  // const { token } = storeToRefs(tokenStore) // Ref<string>
-
-  // use axios request interceptor instead
-  let response = await articleCategoryService(/* { headers: { 'Authorization': token } } */)
-  // let response = await articleCategoryService({ headers: { 'Authorization': sessionStorage.getItem('token') as string } })
-  let result: Result = response.data as Result
-  if (result.code != 1) {
-    return
-  }
-  categoryList.value = result.data
+function show(t: string, row?: any) {
+  visible.value = true
+  title.value = t
+  if (row == null) return
+  category.value.id = row.id
+  category.value.categoryName = row.categoryName
 }
 
-selectCategoryList()
+async function handler(t: string) {
+  let response
+  switch (t) {
+    case 'Insert Category':
+      response = await insertCategoryService({ categoryName: category.value.categoryName })
+      break
+    case 'Update Category':
+      response = await updateCategoryService(category.value)
+      break
+    case 'Delete Category':
+    // deleteCategory()
+  }
+  let result: Result = response!.data as Result
+  if (result.code != 1) return
+  await selectCategoryList()
+  category.value.categoryName = ''
+  visible.value = false
+}
 </script>
 
 <script lang="ts">
@@ -56,7 +51,8 @@ export default {
       <div class="header">
         <span>Article Category</span>
         <div class="extra">
-          <el-button type="primary">Insert Category</el-button>
+          <el-button type="primary" @click="show('Insert Category')">Insert Category
+          </el-button>
         </div>
       </div>
     </template>
@@ -65,14 +61,30 @@ export default {
       <el-table-column label="Category Name" prop="categoryName"></el-table-column>
       <el-table-column label="Operation" width="100">
         <template #default="{ row }">
-          <el-button :icon="Edit" circle plain type="primary"></el-button>
-          <el-button :icon="Delete" circle plain type="danger"></el-button>
+          <el-button :icon="Edit" circle plain type="primary"
+                     @click="show('Update Category', row)"></el-button>
+          <el-button :icon="Delete" circle plain type="danger"
+                     @click="show('Delete Category', row)"></el-button>
         </template>
       </el-table-column>
       <template #empty>
-        <el-empty description="NO data" />
+        <el-empty description="No data" />
       </template>
     </el-table>
+
+    <el-dialog v-model="visible" :title="title" width="40%">
+      <el-form :model="category" :rules="rules" label-width="120px" style="padding-right: 30px">
+        <el-form-item label="Category Name" prop="categoryName">
+          <el-input v-model="category.categoryName" maxlength="16" minlength="1"></el-input>
+        </el-form-item>
+      </el-form>
+      <template #footer>
+        <span class="dialog-footer">
+            <el-button @click="visible = false">Cancel</el-button>
+            <el-button type="primary" @click="handler(title)">Confirm</el-button>
+        </span>
+      </template>
+    </el-dialog>
   </el-card>
 </template>
 

@@ -5,8 +5,7 @@
 ```sh
 npm install
 npm install element-plus --save
-npm install axios
-npm install sass -D
+npm install axios pinia-persistedstate-plugin
 ```
 
 ### Compile and Hot-Reload for Development

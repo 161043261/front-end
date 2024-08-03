@@ -38,28 +38,23 @@ async function register() {
     password: formData.value.password
   })
   let result = response.data as Result
-  if (result.code != 1) {
-    console.log('Register Error')
-    return
-  }
+  if (result.code != 1) return
+  isLogin.value = true
 }
+
+const tokenStore = useTokenStore()
 
 async function login() {
   let response = await userLoginService(formData.value)
   let result: Result = response.data as Result
-  if (result.code != 1) {
-    console.log('Login Error')
-    return
-  }
-
-  // token
-  const tokenStore = useTokenStore()
-  tokenStore.setToken(result.data)
+  if (result.code != 1) return
 
   tokenStore.$subscribe((mutation, state) => {
-    console.log('Set sessionStorage')
-    sessionStorage.setItem('token', state.stateToken)
+    console.log('set sessionStorage')
+    sessionStorage.setItem('token', state.token)
   })
+
+  tokenStore.setToken(result.data) // trigger tokenStore.$subscribe
   await router.push('/article/manage')
 }
 </script>

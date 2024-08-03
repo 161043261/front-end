@@ -85,7 +85,9 @@ export default {
 
       <!-- main element -->
       <el-main>
-        <router-view></router-view>
+        <el-scrollbar>
+          <router-view></router-view>
+        </el-scrollbar>
       </el-main>
 
       <!-- footer element -->

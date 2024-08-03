@@ -3,3 +3,7 @@ export interface Result {
   message: string;
   data: any;
 }
+
+export interface Category {
+  categoryName: string;
+}

@@ -1,6 +1,8 @@
 import axios, { type AxiosInstance, type AxiosResponse } from 'axios'
 import { ElMessage } from 'element-plus'
 import { useTokenStore } from '@/stores'
+import router from '@/router'
+import type { Category } from '@/types'
 
 // You can create a new instance of axios with a custom config.
 const instance: AxiosInstance = axios.create({
@@ -9,14 +11,18 @@ const instance: AxiosInstance = axios.create({
 })
 
 // You can intercept requests or responses before they are handled by then or catch.
-
 // Add a request interceptor
 instance.interceptors.request.use(
   function config(requestConfig) {
     // Do something before request is sent
     const tokenStore = useTokenStore()
     if (tokenStore.token.length > 0) {
-      requestConfig.headers.Authorization = tokenStore.token // compute stateToken
+
+      // { 'Authorization': tokenStore.token }
+      // { 'Authorization': tokenStore.$state.token } // state
+      // { 'Authorization': tokenStore.jwtString } // getters
+      // { 'Authorization': sessionStorage.getItem('token') }
+      requestConfig.headers.Authorization = tokenStore.token
     }
     return requestConfig
   },
@@ -24,7 +30,6 @@ instance.interceptors.request.use(
     // Do something with request error
     return Promise.reject(error)
   })
-
 
 // Add a response interceptor
 instance.interceptors.response.use(
@@ -41,7 +46,13 @@ instance.interceptors.response.use(
   function(error) {
     // Any status codes that falls outside the range of 2xx cause this function to trigger
     // Do something with response error
-    ElMessage.error(error)
+    if (error.response.status == 401) {
+      ElMessage.error('Redirect to Login')
+      router.replace('/user')
+    } else {
+      console.log(error)
+      ElMessage.error(error.response.data.message)
+    }
     return Promise.reject(error)
   }
 )
@@ -61,6 +72,14 @@ export function userLoginService(userData: { [prop: string]: any }) {
   return instance.post('/user/login', params)
 }
 
-export function articleCategoryService(config?: { headers: { [prop: string]: string } }) {
+export function selectCategoryListService(config?: { headers: { [prop: string]: string } }) {
   return instance.get('/category', config)
+}
+
+export function insertCategoryService(category: Category) {
+  return instance.post('/category', category)
+}
+
+export function updateCategoryService(category: Category) {
+  return instance.put('/category', category)
 }

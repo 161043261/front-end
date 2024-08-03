@@ -3,7 +3,7 @@ import { onMounted, reactive } from 'vue'
 
 export default function() {
   // data
-  let dogList = reactive<string[]>([])
+  const dogList = reactive<string[]>([])
 
   // methods
   async function addDog() {
@@ -11,7 +11,7 @@ export default function() {
     //     (resp: any) => { console.log(resp.data); },
     //     (err: any) => { console.log(err); });
     try {
-      let resp = await axios.get(
+      const resp = await axios.get(
         'https://dog.ceo/api/breeds/image/random'
       )
       dogList.push(resp.data.message as string)
