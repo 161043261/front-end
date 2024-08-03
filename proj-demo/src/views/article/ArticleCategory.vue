@@ -2,8 +2,8 @@
 import { Delete, Edit } from '@element-plus/icons-vue'
 import useArticle from '@/hooks/useArticle'
 import { ref } from 'vue'
-import { insertCategoryService, updateCategoryService } from '@/apis'
-import type { Result } from '@/types'
+import { deleteCategoryService, insertCategoryService, updateCategoryService } from '@/apis'
+import { ElMessage, ElMessageBox } from 'element-plus'
 
 const { categoryList, selectCategoryList } = useArticle()
 const category = ref({ id: 0, categoryName: '' })
@@ -19,7 +19,7 @@ function show(t: string, row?: any) {
   category.value.categoryName = row.categoryName
 }
 
-async function handler(t: string) {
+async function operate(t: string) { // Insert || Update
   let response
   switch (t) {
     case 'Insert Category':
@@ -28,14 +28,21 @@ async function handler(t: string) {
     case 'Update Category':
       response = await updateCategoryService(category.value)
       break
-    case 'Delete Category':
-    // deleteCategory()
   }
-  let result: Result = response!.data as Result
-  if (result.code != 1) return
   await selectCategoryList()
   category.value.categoryName = ''
   visible.value = false
+}
+
+async function deleteCategory(row: any) {
+  ElMessageBox.confirm('Permanently Delete the Category, Continue?', 'WARNING',
+    { confirmButtonText: 'OK', cancelButtonText: 'Cancel', type: 'warning' }
+  ).then(async () => {
+    await deleteCategoryService(row.id)
+    await selectCategoryList()
+  }).catch(() => {
+    ElMessage.warning('Delete Cancel')
+  })
 }
 </script>
 
@@ -64,7 +71,7 @@ export default {
           <el-button :icon="Edit" circle plain type="primary"
                      @click="show('Update Category', row)"></el-button>
           <el-button :icon="Delete" circle plain type="danger"
-                     @click="show('Delete Category', row)"></el-button>
+                     @click="deleteCategory(row)"></el-button>
         </template>
       </el-table-column>
       <template #empty>
@@ -81,7 +88,7 @@ export default {
       <template #footer>
         <span class="dialog-footer">
             <el-button @click="visible = false">Cancel</el-button>
-            <el-button type="primary" @click="handler(title)">Confirm</el-button>
+            <el-button type="primary" @click="operate(title)">Confirm</el-button>
         </span>
       </template>
     </el-dialog>

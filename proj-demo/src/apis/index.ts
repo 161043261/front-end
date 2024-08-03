@@ -28,6 +28,8 @@ instance.interceptors.request.use(
   },
   function(error) {
     // Do something with request error
+    console.log(error)
+    ElMessage.error(error.message)
     return Promise.reject(error)
   })
 
@@ -50,8 +52,7 @@ instance.interceptors.response.use(
       ElMessage.error('Redirect to Login')
       router.replace('/user')
     } else {
-      console.log(error)
-      ElMessage.error(error.response.data.message)
+      ElMessage.error(error.message)
     }
     return Promise.reject(error)
   }
@@ -82,4 +83,8 @@ export function insertCategoryService(category: Category) {
 
 export function updateCategoryService(category: Category) {
   return instance.put('/category', category)
+}
+
+export function deleteCategoryService(id: number) {
+  return instance.delete(`/category?id=${id}`)
 }

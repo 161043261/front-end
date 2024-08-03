@@ -16,7 +16,6 @@ export default function() {
   async function selectCategoryList(): Promise<any> {
     const response = await selectCategoryListService() // use axios request interceptor
     const result: Result = response.data as Result
-    if (result.code != 1) return
     categoryList.value = result.data
   }
 

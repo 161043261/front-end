@@ -33,12 +33,10 @@ const rules = reactive({
 })
 
 async function register() {
-  let response = await userRegisterService({
+  await userRegisterService({
     username: formData.value.username,
     password: formData.value.password
   })
-  let result = response.data as Result
-  if (result.code != 1) return
   isLogin.value = true
 }
 
@@ -47,13 +45,10 @@ const tokenStore = useTokenStore()
 async function login() {
   let response = await userLoginService(formData.value)
   let result: Result = response.data as Result
-  if (result.code != 1) return
-
   tokenStore.$subscribe((mutation, state) => {
     console.log('set sessionStorage')
     sessionStorage.setItem('token', state.token)
   })
-
   tokenStore.setToken(result.data) // trigger tokenStore.$subscribe
   await router.push('/article/manage')
 }
