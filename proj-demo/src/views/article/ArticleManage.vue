@@ -4,6 +4,8 @@ import { Delete, Edit, Plus } from '@element-plus/icons-vue'
 import useArticle from '@/hooks/useArticle'
 import { type Ref, ref, watch } from 'vue'
 import type { Article } from '@/types'
+import { QuillEditor } from '@vueup/vue-quill'
+import '@vueup/vue-quill/dist/vue-quill.snow.css'
 
 const { params, categoryList, total, articleList, selectArticleList } = useArticle()
 
@@ -31,6 +33,7 @@ const article: Ref<Article> = ref({
   categoryId: undefined
 })
 </script>
+
 <template>
   <el-card class="page-container">
     <template #header>
@@ -52,7 +55,6 @@ const article: Ref<Article> = ref({
           </el-option>
         </el-select>
       </el-form-item>
-
       <el-form-item label="Article State">
         <el-select v-model="params.state" placeholder="0 as BETA, 1 as RELEASE">
           <el-option label="BETA" value=0></el-option>
@@ -84,7 +86,7 @@ const article: Ref<Article> = ref({
                    :total="total" layout="jumper, total, sizes, prev, pager, next"
                    style="margin-top: 20px; justify-content: flex-end" @size-change="onPageSizeChange"
                    @current-change="onPageNumChange" />
-    <el-drawer v-model="visible" direction="rtl" size="50%" title="Insert Article">
+    <el-drawer v-model="visible" direction="rtl" size="80%" title="Insert Article">
       <el-form :model="article" label-width="100px">
         <el-form-item label="Title">
           <el-input v-model="article.title" placeholder="Input Title"></el-input>
@@ -104,7 +106,9 @@ const article: Ref<Article> = ref({
           </el-upload>
         </el-form-item>
         <el-form-item label="Content">
-          <div class="editor">Editor</div>
+          <div class="editor">
+            <quill-editor v-model:content="article.content" contentType="html" theme="snow"></quill-editor>
+          </div>
         </el-form-item>
         <el-form-item>
           <el-button round>BETA</el-button>
@@ -131,13 +135,13 @@ const article: Ref<Article> = ref({
   justify-content: space-between;
 }
 
-.avatar-uploader :deep .avatar {
+.avatar-uploader :deep(.avatar) {
   width: 180px;
   height: 180px;
   display: block;
 }
 
-.avatar-uploader :deep .el-upload {
+.avatar-uploader :deep(.el-upload) {
   border: 1px dashed var(--el-border-color);
   border-radius: 5px;
   cursor: pointer;
@@ -146,11 +150,11 @@ const article: Ref<Article> = ref({
   transition: var(--el-transition-duration-fast);
 }
 
-.avatar-uploader :deep .el-upload:hover {
+.avatar-uploader :deep(.el-upload:hover) {
   border-color: var(--el-color-primary);
 }
 
-.avatar-uploader :deep .el-icon.avatar-uploader-icon {
+.avatar-uploader :deep(.avatar-uploader-icon) {
   font-size: 28px;
   color: black;
   width: 180px;
@@ -163,6 +167,6 @@ const article: Ref<Article> = ref({
 }
 
 .editor :deep(.ql-editor) {
-  min-height: 200px;
+  min-height: 180px;
 }
 </style>

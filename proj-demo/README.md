@@ -4,7 +4,7 @@
 
 ```sh
 npm install
-npm install element-plus --save
+npm install element-plus @vueup/vue-quill@latest --save
 npm install axios pinia-persistedstate-plugin
 ```
 
