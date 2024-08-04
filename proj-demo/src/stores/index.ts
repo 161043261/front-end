@@ -1,29 +1,6 @@
 import { defineStore } from 'pinia'
-import { computed, type ComputedRef, ref } from 'vue'
-
-// Option API
-export const _useTokenStore = defineStore('token', {
-  state() { // method
-    return { token: sessionStorage.getItem('token') || '' }
-  },
-
-  getters: { // methods
-    jwtString(state) {
-      console.log('get jwtString')
-      return state.token
-    }
-  },
-
-  actions: { // methods
-    setToken(newToken: string) {
-      this.token = newToken
-    },
-
-    removeToken() {
-      this.token = ''
-    }
-  }
-})
+import { computed, type ComputedRef, type Ref, ref } from 'vue'
+import type { Profile } from '@/types'
 
 // Composition API
 export const useTokenStore = defineStore('token', () => {
@@ -48,3 +25,19 @@ export const useTokenStore = defineStore('token', () => {
 
   return { token, jwtString, setToken, removeToken }
 }, { persist: true }) // options
+
+export const useProfileStore = defineStore('profile', () => {
+  // state
+  const profile: Ref<Profile> = ref({
+    username: 'Administrator'
+  })
+
+  function setProfile(newProfile: Profile) {
+    profile.value = newProfile
+  }
+
+  function removeProfile() {
+  }
+
+  return { profile, setProfile, removeProfile }
+}, { persist: true })

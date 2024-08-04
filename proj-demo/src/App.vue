@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-// import Article from '@/components/ArticleManage.vue'
 </script>
 
 <template>
@@ -13,10 +12,31 @@
 <style>
 @font-face {
   font-family: 'Iosevka SS06 Web';
-  src: url('/IosevkaSS06-Regular.woff2') format('woff2');
+  src: url('/src/assets/IosevkaSS06-Regular.woff2') format('woff2');
 }
 
 * {
   font-family: 'Iosevka SS06 Web', monospace;
+}
+
+body {
+  margin: 0;
+  background-color: white;
+}
+
+/* fade-slide */
+.fade-slide-leave-active,
+.fade-slide-enter-active {
+  transition: all 0.3s;
+}
+
+.fade-slide-enter-from {
+  transform: translateX(-30px);
+  opacity: 0;
+}
+
+.fade-slide-leave-to {
+  transform: translateX(30px);
+  opacity: 0;
 }
 </style>

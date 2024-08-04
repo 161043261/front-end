@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { Lock, User } from '@element-plus/icons-vue'
 import { reactive, ref } from 'vue'
-import { userLoginService, userRegisterService } from '@/apis'
+import { loginService, registerService } from '@/apis'
 import { useRouter } from 'vue-router'
 import type { Result } from '@/types'
 import { useTokenStore } from '@/stores'
@@ -40,7 +40,7 @@ async function register() {
     ElMessage.error('Password is NOT equivalent to confirmPwd')
     return
   }
-  await userRegisterService({
+  await registerService({
     username: user.value.username,
     password: user.value.password
   })
@@ -50,14 +50,14 @@ async function register() {
 const tokenStore = useTokenStore()
 
 async function login() {
-  let response = await userLoginService(user.value)
+  let response = await loginService(user.value)
   let result: Result = response.data as Result
   tokenStore.$subscribe((mutation, state) => {
     console.log('set sessionStorage')
     sessionStorage.setItem('token', state.token)
   })
   tokenStore.setToken(result.data) // trigger tokenStore.$subscribe
-  await router.replace('/article/manage')
+  await router.replace('/article')
 }
 </script>
 

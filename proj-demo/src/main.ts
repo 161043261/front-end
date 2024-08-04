@@ -2,7 +2,6 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import 'element-plus/dist/index.css'
 import elem from 'element-plus'
-import './assets/main.css'
 import { createPersistedState } from 'pinia-plugin-persistedstate'
 
 import App from './App.vue'

@@ -41,10 +41,9 @@ export interface Article {
   categoryName?: string
 }
 
-export interface User {
+export interface Profile {
   id?: number
   username: string
-  password?: string
   name?: string
   email?: string
   avatar?: string

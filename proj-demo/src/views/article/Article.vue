@@ -3,22 +3,17 @@ import { Delete, Edit, Plus } from '@element-plus/icons-vue'
 
 import useArticle from '@/hooks/useArticle'
 import { type Ref, ref, watch } from 'vue'
-import type { Article } from '@/types'
+import type { Article, Result } from '@/types'
 import { QuillEditor } from '@vueup/vue-quill'
 import '@vueup/vue-quill/dist/vue-quill.snow.css'
+import { useTokenStore } from '@/stores'
+import { insertArticleService } from '@/apis'
 
+const { token } = useTokenStore()
 const { params, categoryList, total, articleList, selectArticleList } = useArticle()
 
-function onPageNumChange(num: number) {
-  params.value.pageNum = num
-}
-
-function onPageSizeChange(size: number) {
-  params.value.pageSize = size
-}
-
-watch(params, (newValue, oldValue) => {
-  selectArticleList(params.value)
+watch(params, async (newValue, oldValue) => {
+  await selectArticleList(params.value)
 }, {
   deep: true, // default true
   immediate: true // default false
@@ -32,6 +27,23 @@ const article: Ref<Article> = ref({
   state: undefined,
   categoryId: undefined
 })
+
+async function reset() {
+  [article.value.title, article.value.content, article.value.categoryId, article.value.state] =
+    ['', '<p></p>', undefined, undefined]
+  await selectArticleList(params.value)
+}
+
+function uploaded(result: Result) {
+  console.log(result.data)
+  article.value.image = result.data
+}
+
+async function insertArticle() {
+  await insertArticleService(article.value)
+  await reset()
+  visible.value = false
+}
 </script>
 
 <template>
@@ -47,11 +59,7 @@ const article: Ref<Article> = ref({
     <el-form inline>
       <el-form-item label="Article Category">
         <el-select v-model="params.categoryId" placeholder="Category List">
-          <el-option
-            v-for="c in categoryList"
-            :key="c.id"
-            :label="c.categoryName"
-            :value="c.id">
+          <el-option v-for="c in categoryList" :key="c.id" :label="c.categoryName" :value="c.id">
           </el-option>
         </el-select>
       </el-form-item>
@@ -63,7 +71,7 @@ const article: Ref<Article> = ref({
       </el-form-item>
       <el-form-item>
         <el-button round type="danger"
-                   @click="params.categoryId = undefined; params.state = undefined; selectArticleList(params)">Reset
+                   @click="reset">Reset
         </el-button>
       </el-form-item>
     </el-form>
@@ -84,8 +92,7 @@ const article: Ref<Article> = ref({
     </el-table>
     <el-pagination v-model:current-page="params.pageNum" v-model:page-size="params.pageSize" :page-sizes="[5 ,10, 15]"
                    :total="total" layout="jumper, total, sizes, prev, pager, next"
-                   style="margin-top: 20px; justify-content: flex-end" @size-change="onPageSizeChange"
-                   @current-change="onPageNumChange" />
+                   style="margin-top: 20px; justify-content: flex-end" />
     <el-drawer v-model="visible" direction="rtl" size="80%" title="Insert Article">
       <el-form :model="article" label-width="100px">
         <el-form-item label="Title">
@@ -98,8 +105,11 @@ const article: Ref<Article> = ref({
           </el-select>
         </el-form-item>
         <el-form-item label="Image">
-          <el-upload :auto-upload="false" :show-file-list="false" class="avatar-uploader">
-            <img v-if="article.image" :src="article.image" alt="article image" class="avatar" />
+          <el-upload :auto-upload="true" :headers="{'Authorization': token}" :on-success="uploaded"
+                     :show-file-list="false" action="/api/upload" class="avatar-uploader"
+                     name="image"
+          >
+            <img v-if="article.image" :src="article.image" alt="image" class="avatar" />
             <el-icon v-else class="avatar-uploader-icon">
               <Plus />
             </el-icon>
@@ -107,12 +117,12 @@ const article: Ref<Article> = ref({
         </el-form-item>
         <el-form-item label="Content">
           <div class="editor">
-            <quill-editor v-model:content="article.content" contentType="html" theme="snow"></quill-editor>
+            <quill-editor v-model:content="article.content" contentType="html"></quill-editor>
           </div>
         </el-form-item>
         <el-form-item>
-          <el-button round>BETA</el-button>
-          <el-button round type="primary">RELEASE</el-button>
+          <el-button round @click="article.state = 0; insertArticle()">BETA</el-button>
+          <el-button round type="primary" @click="article.state = 1; insertArticle()">RELEASE</el-button>
         </el-form-item>
       </el-form>
     </el-drawer>
@@ -121,7 +131,7 @@ const article: Ref<Article> = ref({
 
 <style scoped>
 .el-select {
-  --el-select-width: 250px;
+  --el-select-width: 300px;
 }
 
 .page-container {
@@ -143,7 +153,7 @@ const article: Ref<Article> = ref({
 
 .avatar-uploader :deep(.el-upload) {
   border: 1px dashed var(--el-border-color);
-  border-radius: 5px;
+  border-radius: 6px;
   cursor: pointer;
   position: relative;
   overflow: hidden;
@@ -167,6 +177,6 @@ const article: Ref<Article> = ref({
 }
 
 .editor :deep(.ql-editor) {
-  min-height: 180px;
+  min-height: 200px;
 }
 </style>

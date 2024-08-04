@@ -23,7 +23,7 @@ export default {
           </el-icon>
           <span>Article Category</span>
         </el-menu-item>
-        <el-menu-item index="/article/manage">
+        <el-menu-item index="/article">
           <el-icon>
             <Promotion />
           </el-icon>

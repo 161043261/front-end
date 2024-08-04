@@ -2,7 +2,7 @@ import axios, { type AxiosInstance, type AxiosResponse } from 'axios'
 import { ElMessage } from 'element-plus'
 import { useTokenStore } from '@/stores'
 import router from '@/router'
-import type { Category, SelectArticleListParams } from '@/types'
+import type { Article, Category, SelectArticleListParams } from '@/types'
 
 // You can create a new instance of axios with a custom config.
 const instance: AxiosInstance = axios.create({
@@ -58,14 +58,14 @@ instance.interceptors.response.use(
   }
 )
 
-export function userRegisterService(userData: { [prop: string]: string }) {
+export function registerService(userData: { [prop: string]: string }) {
   // instance.method(url[, data[, config]])
   return instance.post('/user/register', userData, {
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
   })
 }
 
-export function userLoginService(userData: { [prop: string]: any }) {
+export function loginService(userData: { [prop: string]: any }) {
   const params = new URLSearchParams()
   for (const key in userData) {
     params.append(key, userData[key])
@@ -91,4 +91,12 @@ export function deleteCategoryService(id: number) {
 
 export function selectArticleListService(params: SelectArticleListParams) {
   return instance.get('/article', { params: params })
+}
+
+export function insertArticleService(article: Article) {
+  return instance.post('/article', article)
+}
+
+export function profileService() {
+  return instance.get('/user/profile')
 }
