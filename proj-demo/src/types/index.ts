@@ -14,10 +14,9 @@ export interface Category {
 export interface SelectArticleListParams {
   pageNum: number,
   pageSize: number,
-  categoryId?: number,
-  state?: number
+  categoryId?: number | undefined,
+  state?: number | undefined
 }
-
 
 export interface Category {
   id?: number
@@ -41,7 +40,7 @@ export interface Article {
   categoryName?: string
 }
 
-export interface Profile {
+export interface User {
   id?: number
   username: string
   name?: string

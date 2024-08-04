@@ -2,7 +2,7 @@ import axios, { type AxiosInstance, type AxiosResponse } from 'axios'
 import { ElMessage } from 'element-plus'
 import { useTokenStore } from '@/stores'
 import router from '@/router'
-import type { Article, Category, SelectArticleListParams } from '@/types'
+import type { Article, Category, SelectArticleListParams, User } from '@/types'
 
 // You can create a new instance of axios with a custom config.
 const instance: AxiosInstance = axios.create({
@@ -99,4 +99,14 @@ export function insertArticleService(article: Article) {
 
 export function profileService() {
   return instance.get('/user/profile')
+}
+
+export function updateUserProfileService(profile: User) {
+  return instance.put('/user/update', profile)
+}
+
+export function updateUserAvatarService(avatar: string) {
+  const params = new URLSearchParams()
+  params.append('avatar', avatar)
+  return instance.patch('/user/avatar', params)
 }

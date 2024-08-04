@@ -29,13 +29,12 @@ const article: Ref<Article> = ref({
 })
 
 async function reset() {
-  [article.value.title, article.value.content, article.value.categoryId, article.value.state] =
-    ['', '<p></p>', undefined, undefined]
+  [params.value.categoryId, params.value.state, article.value.title, article.value.content, article.value.categoryId, article.value.state] = [undefined, undefined, '', '<p></p>', undefined, undefined]
   await selectArticleList(params.value)
 }
 
-function uploaded(result: Result) {
-  console.log(result.data)
+const uploaded = (result: Result) => {
+  // console.log(result.data)
   article.value.image = result.data
 }
 
@@ -70,8 +69,7 @@ async function insertArticle() {
         </el-select>
       </el-form-item>
       <el-form-item>
-        <el-button round type="danger"
-                   @click="reset">Reset
+        <el-button round type="danger" @click="reset">Reset
         </el-button>
       </el-form-item>
     </el-form>
@@ -107,8 +105,7 @@ async function insertArticle() {
         <el-form-item label="Image">
           <el-upload :auto-upload="true" :headers="{'Authorization': token}" :on-success="uploaded"
                      :show-file-list="false" action="/api/upload" class="avatar-uploader"
-                     name="image"
-          >
+                     name="image">
             <img v-if="article.image" :src="article.image" alt="image" class="avatar" />
             <el-icon v-else class="avatar-uploader-icon">
               <Plus />

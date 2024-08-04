@@ -4,8 +4,9 @@ import { reactive, ref } from 'vue'
 import { loginService, registerService } from '@/apis'
 import { useRouter } from 'vue-router'
 import type { Result } from '@/types'
-import { useTokenStore } from '@/stores'
+import { useProfileStore, useTokenStore } from '@/stores'
 import { ElMessage } from 'element-plus'
+import { storeToRefs } from 'pinia'
 
 const router = useRouter()
 const isLogin = ref(true)
@@ -48,6 +49,7 @@ async function register() {
 }
 
 const tokenStore = useTokenStore()
+let { token } = storeToRefs(tokenStore)
 
 async function login() {
   let response = await loginService(user.value)
@@ -56,7 +58,8 @@ async function login() {
     console.log('set sessionStorage')
     sessionStorage.setItem('token', state.token)
   })
-  tokenStore.setToken(result.data) // trigger tokenStore.$subscribe
+  token.value = result.data // trigger tokenStore.$subscribe
+  await useProfileStore().getProfile()
   await router.replace('/article')
 }
 </script>

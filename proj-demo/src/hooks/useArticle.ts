@@ -20,11 +20,11 @@ export default function() {
     image: '@/assets/default.png',
     state: 0,
     categoryId: 1,
-    createTime: '2006-01-02T15:04:05',
-    updateTime: '2006-01-02T15:04:05'
+    createTime: '2006-01-02 15:04:05',
+    updateTime: '2006-01-02 15:04:05'
   }])
 
-  async function selectArticleList(params: SelectArticleListParams): Promise<any> {
+  async function selectArticleList(params: SelectArticleListParams) {
     const response = await selectArticleListService(params)
     const result: Result = response.data as Result
     total.value = result.data.total

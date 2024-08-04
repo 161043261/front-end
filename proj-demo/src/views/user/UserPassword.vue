@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div></div>
+  <div>User Password</div>
 </template>
 
 <style scoped>

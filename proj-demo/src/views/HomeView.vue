@@ -1,6 +1,29 @@
 <script lang="ts" setup>
 import { CaretBottom, Crop, Lock, Menu, Promotion, SwitchButton, User, UserFilled } from '@element-plus/icons-vue'
-import defaultAvatar from '@/assets/default.png'
+import png from '@/assets/default.png'
+import { useProfileStore, useTokenStore } from '@/stores'
+import router from '@/router'
+import { ElMessage, ElMessageBox } from 'element-plus'
+import { storeToRefs } from 'pinia'
+
+let { profile } = storeToRefs(useProfileStore())
+
+const handler = (command: string) => {
+  if (command == 'logout') {
+    ElMessageBox.confirm('Logout, Continue?', 'WARNING',
+      { confirmButtonText: 'OK', cancelButtonText: 'Cancel', type: 'warning' }
+    ).then(() => {
+      useTokenStore().removeToken()
+      useProfileStore().removeProfile()
+      router.push('/user')
+      ElMessage.success('Logout OK')
+    }).catch(() => {
+      ElMessage.warning('Logout Cancel')
+    })
+  } else {
+    router.push(`/user/${command}`)
+  }
+}
 </script>
 
 <script lang="ts">
@@ -62,10 +85,10 @@ export default {
     <el-container>
       <!-- header element -->
       <el-header>
-        <div>Welcome: <strong>Administrator</strong></div>
-        <el-dropdown placement="bottom-end">
+        <div>Welcome: <strong>{{ profile.name }}</strong></div>
+        <el-dropdown placement="bottom-end" @command="handler">
           <span class="el-dropdown__box">
-            <el-avatar :src="defaultAvatar" />
+            <el-avatar :src="profile.avatar == '' ? png : `/${profile.avatar}`" />
             <el-icon>
               <CaretBottom />
             </el-icon>

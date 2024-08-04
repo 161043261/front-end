@@ -6,13 +6,13 @@ export default function() {
   const categoryList: Ref<Category[]> = ref([
     {
       'id': 1,
-      'categoryName': 'Go',
+      'categoryName': 'CategoryA',
       'createTime': '2006-01-02 15:04:05',
       'updateTime': '2006-01-02 15:04:05'
     }
   ])
 
-  async function selectCategoryList(): Promise<any> {
+  async function selectCategoryList() {
     const response = await selectCategoryListService() // use axios request interceptor
     const result: Result = response.data as Result
     categoryList.value = result.data

@@ -21,7 +21,7 @@
 
 body {
   margin: 0;
-  background-color: white;
+  background-color: lightcyan;
 }
 
 /* fade-slide */

@@ -34,7 +34,7 @@ async function operate(t: string) { // Insert || Update
 }
 
 async function deleteCategory(row: any) {
-  ElMessageBox.confirm('Permanently Delete the Category, Continue?', 'WARNING',
+  ElMessageBox.confirm('Delete the Category, Continue?', 'WARNING',
     { confirmButtonText: 'OK', cancelButtonText: 'Cancel', type: 'warning' }
   ).then(async () => {
     await deleteCategoryService(row.id)
