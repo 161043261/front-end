@@ -77,7 +77,7 @@ export default {
             <el-icon>
               <Lock />
             </el-icon>
-            <span>Reset Password</span>
+            <span>Update Password</span>
           </el-menu-item>
         </el-sub-menu>
       </el-menu>
@@ -99,7 +99,7 @@ export default {
             <el-dropdown-menu>
               <el-dropdown-item :icon="User" command="profile">User Profile</el-dropdown-item>
               <el-dropdown-item :icon="Crop" command="avatar">Update Avatar</el-dropdown-item>
-              <el-dropdown-item :icon="Lock" command="password">Reset Password</el-dropdown-item>
+              <el-dropdown-item :icon="Lock" command="password">Update Password</el-dropdown-item>
               <el-dropdown-item :icon="SwitchButton" command="logout">Logout</el-dropdown-item>
             </el-dropdown-menu>
           </template>
@@ -131,8 +131,8 @@ export default {
 }
 
 .home-container .el-aside__logo {
-  height: 120px;
-  background: url('@/assets/default.png') no-repeat center / 120px auto;
+  height: 180px;
+  background: url('@/assets/default.png') no-repeat center / 180px auto;
 }
 
 .home-container .el-aside .el-menu {

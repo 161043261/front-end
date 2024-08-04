@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { onUnmounted, ref } from 'vue'
+import { onBeforeUnmount, ref } from 'vue'
 import png from '@/assets/default.png'
 import { Plus, Upload } from '@element-plus/icons-vue'
 import { useProfileStore, useTokenStore } from '@/stores'
@@ -20,7 +20,7 @@ async function updateUserAvatar(avatar: string) {
   await updateUserAvatarService(avatar)
 }
 
-onUnmounted(() => {
+onBeforeUnmount(() => {
   useProfileStore().getProfile()
 })
 </script>

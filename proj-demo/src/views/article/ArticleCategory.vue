@@ -66,16 +66,17 @@ export default {
       <el-table-column label="Row Number" type="index" width="100"></el-table-column>
       <el-table-column label="Category ID" prop="id"></el-table-column>
       <el-table-column label="Category Name" prop="categoryName"></el-table-column>
-      <el-table-column label="Operation" width="100">
+      <el-table-column label="Create User Id" prop="createUser"></el-table-column>
+      <el-table-column label="Operation">
         <template #default="{ row }">
-          <el-button :icon="Edit" circle plain type="primary"
+          <el-button :icon="Edit" plain round type="primary"
                      @click="show('Update Category', row)"></el-button>
-          <el-button :icon="Delete" circle plain type="danger"
+          <el-button :icon="Delete" plain round type="danger"
                      @click="deleteCategory(row)"></el-button>
         </template>
       </el-table-column>
       <template #empty>
-        <el-empty description="No data" />
+        <el-empty description="No Data" />
       </template>
     </el-table>
 

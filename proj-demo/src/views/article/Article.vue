@@ -7,8 +7,12 @@ import type { Article, Result } from '@/types'
 import { QuillEditor } from '@vueup/vue-quill'
 import '@vueup/vue-quill/dist/vue-quill.snow.css'
 import { useTokenStore } from '@/stores'
-import { insertArticleService } from '@/apis'
+import { deleteArticleService, detailService, insertArticleService, updateArticleService } from '@/apis'
+import { ElMessage, ElMessageBox } from 'element-plus'
 
+enum Operate {INSERT, UPDATE}
+
+let operate: number = Operate.INSERT
 const { token } = useTokenStore()
 const { params, categoryList, total, articleList, selectArticleList } = useArticle()
 
@@ -28,7 +32,7 @@ const article: Ref<Article> = ref({
   categoryId: undefined
 })
 
-async function reset() {
+async function selectAll() {
   [params.value.categoryId, params.value.state, article.value.title, article.value.content, article.value.categoryId, article.value.state] = [undefined, undefined, '', '<p></p>', undefined, undefined]
   await selectArticleList(params.value)
 }
@@ -38,11 +42,35 @@ const uploaded = (result: Result) => {
   article.value.image = result.data
 }
 
-async function insertArticle() {
-  await insertArticleService(article.value)
-  await reset()
+async function submit() { // 0 as insert, 1 as update
+  if (operate == Operate.INSERT) {
+    await insertArticleService(article.value)
+  } else {
+    await updateArticleService(article.value)
+  }
+  await selectAll()
   visible.value = false
 }
+
+async function deleteArticle(row: any) {
+  ElMessageBox.confirm('Delete the Article, Continue?', 'WARNING',
+    { confirmButtonText: 'OK', cancelButtonText: 'Cancel', type: 'warning' }
+  ).then(async () => {
+    await deleteArticleService(row.id)
+    await selectAll()
+  }).catch(() => {
+    ElMessage.warning('Delete Cancel')
+  })
+}
+
+async function updateArticle(row: any) {
+  let response = await detailService(row.id)
+  let result: Result = response.data
+  article.value = result.data
+  visible.value = true
+  console.log(article.value)
+}
+
 </script>
 
 <template>
@@ -51,7 +79,7 @@ async function insertArticle() {
       <div class="header">
         <span>Article Management</span>
         <div class="extra">
-          <el-button round type="primary" @click="visible = true">Insert Article</el-button>
+          <el-button round type="primary" @click="operate = Operate.INSERT; visible = true">Insert Article</el-button>
         </div>
       </div>
     </template>
@@ -69,23 +97,26 @@ async function insertArticle() {
         </el-select>
       </el-form-item>
       <el-form-item>
-        <el-button round type="danger" @click="reset">Reset
-        </el-button>
+        <el-button round type="danger" @click="selectAll">Reset Condition</el-button>
       </el-form-item>
     </el-form>
     <el-table :data="articleList" style="width: 100%">
-      <el-table-column label="Title" prop="title" width="400"></el-table-column>
-      <el-table-column label="Category" prop="categoryName"></el-table-column>
-      <el-table-column label="Push Date" prop="createTime"></el-table-column>
-      <el-table-column label="State" prop="stateName"></el-table-column>
-      <el-table-column label="Operate" width="100">
+      <el-table-column label="Row Number" type="index" width="100"></el-table-column>
+      <el-table-column label="Article ID" prop="id"></el-table-column>
+      <el-table-column label="Article Title" prop="title"></el-table-column>
+      <el-table-column label="Category Name" prop="categoryName"></el-table-column>
+      <el-table-column label="Create Date" prop="createTime"></el-table-column>
+      <el-table-column label="Update Date" prop="updateTime"></el-table-column>
+      <el-table-column label="Article State" prop="stateName"></el-table-column>
+      <el-table-column label="Operation" width="100">
         <template #default="{ row }">
-          <el-button :icon="Edit" circle plain type="primary"></el-button>
-          <el-button :icon="Delete" circle plain type="danger"></el-button>
+          <el-button :icon="Edit" circle plain type="primary"
+                     @click="operate = Operate.UPDATE; updateArticle(row)"></el-button>
+          <el-button :icon="Delete" circle plain type="danger" @click="deleteArticle(row)"></el-button>
         </template>
       </el-table-column>
       <template #empty>
-        <el-empty description="No data" />
+        <el-empty description="No Data" />
       </template>
     </el-table>
     <el-pagination v-model:current-page="params.pageNum" v-model:page-size="params.pageSize" :page-sizes="[5 ,10, 15]"
@@ -118,8 +149,8 @@ async function insertArticle() {
           </div>
         </el-form-item>
         <el-form-item>
-          <el-button round @click="article.state = 0; insertArticle()">BETA</el-button>
-          <el-button round type="primary" @click="article.state = 1; insertArticle()">RELEASE</el-button>
+          <el-button round @click="article.state = 0; submit()">BETA</el-button>
+          <el-button round type="primary" @click="article.state = 1; submit()">RELEASE</el-button>
         </el-form-item>
       </el-form>
     </el-drawer>

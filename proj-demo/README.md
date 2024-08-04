@@ -30,3 +30,9 @@ npm run lint
 * v-on: == @
 * Iosevka SS04, Menlo Style
 * Iosevka SS06, Liberation Mono Style
+
+### Life Cycle
+
+* onMounted
+* onUpdated
+* onBeforeUnmount

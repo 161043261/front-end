@@ -9,7 +9,7 @@ const { profile } = storeToRefs(profileStore)
 const rules = {
   name: [
     { required: true, message: 'Input Name', trigger: 'blur' },
-    { pattern: /^\S{1,16}$/, message: 'Name must be 1 to 16 characters', trigger: 'blur' }
+    { pattern: /^[\s\S]{1,16}$/, message: 'Name must be 1 to 16 characters', trigger: 'blur' }
   ],
   email: [
     { required: true, message: 'Input Email', trigger: 'blur' },

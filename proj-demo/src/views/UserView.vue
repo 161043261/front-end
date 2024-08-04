@@ -18,12 +18,10 @@ const user = ref({
 
 function checkPwd(rules: string, value: string, callback: (error?: Error) => any) {
   if (value == '') {
-    callback(new Error('ConfirmPwd is required'))
+    callback(new Error('Confirm password is required'))
   } else if (value != user.value.password) {
-    callback(new Error('Password is NOT equivalent to confirmPwd'))
-  } else {
-    callback()
-  }
+    callback(new Error('Password is NOT equivalent to confirm password'))
+  } else callback()
 }
 
 const rules = reactive({
@@ -31,7 +29,7 @@ const rules = reactive({
     { min: 4, max: 16, message: 'Username must be 4 to 16 characters', trigger: 'blur' }],
   password: [{ required: true, message: 'Password is required', trigger: 'blur' },
     { min: 4, max: 16, message: 'Password must be 4 to 16 characters', trigger: 'blur' }],
-  confirmPwd: [{ validator: checkPwd, trigger: 'blur' }]
+  confirmPwd: [{ required: true, validator: checkPwd, trigger: 'blur' }]
 })
 
 async function register() {
@@ -75,7 +73,8 @@ export default {
     <el-col :span="12" class="bg" />
     <el-col :offset="3" :span="6" class="form">
       <!-- Login Form -->
-      <el-form v-if="isLogin" ref="form" :model="user" :rules="rules" autocomplete="off" size="large">
+      <el-form v-if="isLogin" ref="form" :model="user" :rules="rules" autocomplete="off" label-width="auto"
+               size="large">
         <el-form-item>
           <h1>Login</h1>
         </el-form-item>
@@ -101,7 +100,7 @@ export default {
       </el-form>
 
       <!-- Register Form -->
-      <el-form v-else ref="form" :model="user" :rules="rules" autocomplete="off" size="large">
+      <el-form v-else ref="form" :model="user" :rules="rules" autocomplete="off" label-width="auto" size="large">
         <el-form-item>
           <h1>Register</h1>
         </el-form-item>
@@ -111,7 +110,7 @@ export default {
         <el-form-item label="Password" prop="password">
           <el-input v-model="user.password" :prefix-icon="Lock" placeholder="Input password" type="password" />
         </el-form-item>
-        <el-form-item label="ConfirmPwd" prop="confirmPwd">
+        <el-form-item label=" Confirm" prop="confirmPwd">
           <el-input v-model="user.confirmPwd" :prefix-icon="Lock" placeholder="Confirm password" type="password" />
         </el-form-item>
         <el-form-item>

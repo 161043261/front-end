@@ -110,3 +110,19 @@ export function updateUserAvatarService(avatar: string) {
   params.append('avatar', avatar)
   return instance.patch('/user/avatar', params)
 }
+
+export function updateUserPwdService(pwdList: { newPwd: string; confirmPwd: string; pwd: string }) {
+  return instance.patch('/user/pwd', pwdList)
+}
+
+export function deleteArticleService(id: number) {
+  return instance.delete(`/article?id=${id}`)
+}
+
+export function updateArticleService(article: Article) {
+  return instance.put('/article', article)
+}
+
+export function detailService(id: number) {
+  return instance.get('/article/detail', { params: { id: id } })
+}
