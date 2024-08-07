@@ -7,12 +7,6 @@ let refMsg = ref('Hello World')
 let { customRefMsg } = useCustomRefMsg('Hello World', 3000)
 </script>
 
-<script lang="ts">
-export default {
-  name: 'CustomRef'
-}
-</script>
-
 <template>
   <div class="customRef">
     <p><em>***** customRef *****</em></p>
@@ -22,10 +16,6 @@ export default {
     <input v-model="customRefMsg" type="text">
   </div>
 </template>
-
-<style scoped>
-
-</style>
 
 <style>
 * {

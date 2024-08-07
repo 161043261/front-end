@@ -62,12 +62,6 @@ async function login() {
 }
 </script>
 
-<script lang="ts">
-export default {
-  name: 'UserView'
-}
-</script>
-
 <template>
   <el-row class="login-page" v-bind:rules="rules">
     <el-col :span="12" class="bg" />

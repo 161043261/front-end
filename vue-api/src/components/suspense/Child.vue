@@ -6,12 +6,6 @@ let { data: { message } } = await axios.get('https://dog.ceo/api/breeds/image/ra
 let msg = ref(message)
 </script>
 
-<script lang="ts">
-export default {
-  name: 'Child'
-}
-</script>
-
 <template>
   <div class="child">
     <p>msg = {{ msg }}</p>

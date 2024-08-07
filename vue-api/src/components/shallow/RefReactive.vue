@@ -1,11 +1,5 @@
-<script lang="ts">
-export default {
-  name: 'RefReactive'
-}
-</script>
-
 <script lang="ts" setup>
-import { shallowRef, shallowReactive } from 'vue'
+import { shallowReactive, shallowRef } from 'vue'
 
 let sum = shallowRef(0)
 

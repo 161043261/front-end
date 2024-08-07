@@ -35,6 +35,7 @@ onBeforeUnmount(() => {
   pwdList.value.confirmPwd = ''
 })
 </script>
+
 <template>
   <el-card class="page-container">
     <template #header>

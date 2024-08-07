@@ -2,12 +2,6 @@
 
 </script>
 
-<script lang="ts">
-export default {
-  name: 'Demo'
-}
-</script>
-
 <template>
   <div class="global">
     <p><em>***** global component *****</em></p>

@@ -4,12 +4,6 @@ import { ref } from 'vue'
 let popUp = ref(false)
 </script>
 
-<script lang="ts">
-export default {
-  name: 'Child'
-}
-</script>
-
 <template>
   <button @click="popUp = true">open pop-up</button>
   <teleport to="body"> <!-- teleport to HTML tag -->

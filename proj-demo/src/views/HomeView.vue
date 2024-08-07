@@ -26,12 +26,6 @@ const handler = (command: string) => {
 }
 </script>
 
-<script lang="ts">
-export default {
-  name: 'HomeViews'
-}
-</script>
-
 <template>
   <el-container class="home-container">
     <!-- left side pink element -->

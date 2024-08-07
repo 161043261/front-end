@@ -31,12 +31,6 @@ function changePrice() {
 }
 </script>
 
-<script lang="ts">
-export default {
-  name: 'Readonly'
-}
-</script>
-
 <template>
   <div class="readonly">
     <p><em>***** shallowReadonly *****</em></p>

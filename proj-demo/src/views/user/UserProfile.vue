@@ -21,6 +21,7 @@ async function updateUserProfile() {
   await updateUserProfileService(profile.value)
 }
 </script>
+
 <template>
   <el-card class="page-container">
     <template #header>

@@ -45,12 +45,6 @@ async function deleteCategory(row: any) {
 }
 </script>
 
-<script lang="ts">
-export default {
-  name: 'ArticleCategory'
-}
-</script>
-
 <template>
   <el-card class="page-container">
     <template #header>

@@ -37,12 +37,6 @@ function changeRefCarPrice() {
 }
 </script>
 
-<script lang="ts">
-export default {
-  name: 'ToRawMarkRaw'
-}
-</script>
-
 <template>
   <div class="toRawMarkRaw">
     <p><em>***** toRaw, toMarkRaw *****</em></p>

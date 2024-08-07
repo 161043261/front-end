@@ -2,12 +2,6 @@
 import Child from './Child.vue'
 </script>
 
-<script lang="ts">
-export default {
-  name: 'Parent'
-}
-</script>
-
 <template>
   <div class="parent">
     <p><em>***** suspense (experimental) *****</em></p>

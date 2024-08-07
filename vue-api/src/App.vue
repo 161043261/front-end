@@ -8,12 +8,6 @@ import AsSuspense from '@/components/suspense/Parent.vue'
 // import Demo from './Demo.vue' // unnecessary
 </script>
 
-<script lang="ts">
-export default {
-  name: 'App'
-}
-</script>
-
 <template>
   <div class="app">
     <Demo /> <!-- global component -->

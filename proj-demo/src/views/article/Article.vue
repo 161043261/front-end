@@ -70,7 +70,6 @@ async function updateArticle(row: any) {
   visible.value = true
   console.log(article.value)
 }
-
 </script>
 
 <template>
