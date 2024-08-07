@@ -1,9 +1,3 @@
-<script lang="ts">
-export default {
-  name: 'WatchRefPrimaryValue'
-}
-</script>
-
 <script lang="ts" setup>
 import { ref, watch } from 'vue'
 

@@ -1,9 +1,3 @@
-<script lang="ts">
-export default {
-  name: 'Parent'
-}
-</script>
-
 <script lang="ts" setup>
 import Girl from './Girl.vue'
 import Boy from './Boy.vue'

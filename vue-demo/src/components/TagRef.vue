@@ -1,9 +1,3 @@
-<script lang="ts">
-export default {
-  name: 'TagRef'
-}
-</script>
-
 <script lang="ts" setup>
 import { ref } from 'vue'
 

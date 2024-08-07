@@ -12,12 +12,6 @@ let imageUrl = ref('/image.png')
 let videoUrl = ref('/video.mp4')
 </script>
 
-<script lang="ts">
-export default {
-  name: 'Parent'
-}
-</script>
-
 <template>
   <div class="parent">
     <p>@/views/communicate/slot/Parent.vue</p>

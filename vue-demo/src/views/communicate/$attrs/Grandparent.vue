@@ -12,12 +12,6 @@ function addA(delta: number) {
 }
 </script>
 
-<script lang="ts">
-export default {
-  name: 'Grandparent'
-}
-</script>
-
 <template>
   <div class="grandparent">
     <p>@/views/communicate/$attr/Grandparent.vue</p>

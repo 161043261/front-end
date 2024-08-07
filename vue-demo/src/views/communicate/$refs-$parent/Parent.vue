@@ -28,12 +28,6 @@ function addAge(refs: { [key: string]: any }) {
 defineExpose({ age })
 </script>
 
-<script lang="ts">
-export default {
-  name: 'Parent'
-}
-</script>
-
 <template>
   <div class="parent">
     <p>@/views/communicate/$refs-$parent/Parent.vue</p>

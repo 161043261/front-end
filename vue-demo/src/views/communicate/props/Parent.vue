@@ -10,12 +10,6 @@ function passToy(value: string) {
 }
 </script>
 
-<script lang="ts">
-export default {
-  name: 'Parent'
-}
-</script>
-
 <template>
   <div class="parent">
     <p>@/views/communicate/props/Parent.vue</p>

@@ -1,9 +1,3 @@
-<script lang="ts">
-export default {
-  name: 'QueryChild'
-}
-</script>
-
 <script lang="ts" setup>
 import { toRefs } from 'vue'
 import { useRoute } from 'vue-router'

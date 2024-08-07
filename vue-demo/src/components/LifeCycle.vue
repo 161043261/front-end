@@ -1,11 +1,5 @@
-<script lang="ts">
-export default {
-  name: 'LifeCycle'
-}
-</script>
-
 <script lang="ts" setup>
-import { ref, onBeforeMount, onMounted, onBeforeUpdate, onUpdated, onBeforeUnmount, onUnmounted } from 'vue'
+import { onBeforeMount, onBeforeUnmount, onBeforeUpdate, onMounted, onUnmounted, onUpdated, ref } from 'vue'
 
 let sum = ref(0)
 

@@ -14,6 +14,7 @@ import WatchRefObject from './components/watch/WatchRefObject.vue'
 import WatchRefPrimaryValue from './components/watch/WatchRefPrimaryValue.vue'
 import Count from '@/components/pinia/Count.vue'
 import Cat from '@/components/pinia/Cat.vue'
+import { RouterLink, RouterView } from 'vue-router'
 
 let componentTagRef = ref()
 
@@ -76,10 +77,6 @@ let display = ref(true)
     <Cat />
   </div>
 </template>
-
-<script lang="ts">
-import { RouterView, RouterLink } from 'vue-router'
-</script>
 
 <style>
 * {

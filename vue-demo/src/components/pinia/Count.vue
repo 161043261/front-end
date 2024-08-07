@@ -1,9 +1,3 @@
-<script lang="ts">
-export default {
-  name: 'Count'
-}
-</script>
-
 <script lang="ts" setup>
 import { useCountStore } from '@/stores/count'
 import { storeToRefs } from 'pinia'

@@ -1,12 +1,6 @@
-<script lang="ts">
-export default {
-  name: 'Query'
-}
-</script>
-
 <script lang="ts" setup>
 import { reactive } from 'vue'
-import { RouterView, RouterLink, useRouter } from 'vue-router'
+import { RouterLink, RouterView, useRouter } from 'vue-router'
 
 const newsList = reactive([
   { id: 1, title: 'Express', content: 'expressjs.com' },

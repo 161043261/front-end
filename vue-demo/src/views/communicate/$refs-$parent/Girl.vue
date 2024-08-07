@@ -12,12 +12,6 @@ function subAge(parent: any) {
 }
 </script>
 
-<script lang="ts">
-export default {
-  name: 'Girl'
-}
-</script>
-
 <template>
   <div class="girl">
     <p>@/views/communicate/$refs-$parent/Girl.vue</p>

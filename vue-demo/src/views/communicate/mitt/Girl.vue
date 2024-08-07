@@ -1,11 +1,4 @@
-<script lang="ts">
-export default {
-  name: 'Girl'
-}
-</script>
-
 <script lang="ts" setup>
-
 import emitter from '@/utils/emitter'
 
 let toy: string = 'OptimusPrime'

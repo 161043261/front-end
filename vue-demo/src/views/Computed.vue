@@ -1,9 +1,3 @@
-<script lang="ts">
-export default {
-  name: 'Computed'
-}
-</script>
-
 <script lang="ts" setup>
 import { computed, onMounted, ref, type Ref } from 'vue'
 import { useRouter } from 'vue-router'

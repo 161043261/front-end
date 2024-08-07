@@ -14,12 +14,6 @@ onMounted(() => {
 })
 </script>
 
-<script lang="ts">
-export default {
-  name: 'Child'
-}
-</script>
-
 <template>
   <div class="child">
     <p>@/views/communicate/custom-event/Child.vue</p>

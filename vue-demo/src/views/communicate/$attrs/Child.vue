@@ -2,12 +2,6 @@
 defineProps(['a', 'b', 'c', 'd', 'x', 'y', 'addA'])
 </script>
 
-<script lang="ts">
-export default {
-  name: 'Child'
-}
-</script>
-
 <template>
   <div class="child">
     <p>@/views/communicate/$attr/Child.vue</p>

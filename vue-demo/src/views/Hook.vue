@@ -1,9 +1,3 @@
-<script lang="ts">
-export default {
-  name: 'Hook'
-}
-</script>
-
 <script lang="ts" setup>
 import useDog from '@/hooks/useDog'
 import useSum from '@/hooks/useSum'

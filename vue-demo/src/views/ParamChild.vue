@@ -1,9 +1,3 @@
-<script lang="ts">
-export default {
-  name: 'ParamChild'
-}
-</script>
-
 <script lang="ts" setup>
 import { useRoute } from 'vue-router'
 import { toRefs } from 'vue'

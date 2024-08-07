@@ -1,9 +1,3 @@
-<script lang="ts">
-export default {
-  name: 'Child'
-}
-</script>
-
 <script lang="ts" setup>
 defineProps(['modelValue'])
 const emits = defineEmits(['update:modelValue'])
@@ -22,8 +16,7 @@ TODO
     -->
 
     <!-- refer to ../custom-event -->
-    <input type="text"
-           v-bind:value="modelValue"
+    <input type="text" v-bind:value="modelValue"
            @input="emits('update:modelValue', (<HTMLInputElement>$event.target).value)/* args */">
     <!-- trigger 'update:modelValue' event -->
   </p>

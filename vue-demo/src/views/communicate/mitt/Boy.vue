@@ -1,9 +1,3 @@
-<script lang="ts">
-export default {
-  name: 'Boy'
-}
-</script>
-
 <script lang="ts" setup>
 import { onUnmounted, ref } from 'vue'
 import emitter from '@/utils/emitter'

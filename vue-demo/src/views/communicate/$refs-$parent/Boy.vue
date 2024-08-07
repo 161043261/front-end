@@ -11,12 +11,6 @@ function addAge(parent: any) {
 }
 </script>
 
-<script lang="ts">
-export default {
-  name: 'Boy'
-}
-</script>
-
 <template>
   <div class="boy">
     <p>@/views/communicate/$refs-$parent/Boy.vue</p>

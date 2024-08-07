@@ -2,12 +2,6 @@
 defineProps(['title'])
 </script>
 
-<script lang="ts">
-export default {
-  name: 'Child'
-}
-</script>
-
 <template>
   <div class="child">
     <p>{{ title }}</p>

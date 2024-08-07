@@ -17,12 +17,6 @@ function subMoney(delta: number) {
 }
 </script>
 
-<script lang="ts">
-export default {
-  name: 'Grandparent'
-}
-</script>
-
 <template>
   <div class="grandparent">
     <p>@/views/communicate/provide-inject/Grandparent.vue</p>

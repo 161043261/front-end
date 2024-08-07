@@ -1,9 +1,3 @@
-<script lang="ts">
-export default {
-  name: 'Cat'
-}
-</script>
-
 <script lang="ts" setup>
 import { useCatStore } from '@/stores/cat'
 import { storeToRefs } from 'pinia'

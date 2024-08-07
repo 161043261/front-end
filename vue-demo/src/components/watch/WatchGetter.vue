@@ -1,9 +1,3 @@
-<script lang="ts">
-export default {
-  name: 'WatchGetter'
-}
-</script>
-
 <script lang="ts" setup>
 import { reactive, watch } from 'vue'
 

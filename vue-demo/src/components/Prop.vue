@@ -1,9 +1,3 @@
-<script lang="ts">
-export default {
-  name: 'Prop'
-}
-</script>
-
 <script lang="ts" setup>
 import { defineProps, withDefaults } from 'vue' // `defineProps` is a compiler macro and no longer needs to be imported.
 import { type CatList } from '@/types'

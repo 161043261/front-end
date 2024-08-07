@@ -1,9 +1,3 @@
-<script lang="ts">
-export default {
-  name: 'Reactive'
-}
-</script>
-
 <script lang="ts" setup>
 import { reactive } from 'vue'
 

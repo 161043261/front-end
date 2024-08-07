@@ -8,12 +8,6 @@ let { money, subMoney } = inject('moneyContext', {
 let car = inject('carContext', { brand: '', price: 0 })
 </script>
 
-<script lang="ts">
-export default {
-  name: 'Child'
-}
-</script>
-
 <template>
   <div class='child'>
     <p>@/views/communicate/provide-inject/Child.vue</p>

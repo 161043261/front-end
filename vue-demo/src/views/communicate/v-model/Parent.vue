@@ -6,12 +6,6 @@ let username = ref('root')
 let password = ref('1024')
 </script>
 
-<script lang="ts">
-export default {
-  name: 'Parent'
-}
-</script>
-
 <template>
   <div class="parent">
     <p>@/views/communicate/v-model/Parent.vue</p>

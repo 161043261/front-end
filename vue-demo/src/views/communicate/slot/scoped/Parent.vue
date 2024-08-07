@@ -2,12 +2,6 @@
 import Child from './Child.vue'
 </script>
 
-<script lang="ts">
-export default {
-  name: 'Parent'
-}
-</script>
-
 <template>
   <div class="parent">
     <p>@/views/communicate/slot/scoped/Parent.vue</p>

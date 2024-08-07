@@ -26,12 +26,6 @@ function changeAge() {
 }
 </script>
 
-<script lang="ts">
-export default {
-  name: 'ToRefs'
-}
-</script>
-
 <template>
   <div class="toRefs">
     <p>toRef and toRefs</p>
