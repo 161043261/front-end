@@ -6,6 +6,7 @@ console.log(emits)
 
 <template>
   <p>@/views/communicate/v-model/Child.vue</p>
+  modelValue: {{ modelValue }}
   <p>
     <!--
 TODO
@@ -16,8 +17,13 @@ TODO
     -->
 
     <!-- refer to ../custom-event -->
-    <input type="text" v-bind:value="modelValue"
-           @input="emits('update:modelValue', (<HTMLInputElement>$event.target).value)/* args */">
+    <input type="text" v-bind:value="modelValue" @input="(event: Event) => {
+      // console.log((event.target as HTMLInputElement).value)
+      emits('update:modelValue', (event.target as HTMLInputElement).value)
+    }" />
+
+    <input type="text" :value="modelValue"
+      @input="emits('update:modelValue', ($event.target as HTMLInputElement).value)" />
     <!-- trigger 'update:modelValue' event -->
   </p>
 </template>
@@ -29,5 +35,6 @@ input {
   height: 30px;
   font-size: 20px;
   color: black;
+  margin: 0 5px;
 }
 </style>

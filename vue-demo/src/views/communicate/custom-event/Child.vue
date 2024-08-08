@@ -1,15 +1,15 @@
 <script lang="ts" setup>
-import { onMounted, ref } from 'vue'
+import { onMounted, ref } from 'vue';
 
 let onMountedToy = ref('OptimusPrime')
 let clickToy = ref('Bumblebee')
 
 // declare 'pass-toy' custom event
-const emit = defineEmits(['pass-toy'])
+const emitter = defineEmits(['pass-toy']) // emitter is a function for triggering custom event
 
 onMounted(() => {
   setTimeout(() => {
-    emit('pass-toy', onMountedToy.value/* args */) // trigger 'pass-toy' custom event
+    emitter('pass-toy', onMountedToy.value/* args */) // trigger 'pass-toy' custom event
   }, 1000)
 })
 </script>
@@ -20,8 +20,7 @@ onMounted(() => {
     <p>onMountedToy: {{ onMountedToy }}</p>
     <p>clickToy: {{ clickToy }}</p>
     <!-- click to trigger 'pass-toy' custom event -->
-    <button @click="emit('pass-toy', clickToy)">pass toy to parent</button>
-    <!-- toy.value.toUpperCase() is unnecessary -->
+    <button @click="emitter('pass-toy', clickToy)">pass toy to parent</button>
   </div>
 </template>
 

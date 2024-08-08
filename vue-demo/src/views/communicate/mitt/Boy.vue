@@ -1,12 +1,14 @@
 <script lang="ts" setup>
-import { onUnmounted, ref } from 'vue'
+import { onMounted, onUnmounted, ref } from 'vue'
 import emitter from '@/utils/emitter'
 
 let computer = ref('Lenovo')
 let toy = ref('')
 
-emitter.on('pass-toy', (value: any) => { // bind 'pass-toy' event
-  toy.value = value
+onMounted(()=>{
+  emitter.on('pass-toy', (value: any) => { // bind 'pass-toy' event
+    toy.value = value
+  })
 })
 
 onUnmounted(() => { // unbind 'pass-toy' event

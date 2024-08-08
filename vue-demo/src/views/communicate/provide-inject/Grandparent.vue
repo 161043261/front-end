@@ -8,7 +8,7 @@ let car = reactive({
   price: 100
 })
 
-// providing data and function to children
+// providing data and function to child
 provide('moneyContext', { 'money': money, subMoney/* equivalent to `"subMoney": subMoney` */ })
 provide('carContext', car)
 

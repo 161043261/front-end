@@ -82,6 +82,10 @@ let display = ref(true)
 * {
   font-family: "Iosevka SS06", monospace;
 }
+
+button {
+  margin: 0 5px;
+}
 </style>
 
 <style scoped>

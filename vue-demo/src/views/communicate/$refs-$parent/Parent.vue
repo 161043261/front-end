@@ -1,26 +1,20 @@
 <script lang="ts" setup>
 import Boy from './Boy.vue'
 import Girl from './Girl.vue'
-import { ref } from 'vue'
+import { ref, type Ref } from 'vue'
 
 let car = ref('MercedesBenz')
 let age = ref(35)
-let girl = ref()
-let boy = ref()
+let girlInstance: Ref<any> = ref()
+let boyInstance: Ref<any> = ref()
 
-function changeToy() {
-  // console.log(girl.value);
-  girl.value.toy = girl.value.toy == 'OptimusPrime' ? 'Bumblebee' : 'OptimusPrime'
-}
+function changeToy() { girlInstance.value.toy += '!' }
 
-function changeComputer() {
-  boy.value.computer = boy.value.computer == 'Lenovo' ? 'Apple' : 'Lenovo'
-}
+function changeComputer() { boyInstance.value.computer += '!' }
 
 function addAge(refs: { [key: string]: any }) {
-  // console.log(refs);
   for (let prop in refs) {
-    // console.log(attribute, refs[attribute]);
+    console.log(prop);
     refs[prop].age++
   }
 }
@@ -38,8 +32,8 @@ defineExpose({ age })
     <button @click="changeComputer">change boy's computer</button>
     <!-- $refs -->
     <button @click="addAge($refs)">children.age++</button>
-    <Girl ref="girl" />
-    <Boy ref="boy" />
+    <Girl ref="girlInstance" />
+    <Boy ref="boyInstance" />
   </div>
 </template>
 
